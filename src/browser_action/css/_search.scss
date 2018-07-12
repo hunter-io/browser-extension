@@ -1,0 +1,432 @@
+
+// Popup header
+//
+
+.header {
+  background-color: $white;
+  border-bottom: 1px solid $border-grey;
+  height: 70px;
+
+  .logo {
+    height: 17px;
+    margin: 25px 8px 25px 25px;
+    float: left;
+  }
+
+  #complete-search,
+  #signup-cta {
+    display: none;
+    float: right;
+    margin: 17px 25px 0 0;
+  }
+
+  #complete-search .fa-external-link {
+    color: #777;
+    font-size: 10px;
+    margin: 0 0 0 5px;
+  }
+
+  #results-number {
+    display: inline-block;
+    font-size: 12px;
+    margin: 29px 0 0 0;
+    float: left;
+    color: $grey;
+  }
+}
+
+
+
+// Search placeholder
+//
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -700px 0
+    }
+    100%{
+        background-position: 700px 0
+    }
+}
+
+.search-placeholder {
+  .background-masker {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f6f6;
+    background: linear-gradient(to right, #f3f3f3 8%, #eee 18%, #f3f3f3 33%);
+    background-size: 700px 104px;
+    position: relative;
+  }
+
+  .people-search-block {
+    margin-top: 35px;
+    height: 64px;
+  }
+
+  .result-name-block {
+    margin-top: 30px;
+    height: 20px;
+    width: 200px;
+  }
+
+  .result-email-block {
+    margin-top: 8px;
+    height: 20px;
+    width: 300px;
+  }
+}
+
+// Body
+//
+
+.body {
+  padding: 0 25px 80px;
+}
+
+
+// Account footer
+//
+
+.account-information {
+  border-top: 1px solid #d9d9d9;
+  background: rgba(255, 255, 255, 0.96);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  padding: 14px;
+
+  .account-not-logged,
+  .account-logged {
+    display: none;
+  }
+
+  .separator {
+    margin: 0 3px;
+    color: #ccc;
+  }
+
+  .list_select_container {
+    display: inline-block;
+  }
+
+  .list_select {
+    width: 240px;
+    height: 25px;
+    padding: 0px 5px;
+  }
+
+  .pull-right {
+    margin-top: 2px;
+  }
+
+  .view_list_link {
+    margin-left: 5px;
+  }
+}
+
+
+// Error notifications or empty states
+//
+
+.error {
+  display: none;
+  margin: 0px 20px 90px 20px;
+}
+
+#linkedin-notification,
+#empty-notification,
+#blocked-notification {
+  margin-top: 120px;
+  display: none;
+  text-align: center;
+  font-size: 15px;
+
+  .big-icon {
+    text-align: center;
+    color: #eee;
+    font-size: 150px;
+  }
+}
+
+
+// Email Finder search area
+//
+
+.people-search-container {
+  display: none;
+  margin: 0 -25px 5px;
+  font-size: 14px;
+  color: #555;
+  padding: 14px 25px;
+  background: darken($background-grey, 0.5%);
+  border-bottom: 2px solid #ddd;
+
+  .row {
+    margin: 0 -16px;
+  }
+
+  .domain-pattern {
+    line-height: 27px;
+    display: inline-block;
+    max-width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 4px;
+
+    span[data-toggle='tooltip']:hover {
+      cursor: help;
+    }
+  }
+
+  .email-finder-loader {
+    display: none;
+    color: $light-grey;
+    float: left;
+    margin-top: 6px;
+  }
+
+  input[type="text"] {
+    background: url("chrome-extension://__MSG_@@extension_id__/img/search_grey.png") $white no-repeat;
+    background-position: left 10px top 10px;
+    background-size: 13px;
+    padding-left: 34px;
+    float: right;
+    width: -webkit-calc(100% - 25px);
+    width:    -moz-calc(100% - 25px);
+    width:         calc(100% - 25px);
+  }
+}
+
+
+// Email Finder result
+//
+
+.email-finder-result-container {
+  display: none;
+  padding-top: 14px;
+
+  .email-finder-result-email {
+    margin: 0 -25px;
+    padding: 23px;
+    border: 1px solid $border-grey;
+    border-width: 1px 0;
+    font-size: 15px;
+    font-weight: 600;
+
+    .save_lead_button,
+    .email_lead_button {
+      margin: -5px 0 0 10px;
+      background-color: $white;
+    }
+  }
+
+  .email-finder-result-profile {
+    padding: 30px 0 10px;
+
+    h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .email-finder-result-title {
+      color: $grey;
+      font-size: 14px;
+      line-height: 26px;
+    }
+
+    .email-finder-result-pic {
+      margin-bottom: 20px;
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      background-color: $white;
+      float: left;
+      margin: 0 15px 0 0;
+    }
+  }
+
+  .email-finder-result-method {
+    color: $grey;
+    margin-top: 20px;
+  }
+
+  .email-finder-result-sources {
+    padding: 8px 0 10px;
+
+    a {
+      max-width: 400px;
+    }
+  }
+}
+
+
+// Results
+//
+
+.search-results {
+  display: none;
+}
+
+.result {
+  padding: 25px;
+  margin: 0 -25px;
+  font-size: 14px;
+  border-bottom: 1px solid $border-grey;
+
+  .sources-list a {
+    max-width: 400px;
+  }
+}
+
+.result:last-child {
+  border-bottom: 0;
+}
+
+table {
+  width: 100%;
+}
+
+.sources-link-td {
+  text-align: right;
+  width: 110px;
+}
+
+.lead-button-td {
+  text-align: right;
+}
+
+.additional-data {
+  font-size: 13px;
+  margin-bottom: 9px;
+  color: $grey;
+
+  .name {
+    color: $black;
+  }
+
+  .position {
+    margin-left: 5px;
+  }
+
+  .phone {
+    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .fab {
+    display: inline-block;
+    margin-left: 5px;
+    border: 0;
+    color: $light-grey;
+    -webkit-transition: color 100ms ease-in-out;
+    -moz-transition: color 100ms ease-in-out;
+    -ms-transition: color 100ms ease-in-out;
+    transition: color 100ms ease-in-out;
+  }
+
+  .fa-linkedin {
+    &:hover,
+    &:focus,
+    &:active {
+      color: $linkedin-blue;
+      text-decoration: none;
+    }
+  }
+
+  .fa-twitter-square {
+    &:hover,
+    &:focus,
+    &:active {
+      color: $twitter-blue;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// Other popup rendering
+//
+
+.connect-container,
+.connect-again-container,
+.no-result-container,
+.webmail-container {
+  display: none;
+  margin: 60px 0;
+  line-height: 22px;
+}
+
+.no-result-container h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.no-result-message .subtitle {
+  color: #999;
+  font-size: 15px;
+  margin: -5px 0 20px;
+}
+
+.connect-message,
+.connect-again-container {
+  margin-bottom: 15px;
+}
+
+.error-container {
+  display: none;
+  margin: 0 -25px;
+}
+
+.error-message {
+  color: #d63c3c;
+  background-color: #f5e1e1;
+  padding: 20px;
+}
+
+.signin_link,
+.signin_link:hover,
+.signin_link:focus {
+  color: #333;
+  margin-left: 10px;
+  border-bottom: 1px dotted #333;
+  text-decoration: none;
+}
+
+.see-more {
+  display: inline-block;
+  margin: 25px 0 10px;
+}
+
+.feedback-notification,
+.rate-notification,
+.contact-notification {
+  display: none;
+  padding: 20px;
+  border: 1px dashed #ddd;
+  border-radius: 3px;
+  margin: 20px 0;
+  background: #fafafa;
+}
+
+.tooltip-inner {
+  padding: 7px 10px;
+  font-size: 13px;
+}
+
+
+// Hidden area to copy emails
+//
+
+#copy-area {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}

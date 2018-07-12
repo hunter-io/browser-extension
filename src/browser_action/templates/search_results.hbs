@@ -1,0 +1,50 @@
+<div class="result">
+  <table>
+    <tr>
+      <td>
+        {{{additional_data}}}
+        <div class="email-container">
+          <div class="email-copied"></div>
+          <div class="email">{{value}}</div>
+          {{#ifIsVerified confidence}}
+          <div class="verified-icon fas fa-shield-check" data-toggle="tooltip" data-placement="top" title="Verified"></div>
+          {{else}}
+          <div class="score {{confidence_score_class}}" data-toggle="tooltip" data-placement="top" title="Confidence score: {{confidence}}%"></div>
+          <div class="verification-link" data-email="{{value}}">
+            <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Verify"></i>
+          </div>
+          <div class="verification-result"></div>
+          {{/ifIsVerified}}
+          <span class="copy-status">Copy</span>
+        </div>
+      </td>
+      <td class="lead-button-td">{{{lead_button}}}</td>
+      <td class="sources-link-td">
+        <span class="sources-link">
+          {{sources_link}}
+          <i class="far fa-angle-down"></i>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <div class="sources-list">
+          {{#each sources}}
+          <div class="{{#unless this.still_on_page}}not-on-page{{/unless}}">
+            <a href="{{this.uri}}#hunter-email:{{../value}}" target="_blank" rel="nofollow">
+              {{this.uri}}
+            </a>
+            <span class="source-date">
+              {{#userDate}}{{this.extracted_on}}{{/userDate}}
+            </span>
+            {{#unless this.still_on_page}}
+            <span class="not-on-page-label" data-toggle="tooltip" data-placement="top" title="The email address is no longer on the page">Removed</span>
+            {{/unless}}
+            <br>
+          </div>
+          {{/each}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

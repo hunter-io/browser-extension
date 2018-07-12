@@ -1,0 +1,266 @@
+// Popup
+//
+
+html {
+  width: 620px;
+}
+
+body {
+  width: 620px;
+  height: 1020px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+}
+
+#domain-search {
+  display: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.fa-spin {
+  -webkit-animation-duration: 400ms !important;
+  animation-duration: 400ms !important;
+}
+
+
+// Links
+//
+
+.blue-link {
+  color: $blue;
+  text-decoration: none;
+  border-bottom: 1px solid lighten($blue, 30%);
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
+  transition: all 250ms ease;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $blue;
+    text-decoration: none;
+    border-bottom: 1px solid lighten($blue, 15%);
+    cursor: pointer;
+  }
+}
+
+
+// Emails
+//
+
+.email-container {
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  padding-right: 80px;
+
+  .email {
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-block;
+    cursor: pointer;
+
+    &:active {
+      color: $orange;
+    }
+  }
+
+  .email-copied {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .copy-status {
+    display: none;
+    margin-left: 8px;
+    color: $light-grey;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .score {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-left: 8px;
+
+    &.low-score {
+      background-color: darken($background-red, 40%);
+    }
+
+    &.average-score {
+      background-color: darken($background-beige, 40%);
+    }
+
+    &.high-score {
+      background-color: darken($background-green, 40%);
+    }
+  }
+
+  .verified-icon {
+    margin-left: 8px;
+    display: inline-block;
+    font-size: 13px;
+    color: $green;
+  }
+
+  .verification-link {
+    display: inline-block;
+    color: lighten($light-grey, 20%);
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+
+  .verification-result {
+    margin-left: 8px;
+    display: none;
+    font-size: 12px;
+
+    .fas {
+      margin-right: 2px;
+    }
+  }
+}
+
+
+// Sources
+//
+
+.sources-link {
+  float: right;
+  color: $light-grey;
+  font-size: 13px;
+
+  .fa-angle-down,
+  .fa-angle-up {
+    margin-left: 3px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.sources-list {
+  display: none;
+  padding-top: 10px;
+  font-size: 13px;
+  line-height: 20px;
+
+  .not-on-page a,
+  .not-on-page .source-date,
+   {
+    opacity: 0.7;
+  }
+
+  a {
+    @extend .blue-link;
+    display: inline-block;
+    vertical-align: text-bottom;
+    max-width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 8px;
+  }
+
+  .source-date {
+    color: $light-grey;
+    vertical-align: text-bottom;
+    margin-left: 5px;
+  }
+
+  .not-on-page-label {
+    display: inline-block;
+    background: lighten($light-grey, 20%);
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 5px;
+    border-radius: 3px;
+    vertical-align: text-bottom;
+    line-height: 20px;
+    margin-left: 5px;
+  }
+}
+
+
+
+// Lead buttons
+//
+
+.action_lead_button {
+  display: inline-block;
+  color: $light-grey;
+  border: 2px solid darken($border-grey, 5%);
+  border-radius: 30px;
+  text-align: center;
+  padding: 4px 10px;
+  background: $background-grey;
+  font-size: 12px;
+  line-height: 20px;
+  transition: all 150ms ease;
+  cursor: pointer;
+  outline: 0;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    border-color: darken($border-grey, 10%);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.9;
+    background: darken($background-grey, 1%);
+    border-color: darken($border-grey, 3%);
+    cursor: default;
+  }
+
+  .far, .fas, .fal, .fab {
+    margin-right: 0;
+    color: lighten($light-grey, 5%);
+  }
+
+  .fa-check {
+    color: $green;
+  }
+
+  .fa-times {
+    color: $red;
+  }
+
+  .lead_status {
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $grey;
+  }
+
+  &.round {
+    padding: 4px;
+    width: 32px;
+  }
+}

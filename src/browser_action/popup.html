@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/lib/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link href="../css/lib/hunter-theme.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/shared.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/browser_action.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/lib/purify.min.js"></script>
+    <script type="text/javascript" src="../js/lib/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="../js/lib/handlebars.js"></script>
+    <script type="text/javascript" src="../js/shared.min.js"></script>
+    <script type="text/javascript" src="../js/templates.js"></script>
+    <script type="text/javascript" src="../js/browser_action.min.js"></script>
+  </head>
+
+  <body>
+    <div id="copy-area"></div>
+    <div id="domain-search">
+      <div class="header">
+        <a href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">
+          <img class="logo" src="../img/orange_transparent_logo.png" alt="Hunter" />
+        </a>
+        <div id="results-number"></div>
+        <a id="complete-search" class="white-btn" target="_blank" href="">
+          Complete search
+          <i class="far fa-external-link"></i>
+        </a>
+        <a id="signup-cta" class="orange-btn" target="_blank" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">
+          Create a free account
+        </a>
+      </div>
+      <div class="body">
+        <div class="feedback-notification">
+          <p>Are you satisfied by Hunter's extension?</p>
+          <a class="orange-btn feedback_link" href="#" id="open-rate-notification">Yes</a>
+          <a class="orange-btn feedback_link" href="#" id="open-contact-notification">No</a>
+        </div>
+
+        <div class="rate-notification">
+          <p>Please help us by letting a review!</p>
+          <a class="orange-btn" href="https://chrome.google.com/webstore/detail/email-hunter/hgmhmanijnjhaffoampdlllchpolkdnj/reviews" target="_blank">Add a rating</a>
+        </div>
+
+        <div class="contact-notification">
+          We are sorry to hear this. Please drop us a line at <strong>contact@hunter.io</strong> if you want to give us feedback or ask any question. We would be happy to help.
+        </div>
+
+        <div class="search-placeholder">
+          <div class="background-masker people-search-block"></div>
+          <div class="background-masker result-name-block"></div>
+          <div class="background-masker result-email-block"></div>
+          <div class="background-masker result-name-block"></div>
+          <div class="background-masker result-email-block"></div>
+          <div class="background-masker result-name-block"></div>
+          <div class="background-masker result-email-block"></div>
+          <div class="background-masker result-name-block"></div>
+          <div class="background-masker result-email-block"></div>
+          <div class="background-masker result-name-block"></div>
+          <div class="background-masker result-email-block"></div>
+        </div>
+
+        <div class="connect-container">
+          <div class="connect-message">You've reached your daily limit! Please connect to your Hunter account to use the extension. It's free and takes 30 seconds.</div>
+          <a href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup" target="_blank" class="orange-btn">Create a free account</a>
+          <a href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup" target="_blank" class="signin_link">Sign in</a>
+        </div>
+
+        <div class="connect-again-container">
+          <div class="connect-message">Hunter browser extension seems not to be associated to your account. Please sign in to continue.</div>
+          <a href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup" target="_blank" class="orange-btn">Sign in</a>
+        </div>
+
+        <div class="error-container">
+          <div class="error-message red"></div>
+        </div>
+
+        <div class="no-result-container">
+          <div class="no-result-message">
+            <h2>No email addresses found.</h2>
+            <div class="subtitle">Your search returned no results.</div>
+            <p><strong>Why are there no results for <span class="domain"></span>?</strong></p>
+            <p>We have not found any email addresses with this domain name on the web. There can be several reasons:</p>
+            <ul>
+              <li>We have not crawled web pages where those email addresses appear yet.</li>
+              <li>The company using this domain has a limited presence online.</li>
+              <li>The company uses another domain name for their emails.</li>
+              <li>The websites where these email addresses appear don't allow crawlers.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="webmail-container">
+          <h1>Results hidden</h1>
+          <p>Hunter doesn't distribute email addresses from webmails like Gmail or Yahoo. Hunter is designed for professional use only.</p>
+          <p>Use it on the website of companies, organizations or other websites to find email addresses using personalized domain names, like <strong>johndoe@company.com</strong>.</p>
+        </div>
+
+        <div class="people-search-container">
+          <div class="people-search-head">
+            <div class='people-search'>
+              <div class='row'>
+                <div class='col-xs-7'>
+                  <div class='domain-pattern'>
+                    Most common pattern:
+                    <strong></strong>
+                  </div>
+                </div>
+                <div class='col-xs-5'>
+                  <form id='email-finder-search'>
+                    <div class='email-finder-loader'>
+                      <div class='fa fa-spinner-third fa-spin'></div>
+                    </div>
+                    <input class="form-control" type="text" name="full_name" id="full-name-field" placeholder="Find someone..." required="required" autocomplete="off" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="email-finder-result-container"></div>
+        </div>
+
+        <div class="search-results">
+        </div>
+      </div>
+
+      <div class="account-information grey">
+        <div class="account-loading">
+          <i class="fas fa-spinner-third fa-spin"></i>
+        </div>
+
+        <div class="account-not-logged">
+          Not logged in
+          <div class="pull-right">
+            <a target="_blank" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">
+              Sign in
+            </a>
+            or
+            <a target="_blank" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">
+              Create a free account
+            </a>
+          </div>
+        </div>
+
+        <div class="account-logged">
+          <div class="list_select_container"></div>
+          <a class="view_list_link" target="blank" href="https://hunter.io/leads?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">View</a>
+          <div class="pull-right">
+            <span class='account-calls-used'></span> / <span class='account-calls-available'></span>
+            requests
+            <span class="separator">•</span>
+            <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">
+              Upgrade
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="linkedin-notification">
+      <div class="big-icon"><i class="fab fa-linkedin"></i></div>
+      Hunter is no longer available on LinkedIn.
+      <span class="grey"><a href="https://blog.hunter.io/linkedin-shutdown/" target="_blank">Learn more</a></span>
+    </div>
+
+    <div id="empty-notification">
+      <div class="big-icon"><i class="far fa-browser"></i></div>
+      Open Hunter when you visit websites to find email addresses.
+    </div>
+
+    <div id="blocked-notification">
+      <div class="big-icon"><i class="far fa-warning"></i></div>
+      <span class="grey">The connection to Hunter has been refused. Please visit the <a href="https://hunter.io?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">website</a> for more information.</span>
+    </div>
+  </body>
+</html>

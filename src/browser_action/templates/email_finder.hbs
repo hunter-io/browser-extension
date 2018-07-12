@@ -1,0 +1,37 @@
+<div class="email-finder-result-email">
+  <div class="email-container">
+    <div class="email-copied"></div>
+    <div class="email">{{email}}</div>
+    {{#ifIsVerified score}}
+    <div class="verified-icon fas fa-shield-check" data-toggle="tooltip" data-placement="top" title="Verified"></div>
+    {{else}}
+    <div class="score {{confidence_score_class}}" data-toggle="tooltip" data-placement="top" title="Confidence score: {{score}}%"></div>
+    {{/ifIsVerified}}
+    <span class="copy-status">Copy</span>
+  </div>
+  <button class="save_lead_button action_lead_button pull-right" data-email="{{email}}">
+    <i class="fas fa-plus"></i>
+    <span class="lead_status">Save</span>
+  </button>
+</div>
+<div class="email-finder-result-profile">
+  <img class="email-finder-result-pic" src="https://www.gravatar.com/avatar/{{email.md5}}?s=128&d=https%3A%2F%2Flogo.clearbit.com%2F{{domain}}" onerror="this.src='../img/default_lead_icon.png';" /><h3>{{first_name}} {{last_name}}</h3>
+  <div class="email-finder-result-title">{{title}}</div>
+</div>
+<div class="email-finder-result-method">{{{method}}}</div>
+<div class="email-finder-result-sources sources-list">
+  {{#each sources}}
+  <div class="{{#unless this.still_on_page}}not-on-page{{/unless}}">
+    <a href="{{this.uri}}#hunter-email:{{../value}}" target="_blank" rel="nofollow">
+      {{this.uri}}
+    </a>
+    <span class="source-date">
+      {{#userDate}}{{this.extracted_on}}{{/userDate}}
+    </span>
+    {{#unless this.still_on_page}}
+    <span class="not-on-page-label" data-toggle="tooltip" data-placement="top" title="The email address is no longer on the page">Removed</span>
+    {{/unless}}
+    <br />
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,8 @@
+/build-chrome
+build-chrome.zip
+/build-firefox
+build-firefox.zip
+/node_modules
+.DS_Store
+.sass-cache
+yarn.lock

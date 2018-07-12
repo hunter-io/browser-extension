@@ -1,0 +1,28 @@
+{
+  "name": "hunter-extension",
+  "version": "1.0.0",
+  "description": "Hunter's browser extension",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunter-io/browser-extension.git"
+  },
+  "author": "François Grante",
+  "bugs": {
+    "url": "https://github.com/hunter-io/browser-extension/issues"
+  },
+  "homepage": "https://github.com/hunter-io/browser-extension#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-configs": "^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

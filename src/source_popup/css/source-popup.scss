@@ -1,0 +1,24 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+#logo {
+  height: 18px;
+}
+
+#message {
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 15px;
+}
+
+strong {
+  font-weight: 600;
+}
