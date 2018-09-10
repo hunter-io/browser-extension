@@ -2,7 +2,7 @@
 #
 chrome.extension.sendMessage {}, (response) ->
   readyStateCheckInterval = setInterval((->
-    $('.install-chrome').each (index) ->
+    $('.install-chrome, .install-firefox').each (index) ->
       width = $(this).outerWidth()
       $(this).prop 'disabled', true
       $(this).css 'width': width + 'px'
