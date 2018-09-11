@@ -4,7 +4,7 @@ Hunter's browser extension is an easy way to find email addresses from anywhere 
 * [Chrome Web Store](https://chrome.google.com/webstore/detail/hunter/hgmhmanijnjhaffoampdlllchpolkdnj)
 * [Add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/hunterio/)
 
-[Hunter's API](https://hunter.io/api) is used to fetch the data and users's account information.
+[Hunter's API](https://hunter.io/api) is used to fetch the data and users' accounts information.
 
 ## Generate the builds
 
