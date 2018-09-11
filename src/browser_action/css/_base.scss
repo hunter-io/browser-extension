@@ -69,9 +69,16 @@ strong {
     font-size: 15px;
     display: inline-block;
     cursor: pointer;
+    color: darken($black, 5%);
 
     &:active {
       color: $orange;
+    }
+
+    span {
+      color: transparent;
+      text-shadow: 0 0 6px $grey;
+      cursor: help;
     }
   }
 

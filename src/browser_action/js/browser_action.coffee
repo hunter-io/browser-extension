@@ -9,15 +9,17 @@ DomainSearch = ->
     offset: @offset
     limit: @limit
     type: @type
+    trial: @trial
 
     launch: ->
       @domain = window.domain
+      @trial = (typeof window.api_key == "undefined" || window.api_key == "")
       Analytics.trackEvent 'Open browser popup'
       @fetch()
 
     fetch: () ->
       _this = @
-      if window.api_key
+      unless _this.trial
         url = 'https://api.hunter.io/v2/domain-search?limit=10&offset=0&domain=' + window.domain + '&api_key=' + window.api_key
       else
         url = 'https://api.hunter.io/trial/v2/domain-search?domain=' + window.domain
@@ -39,7 +41,7 @@ DomainSearch = ->
             $('#domain-search').hide()
             $('#blocked-notification').show()
           else if xhr.status == 429
-            if window.api_key
+            unless _this.trial
               Account.returnRequestsError (e) ->
                 displayError e
             else
@@ -60,7 +62,7 @@ DomainSearch = ->
           $(".search-placeholder").hide()
 
           # Not logged in: we hide the Email Finder
-          if !window.api_key
+          if _this.trial
             $('#full-name-field').hide()
 
           _this.render()
@@ -82,7 +84,7 @@ DomainSearch = ->
       $('#current-domain').text @domain
 
       # Display: complete search link or Sign up CTA
-      if window.api_key
+      unless @trial
         $('#complete-search').attr 'href', 'https://hunter.io/search/' + @domain + '?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
         $('#complete-search').show()
       else
@@ -142,7 +144,7 @@ DomainSearch = ->
           result.confidence_score_class = "average-score"
 
         # Save leads button
-        if window.api_key
+        unless _this.trial
           result.lead_button = "<button class='save_lead_button action_lead_button round' data-toggle='tooltip' data-placement='top' title='Save the lead'><i class='fas fa-plus'></i></button>"
         else
           result.lead_button = ""
@@ -192,13 +194,18 @@ DomainSearch = ->
         lead.disableSaveLeadButtonIfLeadExists(save_lead_button)
 
         # Hide beautifully if the user is not logged
-        result_tag.find('.email').html result_tag.find('.email').text().replace('**', '<span data-toggle="tooltip" data-placement="top" title="Please sign up to uncover the email addresses">**</span>')
+        result_tag.find('.email').html result_tag.find('.email').text().replace('**', '<span data-toggle="tooltip" data-placement="top" title="Please sign up to uncover the email addresses">aa</span>')
 
       @openSources()
-      @searchVerificationListener()
-      Utilities.copyEmailListener()
       $(".search-results").show()
       $('[data-toggle="tooltip"]').tooltip()
+
+      # For people not logged in, the copy and verification functions are not displayed
+      if _this.trial
+        $(".verification-link, .verification-result, .copy-status, .email-copied").remove()
+      else
+        @searchVerificationListener()
+        Utilities.copyEmailListener()
 
 
     searchVerificationListener: ->
@@ -215,7 +222,7 @@ DomainSearch = ->
           </div>").css({ display: "inline-block" })
 
         email = verification_link_tag.data("email");
-        if window.api_key
+        unless _this.trial
           url = 'https://api.hunter.io/v2/email-verifier?email=' + email + '&api_key=' + window.api_key
         else
           url = 'https://api.hunter.io/trial/v2/email-verifier?email=' + email
@@ -240,7 +247,7 @@ DomainSearch = ->
               $('#domain-search').hide()
               $('#blocked-notification').show()
             else if xhr.status == 429
-              if window.api_key
+              unless _this.trial
                 Account.returnRequestsError (e) ->
                   displayError e
               else
@@ -389,7 +396,7 @@ EmailFinder = ->
         $("#full-name-field").tooltip("destroy")
 
       _this = @
-      if window.api_key
+      unless _this.trial
         url = 'https://api.hunter.io/v2/email-finder?domain=' + _this.domain + '&full_name=' + _this.full_name + '&api_key=' + window.api_key
       else
         url = 'https://api.hunter.io/trial/v2/email-finder?domain=' + _this.domain + '&full_name=' + _this.full_name
@@ -412,7 +419,7 @@ EmailFinder = ->
             $('#domain-search').hide()
             $('#blocked-notification').show()
           else if xhr.status == 429
-            if window.api_key
+            unless _this.trial
               Account.returnRequestsError (e) ->
                 displayError e
             else
