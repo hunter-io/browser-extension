@@ -123,6 +123,20 @@ Utilities =
       copy_status.delay(400).fadeOut 200, ->
         copy_status.text("Copy")
 
+  # Sort an object by values
+  #
+  sortObject: (array) ->
+    sortable = []
+    for el of array
+      sortable.push [
+        el
+        array[el]
+      ]
+    sortable.sort (a, b) ->
+      b[1] - a[1]
+
+    return sortable
+
 
 # Generate a hash from a string
 String::hashCode = ->
