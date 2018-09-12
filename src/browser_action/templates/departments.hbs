@@ -1,0 +1,10 @@
+{{#each departments}}
+  {{#ifGreaterThanZero this.[1]}}
+    <a href="https://hunter.io/search/{{../domain}}?department={{this.[0]}}" target="_blank">
+      {{#departmentName}}{{this.[0]}}{{/departmentName}}: {{this.[1]}}
+    </a>
+  {{/ifGreaterThanZero}}
+{{/each}}
+{{#ifGreaterThanZero departments.[3].[1]}}
+  <div class="more-departments-button">●●●</div>
+{{/ifGreaterThanZero}}

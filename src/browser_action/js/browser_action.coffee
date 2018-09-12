@@ -10,12 +10,16 @@ DomainSearch = ->
     limit: @limit
     type: @type
     trial: @trial
+    departments: @departments
 
     launch: ->
       @domain = window.domain
       @trial = (typeof window.api_key == "undefined" || window.api_key == "")
       Analytics.trackEvent 'Open browser popup'
       @fetch()
+
+      unless @trial
+        @getDepartments()
 
     fetch: () ->
       _this = @
@@ -66,6 +70,38 @@ DomainSearch = ->
             $('#full-name-field').hide()
 
           _this.render()
+
+    getDepartments: ->
+      _this = @
+      $.ajax
+        url: 'https://api.hunter.io/v2/email-count?domain=' + window.domain
+        headers: 'Email-Hunter-Origin': 'chrome_extension'
+        type: 'GET'
+        data: format: 'json'
+        dataType: 'json'
+        success: (result) ->
+          # After sorting it will be an array of this form
+          # [["executive", 5], ["hr", 3], ["it”, 1], ...]
+          _this.departments = Utilities.sortObject(result.data.department)
+
+          Handlebars.registerHelper 'ifGreaterThanZero', (count, options) ->
+            if count > 0
+              return options.fn(this)
+            options.inverse this
+
+          Handlebars.registerHelper 'departmentName', (options) ->
+            department_names = { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Ressources", marketing: "Marketing", communication: "Communication" }
+            new Handlebars.SafeString(department_names[options.fn(this)])
+
+          template = JST["src/browser_action/templates/departments.hbs"]
+          departments_content = $(template(_this))
+          $('.departments-container').html(departments_content)
+
+          $(".more-departments-button").on "click", ->
+            $('.departments-container a').css
+              display: "inline-block"
+            $(this).hide()
+
 
     render: ->
       # Is webmail -> STOP
