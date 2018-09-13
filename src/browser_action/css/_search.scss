@@ -92,13 +92,14 @@
 
 .account-information {
   border-top: 1px solid #d9d9d9;
-  background: rgba(255, 255, 255, 0.96);
+  background: $white;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   font-size: 12px;
   padding: 14px;
+  box-shadow: 0 10px 50px -15px rgba(0,0,0,0.8);
 
   .account-not-logged,
   .account-logged {
@@ -160,7 +161,7 @@
 .people-search-container {
   display: none;
   margin: 0 -25px 5px;
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   padding: 14px 25px;
   background: darken($background-grey, 0.5%);
@@ -356,11 +357,17 @@ table {
 
 .additional-data {
   font-size: 13px;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
   color: $grey;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   .name {
     color: $black;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .position {
@@ -376,7 +383,7 @@ table {
     display: inline-block;
     margin-left: 5px;
     border: 0;
-    color: $light-grey;
+    color: lighten($light-grey, 20%);
     -webkit-transition: color 100ms ease-in-out;
     -moz-transition: color 100ms ease-in-out;
     -ms-transition: color 100ms ease-in-out;
@@ -399,6 +406,13 @@ table {
       color: $twitter-blue;
       text-decoration: none;
     }
+  }
+}
+
+.complete-profile {
+  .email, .email-copied {
+    font-weight: 500;
+    font-size: 14px;
   }
 }
 
