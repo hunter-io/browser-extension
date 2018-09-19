@@ -142,7 +142,7 @@
 #linkedin-notification,
 #empty-notification,
 #blocked-notification {
-  margin-top: 120px;
+  margin-top: 130px;
   display: none;
   text-align: center;
   font-size: 15px;
@@ -469,13 +469,8 @@ table {
   padding: 20px;
 }
 
-.signin_link,
-.signin_link:hover,
-.signin_link:focus {
-  color: #333;
+.signin_link {
   margin-left: 10px;
-  border-bottom: 1px dotted #333;
-  text-decoration: none;
 }
 
 .see-more {

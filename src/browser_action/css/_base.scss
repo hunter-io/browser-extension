@@ -7,11 +7,16 @@ html {
 
 body {
   width: 620px;
-  height: 1020px;
+  min-height: 560px;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 13px;
+  overflow:hidden;
+
+  &::-webkit-scrollbar {
+      display: none;
+  }
 }
 
 #domain-search {
