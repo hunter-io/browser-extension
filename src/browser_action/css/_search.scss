@@ -356,7 +356,7 @@ table {
 }
 
 .additional-data {
-  font-size: 13px;
+  font-size: 12px;
   margin-bottom: 8px;
   color: $grey;
   max-width: 400px;
@@ -377,6 +377,14 @@ table {
   .phone {
     font-size: 13px;
     margin-left: 5px;
+  }
+
+  .department {
+    font-size: 11px;
+    background-color: darken($background-grey, 2%);
+    margin-left: 5px;
+    padding: 3px 6px;
+    border-radius: 3px;
   }
 
   .fab {
@@ -407,6 +415,11 @@ table {
       text-decoration: none;
     }
   }
+}
+
+.no-entity .position,
+.no-entity .department {
+  margin-left: 0;
 }
 
 .complete-profile {

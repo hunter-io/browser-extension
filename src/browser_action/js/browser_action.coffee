@@ -11,6 +11,7 @@ DomainSearch = ->
     type: @type
     trial: @trial
     departments: @departments
+    department_names: { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Ressources", marketing: "Marketing", communication: "Communication" }
 
     launch: ->
       @domain = window.domain
@@ -90,8 +91,7 @@ DomainSearch = ->
             options.inverse this
 
           Handlebars.registerHelper 'departmentName', (options) ->
-            department_names = { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Ressources", marketing: "Marketing", communication: "Communication" }
-            new Handlebars.SafeString(department_names[options.fn(this)])
+            new Handlebars.SafeString(_this.department_names[options.fn(this)])
 
           template = JST["src/browser_action/templates/departments.hbs"]
           departments_content = $(template(_this))
@@ -205,8 +205,15 @@ DomainSearch = ->
 
           result.additional_data += "</div>"
 
+        else if result.position != null
+          result.additional_data = "<div class='additional-data no-entity'><span class='position'>" + DOMPurify.sanitize(result.position) + "</span></div>"
+
+        else if result.department != null
+          result.additional_data = "<div class='additional-data no-entity'><span class='department'>" + DOMPurify.sanitize(_this.department_names[result.department]) + "</span></div>"
+
         else
-          additional_data = ""
+          result.additional_data = ""
+
 
         Handlebars.registerHelper 'userDate', (options) ->
           new Handlebars.SafeString(Utilities.dateInWords(options.fn(this)))
