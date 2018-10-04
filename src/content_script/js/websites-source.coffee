@@ -43,6 +43,12 @@ PageContent =
       @addLocationIcon()
       @displayMessage 'mailto', email, 1
     else
+      @searchCode(email)
+
+  searchCode: (email) ->
+    if $('html').html().indexOf(email) != -1
+      @displayMessage 'code', email, 0
+    else
       @displayMessage 'notfound', email, 0
 
   scrollToEmail: ->
@@ -65,9 +71,9 @@ PageContent =
     $('body').prepend '<iframe id="hunter-email-status" src="' + src + '"></iframe>'
     $('body').prepend '<div id="hunter-email-status-close">&times;</div>'
     $('#hunter-email-status, #hunter-email-status-close').delay(500).fadeIn()
-    $('#hunter-email-status-close').on 'click', ->
-      $('#hunter-email-status, #hunter-email-status-close').fadeOut()
 
+    $('#hunter-email-status-close').on 'click', ->
+      $('#hunter-email-status, #hunter-email-status-close, #hunter-email-pointer').fadeOut()
 
 # When the page loads, if it comes from a source in Hunter products, there is
 # a hash at the end with the email address to find.
