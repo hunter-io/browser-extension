@@ -234,6 +234,8 @@
       margin: 0;
       font-size: 15px;
       font-weight: 600;
+      color: $black;
+      line-height: 1.5em;
     }
 
     .email-finder-result-title {
@@ -243,13 +245,24 @@
     }
 
     .email-finder-result-pic {
-      margin-bottom: 20px;
+      display: inline-block;
       height: 48px;
       width: 48px;
       border-radius: 50%;
-      background-color: $white;
+      background: $white url("chrome-extension://__MSG_@@extension_id__/img/default_lead_icon.png");
+      background-size: 48px 48px;
       float: left;
       margin: 0 15px 0 0;
+
+      img {
+        background: $white;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        transition: opacity 0.5s;
+        border-radius: 50%;
+        opacity: 0;
+      }
     }
   }
 

@@ -15,7 +15,10 @@
   </button>
 </div>
 <div class="email-finder-result-profile">
-  <img class="email-finder-result-pic" src="https://www.gravatar.com/avatar/{{email.md5}}?s=128&d=https%3A%2F%2Flogo.clearbit.com%2F{{domain}}" onerror="this.src='../img/default_lead_icon.png';" /><h3>{{first_name}} {{last_name}}</h3>
+  <div class="email-finder-result-pic">
+    <img src="https://www.gravatar.com/avatar/{{#md5}}{{email}}{{/md5}}?s=128&d=https%3A%2F%2Flogo.clearbit.com%2F{{domain}}" />
+  </div>
+  <h3>{{first_name}} {{last_name}}</h3>
   <div class="email-finder-result-title">{{title}}</div>
 </div>
 <div class="email-finder-result-method">{{{method}}}</div>

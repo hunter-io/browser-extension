@@ -525,7 +525,7 @@ EmailFinder = ->
         options.inverse this
 
       Handlebars.registerHelper 'md5', (options) ->
-        new Handlebars.SafeString(App.userDate(options.fn(this)))
+        new Handlebars.SafeString(Utilities.MD5(options.fn(this)))
 
       template = JST["src/browser_action/templates/email_finder.hbs"]
       finder_html = $(template(@))
@@ -544,6 +544,9 @@ EmailFinder = ->
       # Event: the copy action
       Utilities.copyEmailListener()
 
+      $('.email-finder-result-pic img').on "load", ->
+        $(this).css 'opacity', '1'
+
       # Display: the button to save the lead
       lead_button = $(".email-finder-result-email .save_lead_button")
       lead_button.data
@@ -555,7 +558,6 @@ EmailFinder = ->
       lead = new LeadButton
       lead.saveButtonListener(lead_button)
       lead.disableSaveLeadButtonIfLeadExists(lead_button)
-
 
     cleanFinderResults: ->
        $(".email-finder-result-container").html ""
