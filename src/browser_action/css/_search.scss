@@ -496,10 +496,26 @@ table {
 .contact-notification {
   display: none;
   padding: 20px;
-  border: 1px dashed #ddd;
   border-radius: 3px;
-  margin: 20px 0;
-  background: #fafafa;
+  margin: 0 -25px;
+  background: $background-grey;
+  border-bottom: 1px solid $border-grey;
+
+  .white-btn {
+    display: inline-block;
+    margin-top: 5px;
+    width: 100px;
+  }
+
+  .orange-btn {
+    display: inline-block;
+    margin-top: 5px;
+    width: 200px;
+  }
+}
+
+.contact-notification {
+  line-height: 22px;
 }
 
 .tooltip-inner {
