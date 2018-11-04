@@ -12,10 +12,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 13px;
-  overflow:hidden;
 
   &::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
 }
 
