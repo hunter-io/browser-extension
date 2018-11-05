@@ -109,18 +109,18 @@ strong {
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    margin-left: 8px;
+    margin-left: 5px;
 
     &.low-score {
-      background-color: darken($background-red, 40%);
+      background-color: $score-red;
     }
 
     &.average-score {
-      background-color: darken($background-beige, 40%);
+      background-color: $score-yellow;
     }
 
     &.high-score {
-      background-color: darken($background-green, 40%);
+      background-color: $score-green;
     }
   }
 
@@ -128,7 +128,7 @@ strong {
     margin-left: 8px;
     display: inline-block;
     font-size: 13px;
-    color: $green;
+    color: $score-green;
   }
 
   .verification-link {
