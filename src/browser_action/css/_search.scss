@@ -142,15 +142,17 @@
 #linkedin-notification,
 #empty-notification,
 #blocked-notification {
-  margin-top: 130px;
+  margin: 130px 30px 0;
   display: none;
   text-align: center;
   font-size: 15px;
+  line-height: 26px;
 
   .big-icon {
     text-align: center;
     color: #eee;
     font-size: 150px;
+    margin-bottom: 20px;
   }
 }
 
@@ -501,13 +503,13 @@ table {
   background: $background-grey;
   border-bottom: 1px solid $border-grey;
 
-  .white-btn {
+  .btn-white {
     display: inline-block;
     margin-top: 5px;
     width: 100px;
   }
 
-  .orange-btn {
+  .btn-orange {
     display: inline-block;
     margin-top: 5px;
     width: 200px;
