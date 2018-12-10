@@ -476,12 +476,20 @@ table {
 .error-container {
   display: none;
   margin: 0 -25px;
+  padding: 25px;
+  background-color: $background-grey;
+  border-bottom: 1px solid $border-grey;
 }
 
 .error-message {
-  color: #d63c3c;
-  background-color: #f5e1e1;
-  padding: 20px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.fa-times {
+  color: red;
+  margin-right: 10px;
 }
 
 .signin_link {

@@ -52,8 +52,7 @@ DomainSearch = ->
             else
               $('.connect-container').show()
           else
-            response = $.parseJSON(xhr.responseText)
-            displayError DOMPurify.sanitize(response["errors"][0]["details"])
+            displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
         success: (result) ->
           _this.webmail = result.data.webmail
@@ -296,8 +295,7 @@ DomainSearch = ->
               else
                 $('.connect-container').show()
             else
-              response = $.parseJSON(xhr.responseText)
-              displayError DOMPurify.sanitize(response["errors"][0]["details"])
+              displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
 
           success: (result, statusText, xhr) ->
@@ -468,8 +466,7 @@ EmailFinder = ->
             else
               $('.connect-container').show()
           else
-            response = $.parseJSON(xhr.responseText)
-            displayError DOMPurify.sanitize(response["errors"][0]["details"])
+            displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
         success: (result) ->
           if result.data.email == null
@@ -630,7 +627,10 @@ LeadButton = ->
                 .removeClass("fa-spin fa-spinner-third")
                 .addClass("fa-times")
           button.find(".lead_status").text "Failed"
-          displayError DOMPurify.sanitize(response["errors"][0]["details"])
+          displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
+
+          if xhr.status == 422
+            window.current_leads_list_id = undefined
 
         success: (response) ->
           button.css({'border': '2px solid #60ad1d'})
@@ -668,16 +668,23 @@ ListSelection =
     _this.getLeadsLists (json) ->
       if json != 'none'
         $('.list_select_container').html '<select class="list_select"></select>'
-        jQuery.each json.data.leads_lists, (i, val) ->
-          if parseInt(window.current_leads_list_id) == parseInt(val.id)
+
+        # We determine the selected list
+        if window.current_leads_list_id
+          selected_list_id = window.current_leads_list_id
+        else
+          selected_list_id = json.data.leads_lists[0]
+
+        # We add all the lists in the select field
+        json.data.leads_lists.forEach (val, i) ->
+          if parseInt(selected_list_id) == parseInt(val.id)
             selected = 'selected="selected"'
           else
             selected = ''
           $('.list_select').append '<option '+selected+' value="'+val.id+'">'+val.name+'</option>'
 
-        # If we notice the current list no longer exists, we take the first one
-        if window.current_leads_list_id
-          $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+window.current_leads_list_id+'?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
+        # We add a link to the current list
+        $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+selected_list_id+'?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
 
         $('.list_select').append '<option value="new_list">Create a new list...</option>'
 
@@ -696,7 +703,7 @@ ListSelection =
   getLeadsLists: (callback) ->
     Account.getApiKey (api_key) ->
       if api_key != ''
-        url = 'https://api.hunter.io/v2/leads_lists?api_key='+api_key
+        url = 'https://api.hunter.io/v2/leads_lists?limit=100&api_key='+api_key
         $.ajax
           url: url
           headers: 'Email-Hunter-Origin': 'chrome_extension'
@@ -710,7 +717,8 @@ ListSelection =
 
 displayError = (html) ->
   $('.error-message').html html
-  $('.error-container').slideDown()
+  $("html, body").animate({ scrollTop: 0 }, 300);
+  $('.error-container').delay(300).slideDown()
   setTimeout (->
     $('.error-container').slideUp()
     return
