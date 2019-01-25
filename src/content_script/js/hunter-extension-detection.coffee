@@ -1,5 +1,5 @@
 chrome.extension.sendMessage {}, (response) ->
-  
+
   # We send 2 data points to the web app:
   # - That the extension is installed.
   # - The version currently installed. Can be used to debug with support.

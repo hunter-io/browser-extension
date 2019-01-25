@@ -673,7 +673,7 @@ ListSelection =
         if window.current_leads_list_id
           selected_list_id = window.current_leads_list_id
         else
-          selected_list_id = json.data.leads_lists[0]
+          selected_list_id = json.data.leads_lists[0].id
 
         # We add all the lists in the select field
         json.data.leads_lists.forEach (val, i) ->
