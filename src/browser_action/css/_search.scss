@@ -500,6 +500,12 @@ table {
 .see-more {
   display: inline-block;
   margin: 25px 0 10px;
+
+  .fa-external-link {
+    color: #777;
+    font-size: 10px;
+    margin: 0 0 0 5px;
+  }
 }
 
 .feedback-notification,

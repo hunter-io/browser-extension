@@ -95,6 +95,7 @@ DomainSearch = ->
           template = JST["src/browser_action/templates/departments.hbs"]
           departments_content = $(template(_this))
           $('.departments-container').html(departments_content)
+          $('.departments-container').show()
 
           $(".more-departments-button").on "click", ->
             $('.departments-container a').css
@@ -155,7 +156,7 @@ DomainSearch = ->
       # Display: link to see more
       if @results_count > 10
         remaining_results = @results_count - 10
-        $('.search-results').append '<a class="see-more btn-white" target="_blank" href="https://hunter.io/search/' + DOMPurify.sanitize(@domain) + '?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">See all the results (' + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + ' more)</a>'
+        $('.search-results').append '<a class="see-more btn-white" target="_blank" href="https://hunter.io/search/' + DOMPurify.sanitize(@domain) + '?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">See all the results (' + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + ' more) <i class="far fa-external-link"></i></a>'
 
 
     showResults: ->
