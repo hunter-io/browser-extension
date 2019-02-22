@@ -23,10 +23,6 @@ module.exports.tasks = {
         to: 'browser.runtime'
       },
       {
-        from: 'chrome.extension.sendMessage',
-        to: 'browser.runtime.sendMessage'
-      },
-      {
         from: 'chrome.extension.onMessage.addListener',
         to: 'browser.runtime.onMessage.addListener'
       },

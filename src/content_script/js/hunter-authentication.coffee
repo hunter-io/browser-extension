@@ -1,4 +1,4 @@
-chrome.extension.sendMessage {}, (response) ->
+window.onload = ->
   if location.pathname == '/chrome/welcome' or location.pathname == '/firefox/welcome' or location.pathname == '/search'
 
     # Hunter extension can be used without authentification but the data returned by

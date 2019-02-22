@@ -78,7 +78,7 @@ PageContent =
 # When the page loads, if it comes from a source in Hunter products, there is
 # a hash at the end with the email address to find.
 #
-chrome.extension.sendMessage {}, (response) ->
+window.onload = ->
   email = PageContent.getEmailInHash()
   if email
     PageContent.highlightEmail email

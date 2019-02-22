@@ -1,4 +1,4 @@
-chrome.extension.sendMessage {}, (response) ->
+window.onload = ->
 
   # We send 2 data points to the web app:
   # - That the extension is installed.
