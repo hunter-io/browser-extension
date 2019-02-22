@@ -52,7 +52,7 @@ PageContent =
       @displayMessage 'notfound', email, 0
 
   scrollToEmail: ->
-    $('html, body').delay(2000).animate { scrollTop: $('.hunter-email:first').offset().top - 300 }, 500
+    $('html, body').animate { scrollTop: $('.hunter-email:first').offset().top - 300 }, 500
 
   addLocationIcon: ->
     $('.hunter-email').each (index) ->
@@ -60,11 +60,11 @@ PageContent =
       position = emailEl.offset()
       emailWidth = emailEl.outerWidth()
       emailHeight = emailEl.outerHeight()
-      $('body').prepend '<img src=\'' + DOMPurify.sanitize(chrome.extension.getURL('/img/location_icon.png')) + '\' alt=\'Here is the email found on Hunter!\' id=\'hunter-email-pointer\'/>'
+      $('body').prepend '<img src=\'' + DOMPurify.sanitize(chrome.extension.getURL('/img/location_icon.png')) + '\' alt=\'Here is the email found with Hunter!\' id=\'hunter-email-pointer\'/>'
       $('#hunter-email-pointer').css
         'top': position.top - 63
         'left': position.left + emailWidth / 2 - 25
-      $('#hunter-email-pointer').delay(2000).fadeIn 500
+      $('#hunter-email-pointer').delay(1000).fadeIn 500
 
   displayMessage: (message, email, count) ->
     src = chrome.extension.getURL('/html/source_popup.html') + '?email=' + email + '&count=' + count + '&message=' + message
