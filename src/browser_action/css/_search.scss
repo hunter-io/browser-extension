@@ -162,12 +162,12 @@
 
 .people-search-container {
   display: none;
-  margin: 0 -25px 5px;
+  margin: 0 -25px -10px;
   font-size: 13px;
-  color: #555;
-  padding: 14px 25px;
-  background: darken($background-grey, 0.5%);
-  border-bottom: 2px solid #ddd;
+  color: lighten($black, 10%);
+  padding: 12px 28px 10px;
+  background: darken($background-grey, 0.8%);
+  border-bottom: 1px solid $border-grey;
 
   .row {
     margin: 0 -16px;
@@ -200,9 +200,15 @@
     background-size: 13px;
     padding-left: 34px;
     float: right;
-    width: -webkit-calc(100% - 25px);
-    width:    -moz-calc(100% - 25px);
-    width:         calc(100% - 25px);
+    height: 38px;
+    border: 1px solid darken($border-grey, 5%);
+    width: calc(100% - 30px);
+
+    &:focus,
+    &:active,
+    &.focus {
+      border: 1px solid darken($border-grey, 10%) !important;
+    }
   }
 }
 
@@ -270,7 +276,7 @@
 
   .email-finder-result-method {
     color: $grey;
-    margin-top: 20px;
+    margin: 20px 0 10px;
   }
 
   .email-finder-result-sources {
@@ -286,52 +292,56 @@
 // Departments filters
 //
 
+#departments-filters,
+.department-label {
+  display: none;
+}
+
 .departments-container {
   display: none;
-  margin: 0 -12px;
+  margin: 20px -3px 0;
 
-  a, .more-departments-button {
-    display: inline-block;
+  .department-filter,
+  .more-departments-button {
     font-size: 12px;
-    line-height: 15px;
-    padding: 8px 12px;
-    color: darken($grey, 5%);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 150ms ease-in-out;
     margin: 10px 2px 0 0;
-    background: darken($background-grey, 0.5%);
-    font-weight: 600;
-
-    &:hover {
-      text-decoration: none;
-      background: darken($background-grey, 2%);
-      color: darken($grey, 10%);
-    }
-
-    &:active,
-    &:focus {
-      text-decoration: none;
-      background: darken($background-grey, 6%);
-      transform: scale(0.99);
-    }
-
-    &.active {
-      font-weight: 600;
-      background: darken($background-grey, 3%);
-    }
   }
 
   .more-departments-button {
-    color: lighten($light-grey, 10%);
+    color: lighten($light-grey, 5%);
 
     &:hover {
-      color: lighten($light-grey, 5%);
+      color: $light-grey;
     }
   }
 
-  &>a:nth-child(n+4) {
+  &>.department-filter:nth-child(n+4) {
     display: none;
+  }
+}
+
+#selected-department {
+  .department-label {
+    background-color: lighten($grey, 5%);
+    font-size: 12px;
+    padding: 1px 10px;
+    font-size: 12px;
+    line-height: 27px;
+    color: $white;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 30px 0 0 0;
+
+    .close-department {
+      margin-left: 5px;
+      font-size: 17px;
+      vertical-align: bottom;
+
+      &:hover {
+        color: darken($white, 10%);
+        cursor: pointer;
+      }
+    }
   }
 }
 

@@ -93,6 +93,11 @@ body {
     padding: 15px 25px;
     font-size: 15px;
     height: 56px; }
+  .btn-white.btn-sm, .btn-sm.btn-orange, .btn-sm.dark-btn, .btn-sm.blue-btn {
+    padding: 1px 10px;
+    font-size: 12px;
+    height: 32px;
+    line-height: 27px; }
 
 .btn-orange {
   background: #ff5722;

@@ -1,16 +1,5 @@
 DomainSearch = ->
   {
-    domain: @domain
-    webmail: @webmail
-    pattern: @pattern
-    organization: @organization
-    results: @results
-    results_count: @results_count
-    offset: @offset
-    limit: @limit
-    type: @type
-    trial: @trial
-    departments: @departments
     department_names: { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Ressources", marketing: "Marketing", communication: "Communication" }
 
     launch: ->
@@ -19,17 +8,14 @@ DomainSearch = ->
       Analytics.trackEvent 'Open browser popup'
       @fetch()
 
-      unless @trial
-        @getDepartments()
-
     fetch: () ->
       _this = @
-      unless _this.trial
-        url = 'https://api.hunter.io/v2/domain-search?limit=10&offset=0&domain=' + window.domain + '&api_key=' + window.api_key
-      else
-        url = 'https://api.hunter.io/trial/v2/domain-search?domain=' + window.domain
+      _this.cleanSearchResults()
+
+      _this.department = _this.departmentFilter()
+
       $.ajax
-        url: url
+        url: Api.domainSearch(_this.domain, _this.department, window.api_key)
         headers: 'Email-Hunter-Origin': 'chrome_extension'
         type: 'GET'
         data: format: 'json'
@@ -68,13 +54,16 @@ DomainSearch = ->
           # Not logged in: we hide the Email Finder
           if _this.trial
             $('#full-name-field').hide()
+          
+          - unless _this.trial || _this.department
+            _this.getDepartments()
 
           _this.render()
 
     getDepartments: ->
       _this = @
       $.ajax
-        url: 'https://api.hunter.io/v2/email-count?domain=' + window.domain
+        url: Api.emailCount(_this.domain)
         headers: 'Email-Hunter-Origin': 'chrome_extension'
         type: 'GET'
         data: format: 'json'
@@ -98,9 +87,11 @@ DomainSearch = ->
           $('.departments-container').show()
 
           $(".more-departments-button").on "click", ->
-            $('.departments-container a').css
+            $('.departments-container div').css
               display: "inline-block"
             $(this).hide()
+
+          _this.manageDepartmentFilters()
 
 
     render: ->
@@ -265,14 +256,10 @@ DomainSearch = ->
           </div>").css({ display: "inline-block" })
 
         email = verification_link_tag.data("email");
-        unless _this.trial
-          url = 'https://api.hunter.io/v2/email-verifier?email=' + email + '&api_key=' + window.api_key
-        else
-          url = 'https://api.hunter.io/trial/v2/email-verifier?email=' + email
 
         # Launch the API call
         $.ajax
-          url: url
+          url: Api.emailVerifier(email, window.api_key)
           headers: 'Email-Hunter-Origin': 'chrome_extension'
           type: 'GET'
           data: format: 'json'
@@ -345,6 +332,36 @@ DomainSearch = ->
           $(this).find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up")
 
 
+    manageDepartmentFilters: ->
+      _this = @
+      $(".department-filter").unbind().on "click", ->
+        $(".department-label[data-department='" + $(this).data('department') + "']").css
+          "display": "inline-block"
+        $(".departments-container").hide()
+        $("#departments-filters input[type='checkbox']").prop("checked", false)
+        $("#departments-filters input[type='checkbox'][name='" + $(this).data("department") + "']").prop("checked", true)
+        _this.fetch()
+
+      $(".close-department").unbind().on "click", ->
+        $(".department-label").hide()
+        $("#departments-filters input[type='checkbox']").prop("checked", false)
+        $(".departments-container").show()
+        _this.fetch()
+
+    typeFilter: ->
+      value = $("#type-filter input[type='radio']:checked").val()
+      if value == "all" then null else value
+
+    departmentFilter: ->
+      department = null
+      $("#departments-filters input[type='checkbox']").each ->
+        if $(this).is(":checked")
+          department = $(this).attr("name")
+          return false
+
+      department
+
+
     addPatternTitle: (pattern) ->
       pattern = pattern
         .replace('{first}', '<span data-toggle="tooltip" data-placement="top" title="First name">{first}</span>')
@@ -354,6 +371,12 @@ DomainSearch = ->
       pattern
 
 
+    cleanSearchResults: ->
+      $(".search-placeholder").show()
+      $(".search-results").html ""
+      $(".people-search-container, .email-finder-results-container").hide()
+      $(".departments").hide()
+      $("li.department").css("display", "none")
 
 
     loadAccountInformation: ->
@@ -366,7 +389,6 @@ DomainSearch = ->
           $('.account-calls-used').text Utilities.numberWithCommas(json.data.calls.used)
           $('.account-calls-available').text Utilities.numberWithCommas(json.data.calls.available)
           $('.account-logged').show()
-
 
     feedbackNotification: ->
       chrome.storage.sync.get 'calls_count', (value) ->
@@ -387,6 +409,7 @@ DomainSearch = ->
 
       $('.feedback_link').click ->
         chrome.storage.sync.set 'has_given_feedback': true
+
   }
 
 
@@ -438,13 +461,8 @@ EmailFinder = ->
         $("#full-name-field").tooltip("destroy")
 
       _this = @
-      unless _this.trial
-        url = 'https://api.hunter.io/v2/email-finder?domain=' + _this.domain + '&full_name=' + _this.full_name + '&api_key=' + window.api_key
-      else
-        url = 'https://api.hunter.io/trial/v2/email-finder?domain=' + _this.domain + '&full_name=' + _this.full_name
-
       $.ajax
-        url: url
+        url: Api.emailFinder(_this.domain, _this.full_name, window.api_key)
         headers: 'Email-Hunter-Origin': 'chrome_extension'
         type: 'GET'
         data: format: 'json'
@@ -560,7 +578,6 @@ EmailFinder = ->
     cleanFinderResults: ->
        $(".email-finder-result-container").html ""
        $(".email-finder-result-container").hide()
-
   }
 
 
@@ -617,7 +634,7 @@ LeadButton = ->
 
     save: (lead, button) ->
       $.ajax
-        url: 'https://api.hunter.io/v2/leads?api_key='+window.api_key
+        url: Api.leads(api_key)
         headers: 'Email-Hunter-Origin': 'chrome_extension'
         type: 'POST'
         data: lead
@@ -646,7 +663,7 @@ LeadButton = ->
         lead_button = $(this)
         lead = $(this).data()
         $.ajax
-          url: 'https://api.hunter.io/v2/leads/exist?email='+lead.email+'&api_key='+window.api_key
+          url: Api.leadsExist(lead.email, window.api_key)
           headers: 'Email-Hunter-Origin': 'chrome_extension'
           type: 'GET'
           data: format: 'json'
