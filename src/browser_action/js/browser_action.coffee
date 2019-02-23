@@ -1,6 +1,6 @@
 DomainSearch = ->
   {
-    department_names: { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Ressources", marketing: "Marketing", communication: "Communication" }
+    department_names: { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Resources", marketing: "Marketing", communication: "Communication" }
 
     launch: ->
       @domain = window.domain
