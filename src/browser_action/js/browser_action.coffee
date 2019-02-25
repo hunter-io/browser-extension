@@ -55,7 +55,7 @@ DomainSearch = ->
           if _this.trial
             $('#full-name-field').hide()
           
-          - unless _this.trial || _this.department
+          - unless _this.trial || _this.department || _this.results_count == 0
             _this.getDepartments()
 
           _this.render()
