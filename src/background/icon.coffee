@@ -29,26 +29,20 @@ updateIconColor = ->
       if value['hunter_blocked']
         setColoredIcon()
       else
-        Account.getApiKey (api_key) ->
-          if api_key
-            api_key_param = '&api_key=' + api_key
-          else
-            api_key_param = ''
-
-          $.ajax
-            url: 'https://extension-api.hunter.io/data-for-domain?domain=' + window.currentDomain + api_key_param
-            type: 'GET'
-            jsonp: false
-            success: (html) ->
-              if html == "1"
-                setColoredIcon()
-              else
-                setGreyIcon()
-
-            error: (xhr) ->
-              if xhr.status == 403
-                chrome.storage.sync.set 'hunter_blocked': true
+        $.ajax
+          url: 'https://extension-api.hunter.io/data-for-domain?domain=' + window.currentDomain
+          type: 'GET'
+          jsonp: false
+          success: (html) ->
+            if html == "1"
+              setColoredIcon()
+            else
               setGreyIcon()
+
+          error: (xhr) ->
+            if xhr.status == 403
+              chrome.storage.sync.set 'hunter_blocked': true
+            setGreyIcon()
 
 
 setGreyIcon = ->
