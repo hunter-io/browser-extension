@@ -295,6 +295,11 @@ DomainSearch = ->
                 </div>")
               displayError 'The email verification is taking longer than expected. Please try again later.'
 
+            else if xhr.status == 222
+              verification_result_tag.html("")
+              displayError DOMPurify.sanitize(result.errors[0].details)
+              return
+
             else
               if result.data.result == "deliverable"
                 verification_result_tag.html("
