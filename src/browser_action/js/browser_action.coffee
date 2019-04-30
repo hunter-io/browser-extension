@@ -112,7 +112,7 @@ DomainSearch = ->
 
       # Display: complete search link or Sign up CTA
       unless @trial
-        $('#complete-search').attr 'href', 'https://hunter.io/search/' + @domain + '?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
+        $('#complete-search').attr 'href', 'https://hunter.io/search/' + @domain + '?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'
         $('#complete-search').show()
       else
         $('#signup-cta').show()
@@ -147,7 +147,7 @@ DomainSearch = ->
       # Display: link to see more
       if @results_count > 10
         remaining_results = @results_count - 10
-        $('.search-results').append '<a class="see-more btn-white" target="_blank" href="https://hunter.io/search/' + DOMPurify.sanitize(@domain) + '?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup">See all the results (' + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + ' more) <i class="far fa-external-link"></i></a>'
+        $('.search-results').append '<a class="see-more btn-white" target="_blank" href="https://hunter.io/search/' + DOMPurify.sanitize(@domain) + '?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">See all the results (' + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + ' more) <i class="far fa-external-link"></i></a>'
 
 
     showResults: ->
@@ -707,7 +707,7 @@ ListSelection =
           $('.list_select').append '<option '+selected+' value="'+val.id+'">'+val.name+'</option>'
 
         # We add a link to the current list
-        $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+selected_list_id+'&utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
+        $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+selected_list_id+'&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'
 
         $('.list_select').append '<option value="new_list">Create a new list...</option>'
 
@@ -716,11 +716,11 @@ ListSelection =
   updateCurrent: ->
     $('.list_select').on 'change', ->
       if $(this).val() == 'new_list'
-        Utilities.openInNewTab 'https://hunter.io/leads_lists/new?utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension'
+        Utilities.openInNewTab 'https://hunter.io/leads_lists/new?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension'
       else
         chrome.storage.sync.set 'current_leads_list_id': $(this).val()
         window.current_leads_list_id = $(this).val()
-        $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+$(this).val()+'&utm_source=chrome_extension&utm_medium=extension&utm_campaign=extension&utm_content=browser_popup'
+        $('.view_list_link').attr 'href', 'https://hunter.io/leads?leads_list_id='+$(this).val()+'&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'
 
 
   getLeadsLists: (callback) ->

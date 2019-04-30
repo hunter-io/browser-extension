@@ -53,7 +53,11 @@ module.exports.tasks = {
       overwrite: true,
       replacements: [{
         from: 'utm_source=chrome_extension',
-        to: 'utm_source=firefox_extension'
+        to: 'utm_source=firefox_addon'
+      },
+      {
+        from: 'utm_medium=chrome_extension',
+        to: 'utm_medium=firefox_addon'
       }]
     },
 
