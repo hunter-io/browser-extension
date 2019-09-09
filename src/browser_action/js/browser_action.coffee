@@ -165,7 +165,7 @@ DomainSearch = ->
         # Confidence score color
         if result.confidence < 30
           result.confidence_score_class = "low-score"
-        else if result.confidence > 70
+        else if result.confidence >= 70
           result.confidence_score_class = "high-score"
         else
           result.confidence_score_class = "average-score"
@@ -210,7 +210,7 @@ DomainSearch = ->
           new Handlebars.SafeString(Utilities.dateInWords(options.fn(this)))
 
         Handlebars.registerHelper 'ifIsVerified', (confidence, options) ->
-          if confidence > 95
+          if confidence >= 95
             return options.fn(this)
           options.inverse this
 
@@ -541,7 +541,7 @@ EmailFinder = ->
 
       # Prepare the template
       Handlebars.registerHelper 'ifIsVerified', (confidence, options) ->
-        if confidence > 95
+        if confidence >= 95
           return options.fn(this)
         options.inverse this
 

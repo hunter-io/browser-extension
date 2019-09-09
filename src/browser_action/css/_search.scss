@@ -17,6 +17,7 @@
     display: none;
     float: right;
     margin: 17px 25px 0 0;
+    font-size: 12px;
   }
 
   #complete-search .fa-external-link {
@@ -40,12 +41,12 @@
 //
 
 @keyframes placeHolderShimmer{
-    0%{
-        background-position: -700px 0
-    }
-    100%{
-        background-position: 700px 0
-    }
+  0%{
+    background-position: -700px 0
+  }
+  100%{
+    background-position: 700px 0
+  }
 }
 
 .search-placeholder {
@@ -99,7 +100,7 @@
   width: 100%;
   font-size: 12px;
   padding: 14px;
-  box-shadow: 0 10px 50px -15px rgba(0,0,0,0.8);
+  box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.8);
 
   .account-not-logged,
   .account-logged {
@@ -165,7 +166,7 @@
   margin: 0 -25px -10px;
   font-size: 13px;
   color: lighten($black, 10%);
-  padding: 12px 28px 10px;
+  padding: 10px 25px 8px;
   background: darken($background-grey, 0.8%);
   border-bottom: 1px solid $border-grey;
 
@@ -181,6 +182,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-top: 4px;
+    font-size: 13px;
 
     span[data-toggle='tooltip']:hover {
       cursor: help;
@@ -236,11 +238,11 @@
   }
 
   .email-finder-result-profile {
-    padding: 30px 0 10px;
+    padding: 25px 0 5px;
 
     h3 {
       margin: 0;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: $black;
       line-height: 1.5em;
@@ -248,14 +250,14 @@
 
     .email-finder-result-title {
       color: $grey;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 26px;
     }
 
     .email-finder-result-pic {
       display: inline-block;
-      height: 48px;
-      width: 48px;
+      height: 40px;
+      width: 40px;
       border-radius: 50%;
       background: $white url("chrome-extension://__MSG_@@extension_id__/img/default_lead_icon.png");
       background-size: 48px 48px;
@@ -276,7 +278,7 @@
 
   .email-finder-result-method {
     color: $grey;
-    margin: 20px 0 10px;
+    margin: 15px 0 5px;
   }
 
   .email-finder-result-sources {
@@ -299,11 +301,11 @@
 
 .departments-container {
   display: none;
-  margin: 20px -3px 0;
+  margin: 15px -3px 0;
 
   .department-filter,
   .more-departments-button {
-    font-size: 12px;
+    font-size: 11px;
     margin: 10px 2px 0 0;
   }
 
@@ -315,7 +317,7 @@
     }
   }
 
-  &>.department-filter:nth-child(n+4) {
+  &>.department-filter:nth-child(n+3) {
     display: none;
   }
 }
@@ -323,9 +325,8 @@
 #selected-department {
   .department-label {
     background-color: lighten($grey, 5%);
-    font-size: 12px;
+    font-size: 11px;
     padding: 1px 10px;
-    font-size: 12px;
     line-height: 27px;
     color: $white;
     border-radius: 3px;
@@ -351,10 +352,11 @@
 
 .search-results {
   display: none;
+  padding-top: 10px;
 }
 
 .result {
-  padding: 25px;
+  padding: 20px 25px;
   margin: 0 -25px;
   font-size: 14px;
   border-bottom: 1px solid $border-grey;
@@ -374,7 +376,7 @@ table {
 
 .sources-link-td {
   text-align: right;
-  width: 110px;
+  width: 100px;
 }
 
 .lead-button-td {
@@ -392,7 +394,7 @@ table {
 
   .name {
     color: $black;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
   }
 
@@ -401,11 +403,12 @@ table {
   }
 
   .phone {
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 5px;
   }
 
   .department {
+    display: inline-block;
     font-size: 11px;
     background-color: darken($background-grey, 2%);
     margin-left: 5px;
@@ -418,9 +421,6 @@ table {
     margin-left: 5px;
     border: 0;
     color: lighten($light-grey, 20%);
-    -webkit-transition: color 100ms ease-in-out;
-    -moz-transition: color 100ms ease-in-out;
-    -ms-transition: color 100ms ease-in-out;
     transition: color 100ms ease-in-out;
   }
 
@@ -451,7 +451,7 @@ table {
 .complete-profile {
   .email, .email-copied {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
@@ -510,6 +510,7 @@ table {
 .see-more {
   display: inline-block;
   margin: 25px 0 10px;
+  font-size: 12px;
 
   .fa-external-link {
     color: #777;
