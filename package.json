@@ -24,7 +24,7 @@
     "load-grunt-configs": "^1.0.0"
   },
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.13"
   },
   "license": "Apache-2.0"
 }
