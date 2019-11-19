@@ -39,10 +39,6 @@ module.exports.tasks = {
         to: 'browser.tabs'
       },
       {
-        from: 'chrome.omnibox',
-        to: 'browser.omnibox'
-      },
-      {
         from: 'chrome.contextMenus',
         to: 'browser.contextMenus'
       }]
