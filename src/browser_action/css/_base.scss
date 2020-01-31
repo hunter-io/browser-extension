@@ -106,7 +106,7 @@ strong {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    margin-left: 4px;
+    margin-left: 3px;
 
     &.low-score {
       background-color: $score-red;
@@ -122,7 +122,7 @@ strong {
   }
 
   .verified-icon {
-    margin-left: 4px;
+    margin-left: 3px;
     display: inline-block;
     font-size: 12px;
     color: $score-green;
@@ -132,12 +132,17 @@ strong {
     display: inline-block;
     color: lighten($light-grey, 20%);
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 3px;
     font-size: 12px;
+
+    &.verification-link-disabled {
+      color: lighten($light-grey, 35%);
+      cursor: default;
+    }
   }
 
   .verification-result {
-    margin-left: 8px;
+    margin-left: 5px;
     display: none;
     font-size: 12px;
 

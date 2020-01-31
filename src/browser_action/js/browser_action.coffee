@@ -43,6 +43,7 @@ DomainSearch = ->
         success: (result) ->
           _this.webmail = result.data.webmail
           _this.pattern = result.data.pattern
+          _this.accept_all = result.data.accept_all
           _this.organization = result.data.organization
           _this.results = result.data.emails
           _this.results_count = result.meta.results
@@ -214,6 +215,11 @@ DomainSearch = ->
             return options.fn(this)
           options.inverse this
 
+        Handlebars.registerHelper 'ifIsAcceptAll', (options) ->
+          if _this.accept_all
+            return options.fn(this)
+          options.inverse this
+
         # Integrate the result
         template = JST["src/browser_action/templates/search_results.hbs"]
         result_tag = $(template(result))
@@ -304,20 +310,20 @@ DomainSearch = ->
               if result.data.result == "deliverable"
                 verification_result_tag.html("
                   <div class='green'>
-                    <i class='fa fa-check'></i>
+                    <i class='fas fa-check'></i>
                     <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Deliverable</a>
                   </div>")
               else if result.data.result == "risky"
                 verification_result_tag.html("
                   <div class='dark-orange'>
-                    <i class='fa fa-exclamation-triangle'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Risky</a>
+                    <i class='fas fa-exclamation-triangle'></i>
+                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Accept all</a>
                   </div>")
               else
                 verification_result_tag.html("
                   <div class='red'>
-                    <i class='fa fa-times'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Undeliverable</a>
+                    <i class='fas fa-times'></i>
+                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Invalid</a>
                   </div>")
 
             # We remove the copy label since it can make the line too long
