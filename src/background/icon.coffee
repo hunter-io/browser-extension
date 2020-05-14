@@ -72,7 +72,7 @@ addBrowserMenuLinks = ->
     'contexts': [ 'browser_action' ]
   chrome.contextMenus.create
     'id': 'leads'
-    'title': 'My leads'
+    'title': 'Leads'
     'contexts': [ 'browser_action' ]
   chrome.contextMenus.create
     'id': 'upgrade'
