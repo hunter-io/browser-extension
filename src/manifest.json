@@ -1,7 +1,7 @@
 {
   "name": "Hunter: Find email addresses in seconds",
   "short_name": "Hunter",
-  "version": "1.18.1",
+  "version": "1.18.3",
   "manifest_version": 2,
   "description": "Find email addresses from anywhere on the web, with just one click.",
   "homepage_url": "https://hunter.io",
@@ -21,15 +21,14 @@
   "permissions": [
     "tabs",
     "storage",
-    "activeTab",
-    "contextMenus",
-    "*://*.hunter.io/*"
+    "contextMenus"
   ],
   "background": {
     "scripts": [
       "js/lib/jquery.min.js",
       "js/shared.min.js",
-      "js/background.min.js"],
+      "js/background.min.js"
+    ],
     "persistent": false
   },
   "content_scripts": [
