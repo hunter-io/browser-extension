@@ -55,7 +55,7 @@ DomainSearch = ->
           # Not logged in: we hide the Email Finder
           if _this.trial
             $('#full-name-field').hide()
-          
+
           - unless _this.trial || _this.department || _this.results_count == 0
             _this.getDepartments()
 
@@ -722,7 +722,7 @@ ListSelection =
   updateCurrent: ->
     $('.list_select').on 'change', ->
       if $(this).val() == 'new_list'
-        Utilities.openInNewTab 'https://hunter.io/leads_lists/new?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension'
+        Utilities.openInNewTab 'https://hunter.io/leads-lists/new?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension'
       else
         chrome.storage.sync.set 'current_leads_list_id': $(this).val()
         window.current_leads_list_id = $(this).val()
