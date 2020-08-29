@@ -44,6 +44,7 @@ DomainSearch = ->
           _this.webmail = result.data.webmail
           _this.pattern = result.data.pattern
           _this.accept_all = result.data.accept_all
+          _this.verification = result.data.verification
           _this.organization = result.data.organization
           _this.results = result.data.emails
           _this.results_count = result.meta.results
@@ -210,8 +211,8 @@ DomainSearch = ->
         Handlebars.registerHelper 'userDate', (options) ->
           new Handlebars.SafeString(Utilities.dateInWords(options.fn(this)))
 
-        Handlebars.registerHelper 'ifIsVerified', (confidence, options) ->
-          if confidence >= 95
+        Handlebars.registerHelper 'ifIsVerified', (verification_status, options) ->
+          if verification_status == "valid"
             return options.fn(this)
           options.inverse this
 
@@ -506,6 +507,7 @@ EmailFinder = ->
             _this.domain = result.data.domain
             _this.email = result.data.email
             _this.score = result.data.score
+            _this.verification = result.data.verification
             _this.position = result.data.position
             _this.company = result.data.company
             _this.twitter = result.data.twitter
@@ -546,8 +548,8 @@ EmailFinder = ->
         @method = "This is our best guess for this person. We haven't found this email on the web."
 
       # Prepare the template
-      Handlebars.registerHelper 'ifIsVerified', (confidence, options) ->
-        if confidence >= 95
+      Handlebars.registerHelper 'ifIsVerified', (verification_status, options) ->
+        if verification_status == "valid"
           return options.fn(this)
         options.inverse this
 

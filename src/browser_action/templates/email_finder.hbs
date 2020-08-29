@@ -2,7 +2,7 @@
   <div class="email-container">
     <div class="email-copied"></div>
     <div class="email">{{email}}</div>
-    {{#ifIsVerified score}}
+    {{#ifIsVerified verification.status}}
     <div class="verified-icon fas fa-shield-check" data-toggle="tooltip" data-placement="top" title="Verified"></div>
     {{else}}
     <div class="score {{confidence_score_class}}" data-toggle="tooltip" data-placement="top" title="Confidence score: {{score}}%"></div>
