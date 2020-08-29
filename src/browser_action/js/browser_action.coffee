@@ -25,7 +25,7 @@ DomainSearch = ->
           $('.search-placeholder').hide()
 
           if xhr.status == 400
-            displayError 'Sorry, something went wrong on the query.'
+            displayError 'Sorry, something went wrong with the query.'
           else if xhr.status == 401
             $('.connect-again-container').show()
           else if xhr.status == 403
@@ -277,7 +277,7 @@ DomainSearch = ->
             verification_link_tag.show()
 
             if xhr.status == 400
-              displayError 'Sorry, something went wrong on the query.'
+              displayError 'Sorry, something went wrong with the query.'
             else if xhr.status == 401
               $('.connect-again-container').show()
             else if xhr.status == 403
@@ -484,7 +484,7 @@ EmailFinder = ->
           $('.email-finder-loader').hide()
 
           if xhr.status == 400
-            displayError 'Sorry, something went wrong on the query.'
+            displayError 'Sorry, something went wrong with the query.'
           else if xhr.status == 401
             $('.connect-again-container').show()
           else if xhr.status == 403

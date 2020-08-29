@@ -488,19 +488,18 @@ table {
   display: none;
   margin: 0 -25px;
   padding: 25px;
-  background-color: $background-grey;
   border-bottom: 1px solid $border-grey;
+
+  .fa-times {
+    color: red;
+    margin-right: 10px;
+  }
 }
 
 .error-message {
   display: inline-block;
   font-weight: 600;
   font-size: 13px;
-
-  .fa-times {
-    color: red;
-    margin-right: 10px;
-  }
 }
 
 .signin_link {
