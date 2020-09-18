@@ -376,10 +376,10 @@ DomainSearch = ->
 
     addPatternTitle: (pattern) ->
       pattern = pattern
-        .replace('{first}', '<span data-toggle="tooltip" data-placement="top" title="First name">{first}</span>')
-        .replace('{last}', '<span data-toggle="tooltip" data-placement="top" title="Last name">{last}</span>')
-        .replace('{f}', '<span data-toggle="tooltip" data-placement="top" title="First name initial">{f}</span>')
-        .replace('{l}', '<span data-toggle="tooltip" data-placement="top" title="Last name initial">{l}</span>')
+        .replace("{first}", "<span data-toggle='tooltip' data-placement='top' title='First name'>{first}</span>")
+        .replace("{last}", "<span data-toggle='tooltip' data-placement='top' title='Last name'>{last}</span>")
+        .replace("{f}", "<span data-toggle='tooltip' data-placement='top' title='First name initial'>{f}</span>")
+        .replace("{l}", "<span data-toggle='tooltip' data-placement='top' title='Last name initial'>{l}</span>")
       pattern
 
 
@@ -393,14 +393,21 @@ DomainSearch = ->
 
     loadAccountInformation: ->
       Account.get (json) ->
-        if json == 'none'
-          $('.account-loading').hide()
-          $('.account-not-logged').show()
+        if json == "none"
+          $(".account-loading").hide()
+          $(".account-not-logged").show()
         else
-          $('.account-loading').hide()
-          $('.account-calls-used').text Utilities.numberWithCommas(json.data.calls.used)
-          $('.account-calls-available').text Utilities.numberWithCommas(json.data.calls.available)
-          $('.account-logged').show()
+          $(".account-loading").hide()
+
+          if (typeof json.data.requests == "undefined")
+            $(".account-calls-used").text Utilities.numberWithCommas(json.data.calls.used)
+            $(".account-calls-available").text Utilities.numberWithCommas(json.data.calls.available)
+          else
+            $(".account-calls-used").text Utilities.numberWithCommas(json.data.requests.searches.used)
+            $(".account-calls-available").text Utilities.numberWithCommas(json.data.requests.searches.available)
+
+          $(".account-logged").show()
+
 
     feedbackNotification: ->
       chrome.storage.sync.get 'calls_count', (value) ->
