@@ -256,13 +256,15 @@ DomainSearch = ->
         verification_link_tag = $(this)
         verification_result_tag = $(this).parent().find(".verification-result")
 
+        email = verification_link_tag.data("email")
+
+        return if !email
+
         verification_link_tag.remove()
         verification_result_tag.html("
           <div class='light-grey'>
             <i class='fas fa-spin fa-spinner-third'></i> Verifying...
           </div>").css({ display: "inline-block" })
-
-        email = verification_link_tag.data("email");
 
         # Launch the API call
         $.ajax
