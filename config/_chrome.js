@@ -126,5 +126,19 @@ module.exports.tasks = {
       src: 'src/manifest.json',
       dest: 'build-chrome/manifest.json'
     }
+  },
+
+  replace: {
+    // This prevents an error to be displayed in Chrome console because the
+    // source map doesn't exist. For the Firefox add-on, we don't do any
+    // modification because Mozilla required to use unaltered library files.
+    source_map_removal: {
+      src: ['build-chrome/js/lib/purify.min.js'],
+      overwrite: true,
+      replacements: [{
+        from: '//# sourceMappingURL=purify.min.js.map',
+        to: ''
+      }]
+    }
   }
 }
