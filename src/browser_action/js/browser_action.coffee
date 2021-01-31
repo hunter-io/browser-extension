@@ -743,9 +743,8 @@ ListSelection =
   getLeadsLists: (callback) ->
     Account.getApiKey (api_key) ->
       if api_key != ''
-        url = 'https://api.hunter.io/v2/leads_lists?limit=100&api_key='+api_key
         $.ajax
-          url: url
+          url: Api.leadsList(window.api_key)
           headers: 'Email-Hunter-Origin': 'chrome_extension'
           type: 'GET'
           dataType: 'json'
