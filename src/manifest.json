@@ -21,7 +21,8 @@
   "permissions": [
     "tabs",
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "https://*.hunter.io/"
   ],
   "background": {
     "scripts": [
