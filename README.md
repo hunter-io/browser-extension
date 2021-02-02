@@ -31,6 +31,6 @@ On Chrome:
 On Firefox:
 
 1. Go to the debugging page (about:debugging)
-2. Click **Enable add-on debugging** if it's not checked yet
-3. Click **Load Temporary Add-on**
+2. Go to the tab **This Firefox**
+3. Click **Load Temporary Add-on...**
 4. Select a file inside `build-firefox`
