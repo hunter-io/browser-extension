@@ -241,7 +241,7 @@
   }
 
   .finder-result-profile {
-    padding: 25px 0 5px;
+    padding: 25px 0;
 
     h3 {
       margin: 0;
@@ -279,9 +279,10 @@
     }
   }
 
+  .finder-accept-all,
   .finder-result-method {
     color: $grey;
-    margin: 15px 0 5px;
+    line-height: 22px;
   }
 
   .finder-result-sources {

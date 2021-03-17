@@ -80,6 +80,7 @@ EmailFinder = ->
             _this.domain = result.data.domain
             _this.email = result.data.email
             _this.score = result.data.score
+            _this.accept_all = result.data.accept_all
             _this.verification = result.data.verification
             _this.position = result.data.position
             _this.company = result.data.company
@@ -124,7 +125,7 @@ EmailFinder = ->
         s = if @sources.length == 1 then "" else "s"
         @method = "We found this email address <strong>" + @sources.length + "</strong> time"+s+" on the web."
       else
-        @method = "This is our best guess for this person. We haven't found this email on the web."
+        @method = "This email address is our best guess for this person. We haven't found it on the web."
 
       # Prepare the template
       Handlebars.registerHelper 'ifIsVerified', (verification_status, options) ->
