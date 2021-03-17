@@ -6,27 +6,27 @@
   border-bottom: 1px solid $border-grey;
   height: 70px;
 
-  .logo {
+  .header-logo {
     height: 17px;
     margin: 25px 8px 25px 25px;
     float: left;
   }
 
-  #complete-search,
-  #signup-cta {
+  .header-search-link,
+  .header-signup-link {
     display: none;
     float: right;
     margin: 17px 25px 0 0;
     font-size: 12px;
   }
 
-  #complete-search .fa-external-link {
+  .header-search-link .fa-external-link {
     color: #777;
     font-size: 10px;
     margin: 0 0 0 5px;
   }
 
-  #results-number {
+  .header-subtitle {
     display: inline-block;
     font-size: 12px;
     margin: 29px 0 0 0;
@@ -37,7 +37,7 @@
 
 
 
-// Search placeholder
+// Loading placeholder
 //
 
 @keyframes placeHolderShimmer{
@@ -49,7 +49,9 @@
   }
 }
 
-.search-placeholder {
+#loading-placeholder {
+  padding: 0 25px 25px;
+
   .background-masker {
     animation-duration: 2s;
     animation-fill-mode: forwards;
@@ -143,7 +145,7 @@
 #linkedin-notification,
 #empty-notification,
 #blocked-notification {
-  margin: 130px 30px 0;
+  margin: 120px 30px 0;
   display: none;
   text-align: center;
   font-size: 15px;
@@ -215,14 +217,15 @@
 }
 
 
-// Email Finder result
+// Email Finder / Author Finder result
 //
 
-.email-finder-result-container {
+#email-finder,
+#author-finder {
   display: none;
   padding-top: 14px;
 
-  .email-finder-result-email {
+  .finder-result-email {
     margin: 0 -25px;
     padding: 23px;
     border: 1px solid $border-grey;
@@ -230,14 +233,14 @@
     font-size: 15px;
     font-weight: 600;
 
-    .save_lead_button,
+    .save-lead-button,
     .email_lead_button {
       margin: -5px 0 0 10px;
       background-color: $white;
     }
   }
 
-  .email-finder-result-profile {
+  .finder-result-profile {
     padding: 25px 0 5px;
 
     h3 {
@@ -248,13 +251,13 @@
       line-height: 1.5em;
     }
 
-    .email-finder-result-title {
+    .finder-result-title {
       color: $grey;
       font-size: 13px;
       line-height: 26px;
     }
 
-    .email-finder-result-pic {
+    .finder-result-pic {
       display: inline-block;
       height: 40px;
       width: 40px;
@@ -276,17 +279,25 @@
     }
   }
 
-  .email-finder-result-method {
+  .finder-result-method {
     color: $grey;
     margin: 15px 0 5px;
   }
 
-  .email-finder-result-sources {
+  .finder-result-sources {
     padding: 8px 0 10px;
 
     a {
       max-width: 400px;
     }
+  }
+}
+
+#author-finder {
+  padding-top: 0;
+
+  .finder-result-email {
+    border-top: 0;
   }
 }
 

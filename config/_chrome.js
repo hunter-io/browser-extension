@@ -18,13 +18,13 @@ module.exports.tasks = {
     },
     hunter_content_script: {
       options: { bare: true },
-      src : 'src/content_script/js/hunter-*.coffee',
-      dest : 'build-chrome/js/hunter_content_script.min.js'
+      src: 'src/content_script/js/hunter-*.coffee',
+      dest: 'build-chrome/js/hunter_content_script.min.js'
     },
     websites_content_script: {
       options: { bare: true },
-      src : 'src/content_script/js/websites-source.coffee',
-      dest : 'build-chrome/js/websites_content_script.min.js'
+      src: 'src/content_script/js/websites-*.coffee',
+      dest: 'build-chrome/js/websites_content_script.min.js'
     },
     source_popup: {
       src: 'src/source_popup/js/source-popup.coffee',
