@@ -1,5 +1,5 @@
 {
-  "name": "Hunter: Find email addresses in seconds",
+  "name": "Hunter - Email Finder Extension",
   "short_name": "Hunter",
   "version": "2.0.0",
   "manifest_version": 2,
@@ -15,7 +15,7 @@
       "19": "img/icon19.png",
       "38": "img/icon38.png"
     },
-    "default_title": "Find email addresses",
+    "default_title": "Hunter",
     "default_popup": "html/browser_popup.html"
   },
   "permissions": [
