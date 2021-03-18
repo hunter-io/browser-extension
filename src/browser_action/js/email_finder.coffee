@@ -8,7 +8,7 @@ EmailFinder = ->
 
     validateForm: ->
       _this = @
-      $('#full-name-field').one 'keyup', (e) ->
+      $("#full-name-field").one "keyup", (e) ->
         setTimeout (->
           if (
             $("#full-name-field").val().indexOf(" ") != -1 &&
@@ -48,34 +48,34 @@ EmailFinder = ->
       _this = @
       $.ajax
         url: Api.emailFinder(_this.domain, _this.full_name, window.api_key)
-        headers: 'Email-Hunter-Origin': 'chrome_extension'
-        type: 'GET'
-        data: format: 'json'
-        dataType: 'json'
+        headers: "Email-Hunter-Origin": "chrome_extension"
+        type: "GET"
+        data: format: "json"
+        dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
-          $('.email-finder-loader').hide()
+          $(".email-finder-loader").hide()
 
           if xhr.status == 400
-            displayError 'Sorry, something went wrong with the query.'
+            displayError "Sorry, something went wrong with the query."
           else if xhr.status == 401
-            $('.connect-again-container').show()
+            $(".connect-again-container").show()
           else if xhr.status == 403
-            $('#domain-search').hide()
-            $('#blocked-notification').show()
+            $("#domain-search").hide()
+            $("#blocked-notification").show()
           else if xhr.status == 429
             unless _this.trial
               Account.returnRequestsError (e) ->
                 displayError e
             else
-              $('.connect-container').show()
+              $(".connect-container").show()
           else
             displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
         success: (result) ->
           if result.data.email == null
-            $('.email-finder-loader').hide()
-            displayError 'We didn\'t find the email address of this person.'
+            $(".email-finder-loader").hide()
+            displayError "We didn't find the email address of this person."
           else
             _this.domain = result.data.domain
             _this.email = result.data.email
@@ -128,12 +128,12 @@ EmailFinder = ->
         @method = "This email address is our best guess for this person. We haven't found it on the web."
 
       # Prepare the template
-      Handlebars.registerHelper 'ifIsVerified', (verification_status, options) ->
+      Handlebars.registerHelper "ifIsVerified", (verification_status, options) ->
         if verification_status == "valid"
           return options.fn(this)
         options.inverse this
 
-      Handlebars.registerHelper 'md5', (options) ->
+      Handlebars.registerHelper "md5", (options) ->
         new Handlebars.SafeString(Utilities.MD5(options.fn(this)))
 
       template = JST["src/browser_action/templates/finder.hbs"]
@@ -148,13 +148,13 @@ EmailFinder = ->
         $(".finder-result-sources").show()
 
       # Display: the tooltips
-      $('[data-toggle="tooltip"]').tooltip()
+      $("[data-toggle='tooltip']").tooltip()
 
       # Event: the copy action
       Utilities.copyEmailListener()
 
-      $('.finder-result-pic img').on "load", ->
-        $(this).css 'opacity', '1'
+      $(".finder-result-pic img").on "load", ->
+        $(this).css "opacity", "1"
 
       # Display: the button to save the lead
       lead_button = $(".finder-result-email .save-lead-button")

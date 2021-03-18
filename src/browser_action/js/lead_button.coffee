@@ -24,17 +24,17 @@ LeadButton = ->
         lead_button.tooltip("destroy")
 
         attributes = [
-          'first_name'
-          'last_name'
-          'position'
-          'email'
-          'company'
-          'website'
-          'source'
-          'phone_number'
-          'linkedin_url'
-          'twitter'
-          'email'
+          "first_name"
+          "last_name"
+          "position"
+          "email"
+          "company"
+          "website"
+          "source"
+          "phone_number"
+          "linkedin_url"
+          "twitter"
+          "email"
         ]
 
         lead = {}
@@ -45,17 +45,17 @@ LeadButton = ->
             lead[attribute] = _this[attribute]
 
         if window.current_leads_list_id
-          lead['leads_list_id'] = window.current_leads_list_id
+          lead["leads_list_id"] = window.current_leads_list_id
 
         _this.save(lead, lead_button)
 
     save: (lead, button) ->
       $.ajax
         url: Api.leads(api_key)
-        headers: 'Email-Hunter-Origin': 'chrome_extension'
-        type: 'POST'
+        headers: "Email-Hunter-Origin": "chrome_extension"
+        type: "POST"
         data: lead
-        dataType: 'json'
+        dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
           button.find(".fas")
@@ -68,11 +68,11 @@ LeadButton = ->
             window.current_leads_list_id = undefined
 
         success: (response) ->
-          button.css({'border': '2px solid #60ad1d'})
-          button.find('.fas')
-                .removeClass('fa-spin fa-spinner-third')
-                .addClass('fa-check')
-                .attr('Saved in your leads')
+          button.css({"border": "2px solid #60ad1d"})
+          button.find(".fas")
+                .removeClass("fa-spin fa-spinner-third")
+                .addClass("fa-check")
+                .attr("Saved in your leads")
           button.find(".lead-status").text "Saved"
 
     disableSaveLeadButtonIfLeadExists: (selector) ->
@@ -81,17 +81,17 @@ LeadButton = ->
         lead = $(this).data()
         $.ajax
           url: Api.leadsExist(lead.email, window.api_key)
-          headers: 'Email-Hunter-Origin': 'chrome_extension'
-          type: 'GET'
-          data: format: 'json'
-          dataType: 'json'
+          headers: "Email-Hunter-Origin": "chrome_extension"
+          type: "GET"
+          data: format: "json"
+          dataType: "json"
           jsonp: false
           success: (response) ->
             if response.data.id != null
-              lead_button.find('.fas')
-                         .removeClass('fa-plus')
-                         .addClass('fa-check')
-                         .attr('title', 'Saved in your leads')
+              lead_button.find(".fas")
+                         .removeClass("fa-plus")
+                         .addClass("fa-check")
+                         .attr("title", "Saved in your leads")
               lead_button.find(".lead-status").text "Saved"
-              lead_button.prop 'disabled', true
+              lead_button.prop "disabled", true
   }

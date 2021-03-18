@@ -16,11 +16,11 @@ loadAccountInformation = ->
       $(".account-logged").show()
 
 displayError = (html) ->
-  $('.error-message').html html
+  $(".error-message").html html
   $("html, body").animate({ scrollTop: 0 }, 300);
-  $('.error-container').delay(300).slideDown()
+  $(".error-container").delay(300).slideDown()
   setTimeout (->
-    $('.error-container').slideUp()
+    $(".error-container").slideUp()
     return
   ), 8000
 

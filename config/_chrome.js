@@ -3,32 +3,32 @@ module.exports.tasks = {
   coffee: {
     background: {
       options: { bare: true, join: true },
-      src: 'src/background/*.coffee',
-      dest: 'build-chrome/js/background.min.js'
+      src: "src/background/*.coffee",
+      dest: "build-chrome/js/background.min.js"
     },
     browser_action: {
       options: { bare: true },
-      src: 'src/browser_action/js/*.coffee',
-      dest: 'build-chrome/js/browser_action.min.js'
+      src: "src/browser_action/js/*.coffee",
+      dest: "build-chrome/js/browser_action.min.js"
     },
     shared: {
       options: { bare: true, join: true },
-      src: 'src/shared/js/*.coffee',
-      dest: 'build-chrome/js/shared.min.js'
+      src: "src/shared/js/*.coffee",
+      dest: "build-chrome/js/shared.min.js"
     },
     hunter_content_script: {
       options: { bare: true },
-      src: 'src/content_script/js/hunter-*.coffee',
-      dest: 'build-chrome/js/hunter_content_script.min.js'
+      src: "src/content_script/js/hunter-*.coffee",
+      dest: "build-chrome/js/hunter_content_script.min.js"
     },
     websites_content_script: {
       options: { bare: true },
-      src: 'src/content_script/js/websites-*.coffee',
-      dest: 'build-chrome/js/websites_content_script.min.js'
+      src: "src/content_script/js/websites-*.coffee",
+      dest: "build-chrome/js/websites_content_script.min.js"
     },
     source_popup: {
-      src: 'src/source_popup/js/source-popup.coffee',
-      dest: 'build-chrome/js/source_popup.min.js'
+      src: "src/source_popup/js/source-popup.coffee",
+      dest: "build-chrome/js/source_popup.min.js"
     }
   },
 
@@ -36,10 +36,10 @@ module.exports.tasks = {
   handlebars: {
     compile: {
       options: {
-        namespace: 'JST'
+        namespace: "JST"
       },
       files: {
-        'build-chrome/js/templates.js': ['src/**/*.hbs']
+        "build-chrome/js/templates.js": ["src/**/*.hbs"]
       }
     }
   },
@@ -50,9 +50,9 @@ module.exports.tasks = {
       options: {
         sourcemap: false,
         noLineComments: true,
-        outputStyle: 'compact',
-        sassDir: 'src/browser_action/css',
-        cssDir: 'build-chrome/css'
+        outputStyle: "compact",
+        sassDir: "src/browser_action/css",
+        cssDir: "build-chrome/css"
       }
     },
 
@@ -60,9 +60,9 @@ module.exports.tasks = {
       options: {
         sourcemap: false,
         noLineComments: true,
-        outputStyle: 'compact',
-        sassDir: 'src/content_script/css',
-        cssDir: 'build-chrome/css'
+        outputStyle: "compact",
+        sassDir: "src/content_script/css",
+        cssDir: "build-chrome/css"
       }
     },
 
@@ -70,9 +70,9 @@ module.exports.tasks = {
       options: {
         sourcemap: false,
         noLineComments: true,
-        outputStyle: 'compact',
-        sassDir: 'src/source_popup/css',
-        cssDir: 'build-chrome/css'
+        outputStyle: "compact",
+        sassDir: "src/source_popup/css",
+        cssDir: "build-chrome/css"
       }
     }
   },
@@ -80,51 +80,51 @@ module.exports.tasks = {
   // Copy the libraries already in CSS
   cssmin: {
     shared: {
-      src: 'src/shared/css/*.css',
-      dest: 'build-chrome/css/shared.min.css'
+      src: "src/shared/css/*.css",
+      dest: "build-chrome/css/shared.min.css"
     }
   },
 
   // Copy other files (HTML, libraries, images and fonts)
   copy: {
     browser_action: {
-      src: 'src/browser_action/popup.html',
-      dest: 'build-chrome/html/browser_popup.html'
+      src: "src/browser_action/popup.html",
+      dest: "build-chrome/html/browser_popup.html"
     },
     source_popup: {
-      src: 'src/source_popup/popup.html',
-      dest: 'build-chrome/html/source_popup.html'
+      src: "src/source_popup/popup.html",
+      dest: "build-chrome/html/source_popup.html"
     },
     images: {
       expand: true,
-      cwd: 'src/shared/img/',
-      src: ['**'],
-      dest: 'build-chrome/img/'
+      cwd: "src/shared/img/",
+      src: ["**"],
+      dest: "build-chrome/img/"
     },
     fonts: {
       expand: true,
-      cwd: 'src/shared/fonts/',
-      src: ['**'],
-      dest: 'build-chrome/fonts/',
+      cwd: "src/shared/fonts/",
+      src: ["**"],
+      dest: "build-chrome/fonts/",
       options: {
-        processContentExclude: ['*.{ttf,woff,woff2}']
+        processContentExclude: ["*.{ttf,woff,woff2}"]
       }
     },
     js_libs: {
       expand: true,
-      cwd: 'src/shared/js/lib',
-      src: ['**'],
-      dest: 'build-chrome/js/lib'
+      cwd: "src/shared/js/lib",
+      src: ["**"],
+      dest: "build-chrome/js/lib"
     },
     css_libs: {
       expand: true,
-      cwd: 'src/shared/css/lib',
-      src: ['**'],
-      dest: 'build-chrome/css/lib'
+      cwd: "src/shared/css/lib",
+      src: ["**"],
+      dest: "build-chrome/css/lib"
     },
     manifest: {
-      src: 'src/manifest.json',
-      dest: 'build-chrome/manifest.json'
+      src: "src/manifest.json",
+      dest: "build-chrome/manifest.json"
     }
   },
 
@@ -133,11 +133,11 @@ module.exports.tasks = {
     // source map doesn't exist. For the Firefox add-on, we don't do any
     // modification because Mozilla required to use unaltered library files.
     source_map_removal: {
-      src: ['build-chrome/js/lib/purify.min.js'],
+      src: ["build-chrome/js/lib/purify.min.js"],
       overwrite: true,
       replacements: [{
-        from: '//# sourceMappingURL=purify.min.js.map',
-        to: ''
+        from: "//# sourceMappingURL=purify.min.js.map",
+        to: "
       }]
     }
   }

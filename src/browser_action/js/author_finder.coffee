@@ -11,10 +11,10 @@ AuthorFinder = ->
       _this = @
       $.ajax
         url: Api.authorFinder(_this.url, window.api_key)
-        headers: 'Email-Hunter-Origin': 'chrome_extension'
-        type: 'GET'
-        data: format: 'json'
-        dataType: 'json'
+        headers: "Email-Hunter-Origin": "chrome_extension"
+        type: "GET"
+        data: format: "json"
+        dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
           # If any error occurs, we move to the Domain Search logic. If there
@@ -84,12 +84,12 @@ AuthorFinder = ->
         @method = "This email address is our best guess for this person. We haven't found it on the web."
 
       # Prepare the template
-      Handlebars.registerHelper 'ifIsVerified', (verification_status, options) ->
+      Handlebars.registerHelper "ifIsVerified", (verification_status, options) ->
         if verification_status == "valid"
           return options.fn(this)
         options.inverse this
 
-      Handlebars.registerHelper 'md5', (options) ->
+      Handlebars.registerHelper "md5", (options) ->
         new Handlebars.SafeString(Utilities.MD5(options.fn(this)))
 
       template = JST["src/browser_action/templates/finder.hbs"]
@@ -104,13 +104,13 @@ AuthorFinder = ->
         $("#author-finder .finder-result-sources").show()
 
       # Display: the tooltips
-      $('[data-toggle="tooltip"]').tooltip()
+      $("[data-toggle='tooltip']").tooltip()
 
       # Event: the copy action
       Utilities.copyEmailListener()
 
-      $('#author-finder .finder-result-pic img').on "load", ->
-        $(this).css 'opacity', '1'
+      $("#author-finder .finder-result-pic img").on "load", ->
+        $(this).css "opacity", "1"
 
       # Display: the button to save the lead
       lead_button = $(".finder-result-email .save-lead-button")

@@ -268,28 +268,28 @@ DomainSearch = ->
         # Launch the API call
         $.ajax
           url: Api.emailVerifier(email, window.api_key)
-          headers: 'Email-Hunter-Origin': 'chrome_extension'
-          type: 'GET'
-          data: format: 'json'
-          dataType: 'json'
+          headers: "Email-Hunter-Origin": "chrome_extension"
+          type: "GET"
+          data: format: "json"
+          dataType: "json"
           jsonp: false
           error: (xhr, statusText, err) ->
             verification_result_tag.html("")
             verification_link_tag.show()
 
             if xhr.status == 400
-              displayError 'Sorry, something went wrong with the query.'
+              displayError "Sorry, something went wrong with the query."
             else if xhr.status == 401
-              $('.connect-again-container').show()
+              $(".connect-again-container").show()
             else if xhr.status == 403
-              $('#domain-search').hide()
-              $('#blocked-notification').show()
+              $("#domain-search").hide()
+              $("#blocked-notification").show()
             else if xhr.status == 429
               unless _this.trial
                 Account.returnRequestsError (e) ->
                   displayError e
               else
-                $('.connect-container').show()
+                $(".connect-container").show()
             else
               displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
@@ -393,23 +393,23 @@ DomainSearch = ->
 
 
     feedbackNotification: ->
-      chrome.storage.sync.get 'calls_count', (value) ->
-        if value['calls_count'] >= 20
-          chrome.storage.sync.get 'has_given_feedback', (value) ->
-            if typeof value['has_given_feedback'] == 'undefined'
-              $('.feedback-notification').slideDown 300
+      chrome.storage.sync.get "calls_count", (value) ->
+        if value["calls_count"] >= 20
+          chrome.storage.sync.get "has_given_feedback", (value) ->
+            if typeof value["has_given_feedback"] == "undefined"
+              $(".feedback-notification").slideDown 300
 
       # Ask to note the extension
-      $('#open-rate-notification').click ->
-        $('.feedback-notification').slideUp 300
-        $('.rate-notification').slideDown 300
+      $("#open-rate-notification").click ->
+        $(".feedback-notification").slideUp 300
+        $(".rate-notification").slideDown 300
 
       # Ask to give use feedback
-      $('#open-contact-notification').click ->
-        $('.feedback-notification').slideUp 300
-        $('.contact-notification').slideDown 300
+      $("#open-contact-notification").click ->
+        $(".feedback-notification").slideUp 300
+        $(".contact-notification").slideDown 300
 
-      $('.feedback-link').click ->
-        chrome.storage.sync.set 'has_given_feedback': true
+      $(".feedback-link").click ->
+        chrome.storage.sync.set "has_given_feedback": true
 
   }
