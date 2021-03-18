@@ -3,7 +3,7 @@ ListSelection =
     _this = this
     _this.getLeadsLists (json) ->
       if json != "none"
-        $(".list_select_container").html "<select class='list_select'></select>"
+        $(".list-select-container").html "<select class='list-select'></select>"
 
         # We determine the selected list
         if window.current_leads_list_id
@@ -17,17 +17,17 @@ ListSelection =
             selected = "selected='selected'"
           else
             selected = ""
-          $(".list_select").append "<option "+selected+" value='"+val.id+"'>"+val.name+"</option>"
+          $(".list-select").append "<option "+selected+" value='"+val.id+"'>"+val.name+"</option>"
 
         # We add a link to the current list
-        $(".view_list_link").attr "href", "https://hunter.io/leads?leads_list_id="+selected_list_id+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
+        $(".view-list-link").attr "href", "https://hunter.io/leads?leads_list_id="+selected_list_id+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
 
-        $(".list_select").append "<option value='new_list'>Create a new list...</option>"
+        $(".list-select").append "<option value='new_list'>Create a new list...</option>"
 
         _this.updateCurrent()
 
   updateCurrent: ->
-    $(".list_select").on "change", ->
+    $(".list-select").on "change", ->
       if $(this).val() == "new_list"
         Utilities.openInNewTab "https://hunter.io/leads-lists/new?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension"
       else

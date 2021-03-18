@@ -101,8 +101,9 @@
   left: 0;
   width: 100%;
   font-size: 12px;
-  padding: 14px;
+  padding: 14px 25px;
   box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.8);
+  z-index: 10001;
 
   .account-not-logged,
   .account-logged {
@@ -114,22 +115,26 @@
     color: #ccc;
   }
 
-  .list_select_container {
+  .list-select-container {
     display: inline-block;
   }
 
-  .list_select {
+  .list-select {
     width: 240px;
     height: 25px;
     padding: 0px 5px;
   }
 
   .pull-right {
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
-  .view_list_link {
+  .view-list-link {
     margin-left: 5px;
+  }
+
+  .account-upgrade-cta {
+    display: none;
   }
 }
 
