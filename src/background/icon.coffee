@@ -74,8 +74,8 @@ addBrowserMenuLinks = ->
     "title": "Leads"
     "contexts": [ "browser_action" ]
   chrome.contextMenus.create
-    "id": "upgrade"
-    "title": "Upgrade"
+    "id": "subscription"
+    "title": "Subscription"
     "contexts": [ "browser_action" ]
   chrome.contextMenus.create
     "id": "faqs"
@@ -100,7 +100,7 @@ chrome.contextMenus.onClicked.addListener (info, tab) ->
       chrome.tabs.create url: "https://hunter.io/dashboard?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
     when "leads"
       chrome.tabs.create url: "https://hunter.io/leads?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
-    when "upgrade"
+    when "subscription"
       chrome.tabs.create url: "https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
     when "faqs"
       chrome.tabs.create url: "https://hunter.io/help/articles/2-hunter-s-chrome-extension?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
