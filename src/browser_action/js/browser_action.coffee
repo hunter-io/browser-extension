@@ -6,12 +6,11 @@ loadAccountInformation = ->
     else
       $(".account-loading").hide()
 
-      if (typeof json.data.requests == "undefined")
-        $(".account-calls-used").text Utilities.numberWithCommas(json.data.calls.used)
-        $(".account-calls-available").text Utilities.numberWithCommas(json.data.calls.available)
-      else
-        $(".account-calls-used").text Utilities.numberWithCommas(json.data.requests.searches.used)
-        $(".account-calls-available").text Utilities.numberWithCommas(json.data.requests.searches.available)
+      $(".account-calls-used").text Utilities.numberWithCommas(json.data.requests.searches.used)
+      $(".account-calls-available").text Utilities.numberWithCommas(json.data.requests.searches.available)
+
+      if json.data.plan_level == 0
+        $(".account-upgrade-cta").show()
 
       $(".account-logged").show()
 
