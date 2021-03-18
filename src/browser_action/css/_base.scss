@@ -7,7 +7,7 @@ html {
 
 body {
   width: 620px;
-  min-height: 560px;
+  min-height: 480px;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,7 +18,8 @@ body {
   }
 }
 
-#domain-search {
+#domain-search,
+#author-finder {
   display: none;
 }
 
@@ -220,7 +221,7 @@ strong {
 // Lead buttons
 //
 
-.action_lead_button {
+.action-lead-button {
   display: inline-block;
   color: $light-grey;
   border: 2px solid darken($border-grey, 5%);
@@ -265,7 +266,7 @@ strong {
     color: $red;
   }
 
-  .lead_status {
+  .lead-status {
     margin-left: 5px;
     text-transform: uppercase;
     font-weight: 600;

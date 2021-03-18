@@ -1,4 +1,4 @@
-<div class="email-finder-result-email">
+<div class="finder-result-email">
   <div class="email-container">
     <div class="email-copied"></div>
     <div class="email">{{email}}</div>
@@ -9,23 +9,24 @@
     {{/ifIsVerified}}
     <span class="copy-status">Copy</span>
   </div>
-  <button class="save_lead_button action_lead_button pull-right" data-email="{{email}}">
+  <button class="save-lead-button action-lead-button pull-right" data-email="{{email}}">
     <i class="fas fa-plus"></i>
-    <span class="lead_status">Save</span>
+    <span class="lead-status">Save</span>
   </button>
 </div>
-<div class="email-finder-result-profile">
-  <div class="email-finder-result-pic">
+<div class="finder-result-profile">
+  <div class="finder-result-pic">
     <img src="https://www.gravatar.com/avatar/{{#md5}}{{email}}{{/md5}}?s=128&d=https%3A%2F%2Flogo.clearbit.com%2F{{domain}}" />
   </div>
   <h3>{{first_name}} {{last_name}}</h3>
-  <div class="email-finder-result-title">{{title}}</div>
+  <div class="finder-result-title">{{title}}</div>
 </div>
-<div class="email-finder-result-method">{{{method}}}</div>
-<div class="email-finder-result-sources sources-list">
+<div class="finder-accept-all">{{#if accept_all}}This email address can't be verified.{{/if}}</div>
+<div class="finder-result-method">{{{method}}}</div>
+<div class="finder-result-sources sources-list">
   {{#each sources}}
   <div class="{{#unless this.still_on_page}}not-on-page{{/unless}}">
-    <a href="{{this.uri}}#hunter-email:{{../value}}" target="_blank" rel="nofollow">
+    <a href="{{this.uri}}#hunter-email:{{../email}}" target="_blank" rel="nofollow">
       {{this.uri}}
     </a>
     <span class="source-date">
