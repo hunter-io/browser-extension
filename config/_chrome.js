@@ -137,7 +137,7 @@ module.exports.tasks = {
       overwrite: true,
       replacements: [{
         from: "//# sourceMappingURL=purify.min.js.map",
-        to: "
+        to: ""
       }]
     }
   }

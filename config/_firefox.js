@@ -79,8 +79,8 @@ module.exports.tasks = {
       src: ["build-firefox/**/*.js"],
       overwrite: true,
       replacements: [{
-        from: "\"Email-Hunter-Origin\": \"chrome_extension\",
-        to: "\"Email-Hunter-Origin\": \"firefox_extension\",
+        from: "\"Email-Hunter-Origin\": \"chrome_extension\"",
+        to: "\"Email-Hunter-Origin\": \"firefox_extension\"",
       }]
     },
 
