@@ -15,14 +15,9 @@ loadAccountInformation = ->
       $(".account-logged").show()
 
 displayError = (html) ->
-  $(".error-message").html html
+  $("#error-message").html html
   $("html, body").animate({ scrollTop: 0 }, 300);
-  $(".error-container").delay(300).slideDown()
-  setTimeout (->
-    $(".error-container").slideUp()
-    return
-  ), 8000
-
+  $("#error-message-container").delay(300).slideDown()
 
 # Prepare what will be diplayed depending on the current page and domain
 # - If it's not on a domain name, a default page explain how it works

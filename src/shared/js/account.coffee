@@ -43,12 +43,12 @@ Account =
 
         # Otherwise the user has probably been frozen.
         else if result.data.calls.available == 0 && result.data.plan_level > 0
-          fn('Your account has been restricted. Please <a target="_blank" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">connect to your account</a> on Hunter for more information.')
+          fn('Your account has been restricted. Please <a target="_blank" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">log in</a> for more information.')
 
         # the user has a free account, so it means he consumed all his
         # free calls.
         else if result.data.plan_level == 0
-          fn('You have reached your free monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">subscribe to a premium plan</a> to make more requests.')
+          fn('You have reached your free monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade</a> to a premium plan to do more searches.')
 
         # the user account has been soft frozen.
         else if result.data.calls.available == 500
@@ -56,7 +56,7 @@ Account =
 
         # the user is on a premium plan and reached his quota
         else if result.data.plan_level < 4
-          fn('You have reached your monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade to a bigger plan</a> to make more requests.')
+          fn('You have reached your monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade</a> to do more searches.')
 
         else
           fn('You have reached your monthly quota. Please contact us to be able to make more requests.')

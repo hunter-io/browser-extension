@@ -22,6 +22,7 @@ DomainSearch = ->
         jsonp: false
         error: (xhr) ->
           $("#loading-placeholder").hide()
+          $("#domain-search").show()
 
           if xhr.status == 400
             displayError "Sorry, something went wrong with the query."
