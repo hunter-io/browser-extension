@@ -310,13 +310,19 @@ DomainSearch = ->
               return
 
             else
-              if result.data.result == "deliverable"
+              if result.data.status == "valid"
                 verification_result_tag.html("
                   <div class='green'>
                     <i class='fas fa-check'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Deliverable</a>
+                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Valid</a>
                   </div>")
-              else if result.data.result == "risky"
+              else if result.data.status == "invalid"
+                verification_result_tag.html("
+                  <div class='red'>
+                    <i class='fas fa-times'></i>
+                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Invalid</a>
+                  </div>")
+              else if result.data.status == "accept_all"
                 verification_result_tag.html("
                   <div class='dark-orange'>
                     <i class='fas fa-exclamation-triangle'></i>
@@ -324,9 +330,9 @@ DomainSearch = ->
                   </div>")
               else
                 verification_result_tag.html("
-                  <div class='red'>
-                    <i class='fas fa-times'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Invalid</a>
+                  <div class='light-grey'>
+                    <i class='fas fa-question'></i>
+                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Unknown/a>
                   </div>")
 
             # We remove the copy label since it can make the line too long
