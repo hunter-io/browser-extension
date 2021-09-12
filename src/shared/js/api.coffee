@@ -29,9 +29,9 @@ Api =
   authorFinder: (url, api_key) ->
     if api_key
       auth = '&api_key=' + api_key
-      'https://api.hunter.io/v2/author-finder?url=' + url + auth
+      'https://api.hunter.io/v2/author-finder?max_duration=5&url=' + url + auth
     else
-      'https://api.hunter.io/trial/v2/author-finder?url=' + url
+      'https://api.hunter.io/trial/v2/author-finder?max_duration=5&url=' + url
 
   # Email Verifier
   emailVerifier: (email, api_key) ->
