@@ -38,11 +38,11 @@ Account =
       success: (result) ->
         # the user account hasn't be validated yet. The phone is probably
         # missing.
-        if result.data.calls.available == 0 && result.data.plan_level == 0
+        if result.data.requests.searches.available == 0 && result.data.requests.verifications.available == 0 && result.data.plan_level == 0
           fn('Please complete your registration on the <a target="_blank" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">website</a> to use the extension.')
 
         # Otherwise the user has probably been frozen.
-        else if result.data.calls.available == 0 && result.data.plan_level > 0
+        else if result.data.requests.searches.available == 0 && result.data.requests.verifications.available == 0 && result.data.plan_level > 0
           fn('Your account has been restricted. Please <a target="_blank" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">log in</a> for more information.')
 
         # the user has a free account, so it means he consumed all his
@@ -51,7 +51,7 @@ Account =
           fn('You have reached your free monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade</a> to a premium plan to do more searches.')
 
         # the user account has been soft frozen.
-        else if result.data.calls.available == 500
+        else if result.data.requests.searches.available == 250 && result.data.requests.verifications.available == 250
           fn('You have reached your temporary quota. You will get your full access as soon as we validate your account.')
 
         # the user is on a premium plan and reached his quota
