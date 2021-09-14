@@ -48,7 +48,7 @@ Account =
         # the user has a free account, so it means he consumed all his
         # free calls.
         else if result.data.plan_level == 0
-          fn('You have reached your free monthly quota. Please <a target="_blank" href="https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade</a> to a premium plan to do more searches.')
+          fn('You have reached your free monthly quota. Please <a target="_blank" href="https://hunter.io/welcome/upgrade?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">upgrade</a> to a premium plan to do more searches.')
 
         # the user account has been soft frozen.
         else if result.data.requests.searches.available == 250 && result.data.requests.verifications.available == 250
