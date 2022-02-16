@@ -108,13 +108,15 @@ strong {
     height: 8px;
     border-radius: 50%;
     margin-left: 3px;
+    border: 2px solid transparent;
 
     &.low-score {
-      background-color: $score-red;
+      border-color: $score-red;
     }
 
     &.average-score {
-      background-color: $score-yellow;
+      background: linear-gradient(0deg, $score-yellow, $score-yellow 45%, transparent 0, transparent);
+      border-color: $score-yellow;
     }
 
     &.high-score {
