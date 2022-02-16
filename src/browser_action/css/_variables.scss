@@ -1,42 +1,126 @@
-// Theme colors
-$orange: #ff5722;
-$blue: #168eea;
+:root {
+  /**
+  * COLORS
+  */
+  /* Brand Colors
+  -------------------------------------------------------*/
+  /* Primary - Orange */
+  --colors-primary-100:     #FEF0EC;
+  --colors-primary-200:     #FFDCD1;
+  --colors-primary-300:     #FFB59E;
+  --colors-primary-400:     #FC9272;
+  --colors-primary-500:     #FF784F;
+  --colors-primary-600:     #FA5320;
+  --colors-primary-700:     #D44519;
+  --colors-primary-800:     #903013;
+  --colors-primary-900:     #5D2514;
+  --colors-primary-1000:    #4B1A0B;
 
-// Grey variations
-$white: #fff;
-$black: #2a2a2a;
-$grey: #737373;
-$light-grey: #888;
-$dark-grey: #666;
-$background-grey: #fafafa;
-$border-grey: #e6e6e6;
+  /* Secondary - Blue */
+  --colors-secondary-100:   #F2F9FF;
+  --colors-secondary-200:   #E6F4FF;
+  --colors-secondary-300:   #C8E6FF;
+  --colors-secondary-400:   #9BD2FF;
+  --colors-secondary-500:   #62B3F6;
+  --colors-secondary-600:   #0F8DF4;
+  --colors-secondary-700:   #0578D6;
+  --colors-secondary-800:   #00569C;
+  --colors-secondary-900:   #003F73;
+  --colors-secondary-1000:  #002A4D;
 
-// The 3 colors used for alerts
-$green: #37a516;
-$background-green: #e4f1da;
-$red: #ef1d1d;
-$background-red: #ffe1e1;
-$beige: #8b6914;
-$background-beige: #fff4e1;
+  /* Neutral - Greys */
+  --colors-grey-100:        #F7F9FA;
+  --colors-grey-200:        #EEF0F3;
+  --colors-grey-300:        #DFE3E8;
+  --colors-grey-400:        #C7CDD4;
+  --colors-grey-500:        #A1A7AD;
+  --colors-grey-600:        #707880;
+  --colors-grey-700:        #4C555E;
+  --colors-grey-800:        #3A444F;
+  --colors-grey-900:        #28323B;
+  --colors-grey-1000:       #1D262E;
 
-// Score colors
-$score-green: #4eb92d;
-$score-yellow: #ffbe42;
-$score-red: #ff6e6e;
 
-// Other colors used
-$dark-green: #427c11;
-$dark-orange: #ff572b;
-$dark-red: #d01111;
-$background-yellow: #fff6db;
-$purple: #df1e62;
-$dark-blue: #00374b;
+  /* Notifications Colors
+  -------------------------------------------------------*/
+  /* Success - Green */
+  --colors-success-100:     #F2FFF2;
+  --colors-success-200:     #E6FCE5;
+  --colors-success-300:     #C6F2C5;
+  --colors-success-400:     #94DE93;
+  --colors-success-500:     #57C555;
+  --colors-success-600:     #24A522;
+  --colors-success-700:     #078605;
+  --colors-success-800:     #056704;
+  --colors-success-900:     #035502;
+  --colors-success-1000:    #024201;
 
-// Colors of other brands
-$twitter-blue: #1da1f2;
-$linkedin-blue: #0077b5;
-$facebook-blue: #3b5998;
-$youtube-red: #cd201f;
-$instagram-purple: #c13584;
-$android-green: #a4c639;
-$itunes-black: #050708;
+  /* Danger - Red */
+  --colors-danger-100:      #FFF6F6;
+  --colors-danger-200:      #FFE1E1;
+  --colors-danger-300:      #FFC8C7;
+  --colors-danger-400:      #FEA6A5;
+  --colors-danger-500:      #FB7C79;
+  --colors-danger-600:      #EE413F;
+  --colors-danger-700:      #D91F1C;
+  --colors-danger-800:      #B60A07;
+  --colors-danger-900:      #860604;
+  --colors-danger-1000:     #640E0C;
+
+  /* Warning - Orangish */
+  --colors-warning-100:     #FFFCEB;
+  --colors-warning-200:     #FFF6C9;
+  --colors-warning-300:     #FFEFA1;
+  --colors-warning-400:     #FDE34E;
+  --colors-warning-500:     #F6D028;
+  --colors-warning-600:     #E0B115;
+  --colors-warning-700:     #B78B06;
+  --colors-warning-800:     #8E6506;
+  --colors-warning-900:     #694907;
+  --colors-warning-1000:    #4B3207;
+
+  /* Support colors */
+  --colors-magenta-200:     #F1ABFC;
+  --colors-magenta-500:     #D946EF;
+  --colors-magenta-700:     #BC26D3;
+
+  --colors-emerald-200:     #A7F3D0;
+  --colors-emerald-500:     #10B981;
+  --colors-emerald-700:     #047857;
+
+  --colors-cardinal-200:    #FDA4AF;
+  --colors-cardinal-500:    #F43F5E;
+  --colors-cardinal-700:    #BE123C;
+
+  --colors-cyan-200:        #A5F3FC;
+  --colors-cyan-500:        #06B6D4;
+  --colors-cyan-700:        #0E7490;
+
+
+  /* Other brands
+  -------------------------------------------------------*/
+  --colors-brand-twitter-blue:          #1da1f2;
+  --colors-brand-linkedin-blue:         #0077b5;
+  --colors-brand-facebook-blue:         #3b5998;
+  --colors-brand-youtube-red:           #cd201f;
+  --colors-brand-instagram-purple:      #c13584;
+  --colors-brand-android-green:         #a4c639;
+  --colors-brand-itunes-black:          #050708;
+  --colors-brand-github-black:          #333;
+
+  /* Integrations */
+  --colors-brand-salesforce:      #009edb;
+  --colors-brand-salesforce--rgb:   0, 158, 219;
+  --colors-brand-hubspot:         #ff7a59;
+  --colors-brand-hubspot--rgb:      255, 122, 89;
+  --colors-brand-pipedrive:       #26292c;
+  --colors-brand-pipedrive--rgb:    38, 41, 44;
+  --colors-brand-zoho:            #ce2232;
+  --colors-brand-zoho--rgb:         206, 34, 50;
+  --colors-brand-zapier:          #ff4a00;
+  --colors-brand-zapier--rgb:       255, 74, 0;
+  --colors-brand-outlook:         #0078d4;
+  --colors-brand-outlook--rgb:      0, 120, 212;
+  --colors-brand-gmail:           #4286f5;
+  --colors-brand-gmail--rgb:        66, 134, 245;
+}

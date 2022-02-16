@@ -2,8 +2,8 @@
 //
 
 .header {
-  background-color: $white;
-  border-bottom: 1px solid $border-grey;
+  background-color: #fff;
+  border-bottom: 1px solid var(--colors-grey-300);
   height: 70px;
 
   .header-logo {
@@ -31,7 +31,7 @@
     font-size: 12px;
     margin: 29px 0 0 0;
     float: left;
-    color: $grey;
+    color: var(--colors-grey-600);
   }
 }
 
@@ -95,7 +95,7 @@
 
 .account-information {
   border-top: 1px solid #d9d9d9;
-  background: $white;
+  background: #fff;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -172,10 +172,10 @@
   display: none;
   margin: 0 -25px -10px;
   font-size: 13px;
-  color: lighten($black, 10%);
+  color: var(--colors-grey-800);
   padding: 10px 25px 8px;
-  background: darken($background-grey, 0.8%);
-  border-bottom: 1px solid $border-grey;
+  background: var(--colors-grey-100);
+  border-bottom: 1px solid var(--colors-grey-300);
 
   .row {
     margin: 0 -16px;
@@ -198,25 +198,25 @@
 
   .email-finder-loader {
     display: none;
-    color: $light-grey;
+    color: var(--colors-grey-600);
     float: left;
     margin-top: 6px;
   }
 
   input[type="text"] {
-    background: url("chrome-extension://__MSG_@@extension_id__/img/search_grey.png") $white no-repeat;
+    background: url("chrome-extension://__MSG_@@extension_id__/img/search_grey.png") #fff no-repeat;
     background-position: left 10px top 10px;
     background-size: 13px;
     padding-left: 34px;
     float: right;
     height: 38px;
-    border: 1px solid darken($border-grey, 5%);
+    border: 1px solid var(--colors-grey-300);
     width: calc(100% - 30px);
 
     &:focus,
     &:active,
     &.focus {
-      border: 1px solid darken($border-grey, 10%) !important;
+      border: 1px solid var(--colors-grey-400) !important;
     }
   }
 }
@@ -233,7 +233,7 @@
   .finder-result-email {
     margin: 0 -25px;
     padding: 23px;
-    border: 1px solid $border-grey;
+    border: 1px solid var(--colors-grey-300);
     border-width: 1px 0;
     font-size: 15px;
     font-weight: 600;
@@ -241,7 +241,7 @@
     .save-lead-button,
     .email_lead_button {
       margin: -5px 0 0 10px;
-      background-color: $white;
+      background-color: #fff;
     }
   }
 
@@ -252,12 +252,12 @@
       margin: 0;
       font-size: 14px;
       font-weight: 600;
-      color: $black;
+      color: var(--colors-grey-900);
       line-height: 1.5em;
     }
 
     .finder-result-title {
-      color: $grey;
+      color: var(--colors-grey-600);
       font-size: 13px;
       line-height: 26px;
     }
@@ -267,13 +267,13 @@
       height: 40px;
       width: 40px;
       border-radius: 50%;
-      background: $white url("chrome-extension://__MSG_@@extension_id__/img/default_lead_icon.png");
+      background: #fff url("chrome-extension://__MSG_@@extension_id__/img/default_lead_icon.png");
       background-size: 48px 48px;
       float: left;
       margin: 0 15px 0 0;
 
       img {
-        background: $white;
+        background: #fff;
         display: block;
         max-width: 100%;
         height: auto;
@@ -286,7 +286,7 @@
 
   .finder-accept-all,
   .finder-result-method {
-    color: $grey;
+    color: var(--colors-grey-600);
     line-height: 22px;
   }
 
@@ -327,10 +327,10 @@
   }
 
   .more-departments-button {
-    color: lighten($light-grey, 5%);
+    color: var(--colors-grey-600);
 
     &:hover {
-      color: $light-grey;
+      color: var(--colors-grey-800);
     }
   }
 
@@ -341,11 +341,11 @@
 
 #selected-department {
   .department-label {
-    background-color: lighten($grey, 5%);
+    background-color: var(--colors-grey-500);
     font-size: 11px;
     padding: 1px 10px;
     line-height: 27px;
-    color: $white;
+    color: #fff;
     border-radius: 3px;
     font-weight: 600;
     margin: 30px 0 0 0;
@@ -356,7 +356,8 @@
       vertical-align: bottom;
 
       &:hover {
-        color: darken($white, 10%);
+        color: var(--colors-grey-100);
+        background-color: var(--colors-grey-600);
         cursor: pointer;
       }
     }
@@ -376,7 +377,7 @@
   padding: 20px 25px;
   margin: 0 -25px;
   font-size: 14px;
-  border-bottom: 1px solid $border-grey;
+  border-bottom: 1px solid var(--colors-grey-300);
 
   .sources-list a {
     max-width: 400px;
@@ -403,14 +404,14 @@ table {
 .additional-data {
   font-size: 12px;
   margin-bottom: 8px;
-  color: $grey;
+  color: var(--colors-grey-600);
   max-width: 400px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   .name {
-    color: $black;
+    color: var(--colors-grey-900);
     font-size: 13px;
     font-weight: 600;
   }
@@ -427,7 +428,7 @@ table {
   .department {
     display: inline-block;
     font-size: 11px;
-    background-color: darken($background-grey, 2%);
+    background-color: var(--colors-grey-100);
     margin-left: 5px;
     padding: 3px 6px;
     border-radius: 3px;
@@ -437,7 +438,7 @@ table {
     display: inline-block;
     margin-left: 5px;
     border: 0;
-    color: lighten($light-grey, 20%);
+    color: var(--colors-grey-500);
     transition: color 100ms ease-in-out;
   }
 
@@ -445,7 +446,7 @@ table {
     &:hover,
     &:focus,
     &:active {
-      color: $linkedin-blue;
+      color: var(--colors-brand-linkedin-blue);
       text-decoration: none;
     }
   }
@@ -454,7 +455,7 @@ table {
     &:hover,
     &:focus,
     &:active {
-      color: $twitter-blue;
+      color: var(--colors-brand-twitter-blue);
       text-decoration: none;
     }
   }
@@ -501,7 +502,7 @@ table {
   display: none;
   margin: 0 -25px;
   padding: 25px;
-  border-bottom: 1px solid $border-grey;
+  border-bottom: 1px solid var(--colors-grey-300);
 }
 
 #error-message {
@@ -533,8 +534,8 @@ table {
   padding: 20px;
   border-radius: 3px;
   margin: 0 -25px;
-  background: $background-grey;
-  border-bottom: 1px solid $border-grey;
+  background: var(--colors-grey-100);
+  border-bottom: 1px solid var(--colors-grey-300);
 
   .btn-white {
     display: inline-block;
