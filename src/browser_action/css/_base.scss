@@ -108,13 +108,15 @@ strong {
     height: 8px;
     border-radius: 50%;
     margin-left: 3px;
+    border: 2px solid transparent;
 
     &.low-score {
-      background-color: var(--colors-danger-600);
+      border-color: var(--colors-danger-600);
     }
 
     &.average-score {
-      background-color: var(--colors-warning-600);
+      background: linear-gradient(0deg, var(--colors-warning-500), var(--colors-warning-500) 50%, transparent 0, transparent);
+      border-color: var(--colors-warning-500);
     }
 
     &.high-score {
