@@ -1,15 +1,13 @@
 Utilities =
-  # Find if a subdomain can be removed and do it
+  # Remove all the subdomains
   withoutSubDomain: (domain) ->
     subdomainsCount = (domain.match(/\./g) or []).length
-    if subdomainsCount > 1
-      newdomain = domain
-      newdomain = newdomain.substring(newdomain.indexOf('.') + 1)
-      if newdomain.length > 6
-        return newdomain
-      else
-        return false
-    false
+
+    while (subdomainsCount > 1 && domain.length > 6)
+      domain = domain.substring(domain.indexOf('.') + 1)
+      subdomainsCount = (domain.match(/\./g) or []).length
+
+    return domain
 
   # Add commas separating thousands
   numberWithCommas: (x) ->

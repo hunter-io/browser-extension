@@ -44,11 +44,9 @@ chrome.tabs.query {
     window.api_key = api_key
     window.url = tabs[0].url
     window.domain = new URL(tabs[0].url).hostname.replace("www.", "")
-    withoutSubDomain = Utilities.withoutSubDomain(window.domain)
 
     # We clean the subdomain
-    if withoutSubDomain
-      window.domain = withoutSubDomain
+    window.domain = Utilities.withoutSubDomain(window.domain)
 
     # We display a special message on LinkedIn
     if window.domain == "linkedin.com"

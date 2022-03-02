@@ -9,10 +9,8 @@ LaunchColorChange = ->
     active: true
   }, (tabArray) ->
     if tabArray[0]["url"] != window.currentDomain
-      window.currentDomain = url_domain(tabArray[0]["url"]).replace("www.", "")
-      withoutSubDomain = Utilities.withoutSubDomain(window.currentDomain)
-      if withoutSubDomain
-        window.currentDomain = withoutSubDomain
+      window.currentDomain = url_domain(tabArray[0]["url"])
+      window.currentDomain = Utilities.withoutSubDomain(window.currentDomain)
       updateIconColor()
 
 
