@@ -1,11 +1,12 @@
 Utilities =
   # Remove all the subdomains
   withoutSubDomain: (domain) ->
-    subdomainsCount = (domain.match(/\./g) or []).length
+    loop
+      newdomain = domain.substring(domain.indexOf('.') + 1)
+      subdomainsCount = (newdomain.match(/\./g) or []).length
 
-    while (subdomainsCount > 1 && domain.length > 6)
-      domain = domain.substring(domain.indexOf('.') + 1)
-      subdomainsCount = (domain.match(/\./g) or []).length
+      if (subdomainsCount == 0 || newdomain.length <= 7) then break
+      domain = newdomain
 
     return domain
 
