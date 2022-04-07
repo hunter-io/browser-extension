@@ -1,8 +1,8 @@
 {
   "name": "Hunter - Email Finder Extension",
   "short_name": "Hunter",
-  "version": "2.0.7",
-  "manifest_version": 2,
+  "version": "3.0.0",
+  "manifest_version": 3,
   "description": "Find email addresses from anywhere on the web, with just one click.",
   "homepage_url": "https://hunter.io",
   "icons": {
@@ -10,7 +10,7 @@
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "19": "img/icon19.png",
       "38": "img/icon38.png"
@@ -21,7 +21,9 @@
   "permissions": [
     "tabs",
     "storage",
-    "contextMenus",
+    "contextMenus"
+  ],
+  "host_permissions": [
     "https://*.hunter.io/"
   ],
   "background": {
@@ -59,9 +61,11 @@
       ]
      }
   ],
-  "web_accessible_resources": [
-    "img/*",
-    "fonts/*",
-    "html/source_popup.html"
-  ]
+  "web_accessible_resources": [{
+    "resources": ["html/source_popup.html"],
+    "matches": [
+      "img/*",
+      "fonts/*"
+    ]
+  }]
 }
