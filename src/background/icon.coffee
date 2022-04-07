@@ -43,13 +43,13 @@ updateIconColor = ->
             setGreyIcon()
 
 setGreyIcon = ->
-  chrome.browserAction.setIcon path:
+  chrome.action.setIcon path:
     "19": chrome.extension.getURL("../img/icon19_grey.png")
     "38": chrome.extension.getURL("../img/icon38_grey.png")
   return
 
 setColoredIcon = ->
-  chrome.browserAction.setIcon path:
+  chrome.action.setIcon path:
     "19": chrome.extension.getURL("../img/icon19.png")
     "38": chrome.extension.getURL("../img/icon38.png")
   return

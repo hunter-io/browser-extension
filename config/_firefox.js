@@ -31,8 +31,8 @@ module.exports.tasks = {
         to: "browser.extension.getURL"
       },
       {
-        from: "chrome.browserAction.setIcon",
-        to: "browser.browserAction.setIcon"
+        from: "chrome.action.setIcon",
+        to: "browser.action.setIcon"
       },
       {
         from: "chrome.tabs",
