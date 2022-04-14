@@ -1,34 +1,39 @@
 module.exports.tasks = {
   // Compile coffee
   coffee: {
+    background_load: {
+      options: { bare: true },
+      src: "src/background.coffee",
+      dest: "build-chrome/background.js"
+    },
     background: {
       options: { bare: true, join: true },
       src: "src/background/*.coffee",
-      dest: "build-chrome/js/background.min.js"
+      dest: "build-chrome/js/background.js"
     },
     browser_action: {
       options: { bare: true },
       src: "src/browser_action/js/*.coffee",
-      dest: "build-chrome/js/browser_action.min.js"
+      dest: "build-chrome/js/browser_action.js"
     },
     shared: {
       options: { bare: true, join: true },
       src: "src/shared/js/*.coffee",
-      dest: "build-chrome/js/shared.min.js"
+      dest: "build-chrome/js/shared.js"
     },
     hunter_content_script: {
       options: { bare: true },
       src: "src/content_script/js/hunter-*.coffee",
-      dest: "build-chrome/js/hunter_content_script.min.js"
+      dest: "build-chrome/js/hunter_content_script.js"
     },
     websites_content_script: {
       options: { bare: true },
       src: "src/content_script/js/websites-*.coffee",
-      dest: "build-chrome/js/websites_content_script.min.js"
+      dest: "build-chrome/js/websites_content_script.js"
     },
     source_popup: {
       src: "src/source_popup/js/source-popup.coffee",
-      dest: "build-chrome/js/source_popup.min.js"
+      dest: "build-chrome/js/source_popup.js"
     }
   },
 

@@ -1,3 +1,5 @@
+window = self
+
 # When an URL changes
 #
 # Check if email addresses are available for the current domain and update the
@@ -9,8 +11,8 @@ LaunchColorChange = ->
     active: true
   }, (tabArray) ->
     if tabArray[0]["url"] != window.currentDomain
-      window.currentDomain = url_domain(tabArray[0]["url"])
-      window.currentDomain = Utilities.withoutSubDomain(window.currentDomain)
+      hostname = new URL(tabArray[0]['url'])
+      window.currentDomain = Utilities.withoutSubDomain(hostname.host)
       updateIconColor()
 
 
@@ -27,38 +29,28 @@ updateIconColor = ->
       if value["hunter_blocked"]
         setColoredIcon()
       else
-        $.ajax
-          url: "https://extension-api.hunter.io/data-for-domain?domain=" + window.currentDomain
-          type: "GET"
-          jsonp: false
-          success: (html) ->
-            if html == "1"
-              setColoredIcon()
-            else
-              setGreyIcon()
-
-          error: (xhr) ->
-            if xhr.status == 403
-              chrome.storage.sync.set "hunter_blocked": true
+        fetch("https://extension-api.hunter.io/data-for-domain?domain=" + window.currentDomain).then((response) ->
+          response.json()
+        ).then((response) ->
+          if response == 1
+            setColoredIcon()
+          else
             setGreyIcon()
+        ).catch (error) ->
+          console.warn error
+          return
 
 setGreyIcon = ->
   chrome.action.setIcon path:
-    "19": chrome.extension.getURL("../img/icon19_grey.png")
-    "38": chrome.extension.getURL("../img/icon38_grey.png")
+    "19": chrome.runtime.getURL("../img/icon19_grey.png")
+    "38": chrome.runtime.getURL("../img/icon38_grey.png")
   return
 
 setColoredIcon = ->
   chrome.action.setIcon path:
-    "19": chrome.extension.getURL("../img/icon19.png")
-    "38": chrome.extension.getURL("../img/icon38.png")
+    "19": chrome.runtime.getURL("../img/icon19.png")
+    "38": chrome.runtime.getURL("../img/icon38.png")
   return
-
-url_domain = (data) ->
-  a = document.createElement("a")
-  a.href = data
-  a.hostname
-
 
 # Add context links on right click on the icon
 #

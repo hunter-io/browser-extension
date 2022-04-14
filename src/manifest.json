@@ -27,12 +27,7 @@
     "https://*.hunter.io/"
   ],
   "background": {
-    "scripts": [
-      "js/lib/jquery.min.js",
-      "js/shared.min.js",
-      "js/background.min.js"
-    ],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -41,8 +36,8 @@
       ],
       "js": [
         "js/lib/jquery.min.js",
-        "js/shared.min.js",
-        "js/hunter_content_script.min.js"
+        "js/shared.js",
+        "js/hunter_content_script.js"
       ]
     },
     {
@@ -53,19 +48,12 @@
         "js/lib/jquery.min.js",
         "js/lib/purify.min.js",
         "js/lib/mark.js",
-        "js/shared.min.js",
-        "js/websites_content_script.min.js"
+        "js/shared.js",
+        "js/websites_content_script.js"
       ],
       "css": [
         "css/websites-sources.css"
       ]
      }
-  ],
-  "web_accessible_resources": [{
-    "resources": ["html/source_popup.html"],
-    "matches": [
-      "img/*",
-      "fonts/*"
-    ]
-  }]
+  ]
 }
