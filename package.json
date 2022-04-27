@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/hunter-io/browser-extension#readme",
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.5.2",
     "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-copy": "^1.0.0",
