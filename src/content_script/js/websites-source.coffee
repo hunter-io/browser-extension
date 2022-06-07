@@ -1,3 +1,10 @@
+# When the page loads, if it comes from a source in Hunter products, there is
+# a hash at the end with the email address to highlight. It will search it in
+# this order:
+# 1. Visible email address?
+# 2. Email address in a mailto link?
+# 3. Email address visible elsewhere in the code?
+
 PageContent =
   getEmailInHash: ->
     if window.location.hash
@@ -28,8 +35,7 @@ PageContent =
           _this.addLocationIcon()
           _this.displayMessage "found", email, counter
         else
-          # If there is not email address visible, then we search in the mailto
-          # links.
+          # If there is no visible email address, then we search in the mailto links.
           _this.highlightMailto email
         return
     context = document.querySelector("body")
@@ -60,14 +66,14 @@ PageContent =
       position = emailEl.offset()
       emailWidth = emailEl.outerWidth()
       emailHeight = emailEl.outerHeight()
-      $("body").prepend "<img src=\"" + DOMPurify.sanitize(chrome.extension.getURL("/img/location_icon.png")) + "\" alt=\"Here is the email found with Hunter!\" id=\"hunter-email-pointer\"/>"
+      $("body").prepend "<img src=\"" + DOMPurify.sanitize(chrome.runtime.getURL("/img/location_icon.png")) + "\" alt=\"Here is the email found with Hunter!\" id=\"hunter-email-pointer\"/>"
       $("#hunter-email-pointer").css
         "top": position.top - 63
         "left": position.left + emailWidth / 2 - 25
       $("#hunter-email-pointer").delay(1000).fadeIn 500
 
   displayMessage: (message, email, count) ->
-    src = chrome.extension.getURL("/html/source_popup.html") + "?email=" + email + "&count=" + count + "&message=" + message
+    src = chrome.runtime.getURL("/html/source_popup.html") + "?email=" + email + "&count=" + count + "&message=" + message
     $("body").prepend "<iframe id='hunter-email-status' src='" + src + "'></iframe>"
     $("body").prepend "<div id='hunter-email-status-close'>&times;</div>"
     $("#hunter-email-status, #hunter-email-status-close").delay(500).fadeIn()
@@ -75,9 +81,6 @@ PageContent =
     $("#hunter-email-status-close").on "click", ->
       $("#hunter-email-status, #hunter-email-status-close, #hunter-email-pointer").fadeOut()
 
-# When the page loads, if it comes from a source in Hunter products, there is
-# a hash at the end with the email address to find.
-#
 email = PageContent.getEmailInHash()
 if email
   PageContent.highlightEmail email
