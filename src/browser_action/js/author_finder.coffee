@@ -10,7 +10,7 @@ AuthorFinder = ->
 
       _this = @
       $.ajax
-        url: Api.authorFinder(_this.url, window.api_key)
+        url: Api.authorFinder(_this.url, 3, window.api_key)
         headers: "Email-Hunter-Origin": "chrome_extension"
         type: "GET"
         data: format: "json"
