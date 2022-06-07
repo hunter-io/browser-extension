@@ -55,5 +55,9 @@
         "css/websites-sources.css"
       ]
      }
-  ]
+  ],
+  "web_accessible_resources": [{
+    "resources": ["img/location_icon.png", "html/source_popup.html"],
+    "matches": ["*://*/*"]
+  }]
 }
