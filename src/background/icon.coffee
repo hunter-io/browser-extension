@@ -11,10 +11,13 @@ LaunchColorChange = ->
     active: true
   }, (tabArray) ->
     if tabArray[0]["url"] != window.currentDomain
-      hostname = new URL(tabArray[0]['url'])
-      window.currentDomain = Utilities.withoutSubDomain(hostname.host)
-      updateIconColor()
-
+      try
+        hostname = new URL(tabArray[0]['url'])
+        window.currentDomain = Utilities.withoutSubDomain(hostname.host)
+        updateIconColor()
+      catch e
+        # The tab is not a valid URL
+        setGreyIcon()
 
 # API call to check if there is at least one email address
 # We use a special API call for this task to minimize the ressources.
