@@ -19,7 +19,7 @@ if findGetParameter("message") == "found"
 else if findGetParameter("message") == "mailto"
   popup_message = "<strong>" + DOMPurify.sanitize(email) + "</strong> found in the \"mailto:\" link."
 else if findGetParameter("message") == "code"
-  popup_message = "<strong>" + DOMPurify.sanitize(email) + "</strong> isn\"t visible but is publicly accessible in the code of the page."
+  popup_message = "<strong>" + DOMPurify.sanitize(email) + "</strong> isn't visible but is publicly accessible in the code of the page."
 else
   popup_message = "The email address couldn\"t be found on the page. This probably means this page has been updated since our latest visit."
 
