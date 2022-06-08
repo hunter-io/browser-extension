@@ -37,7 +37,7 @@ PageContent =
       @highlightMailto email
 
   highlightMailto: (email) ->
-    if $("a[href=\"mailto:" + email + "\"]").length
+    if $("a[href=\"mailto:" + email + "\"]:visible").length
       $("a[href=\"mailto:" + email + "\"]").addClass "hunter-email"
       @scrollToEmail()
       @addLocationIcon()
