@@ -21,6 +21,6 @@ else if findGetParameter("message") == "mailto"
 else if findGetParameter("message") == "code"
   popup_message = "<strong>" + DOMPurify.sanitize(email) + "</strong> isn't visible but is publicly accessible in the code of the page."
 else
-  popup_message = "The email address couldn\"t be found on the page. This probably means this page has been updated since our latest visit."
+  popup_message = "The email address couldn\'t be found on the page. This probably means this page has been updated since our latest visit."
 
 document.getElementById("message").innerHTML = popup_message
