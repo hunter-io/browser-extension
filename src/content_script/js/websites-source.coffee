@@ -55,16 +55,18 @@ PageContent =
     $("html, body").animate { scrollTop: $(".hunter-email:first").offset().top - 300 }, 500
 
   addLocationIcon: ->
-    $(".hunter-email").each (index) ->
-      emailEl = $(this)
-      position = emailEl.offset()
-      emailWidth = emailEl.outerWidth()
-      emailHeight = emailEl.outerHeight()
-      $("body").prepend "<img src=\"" + DOMPurify.sanitize(chrome.runtime.getURL("/img/location_icon.png")) + "\" alt=\"Here is the email found with Hunter!\" id=\"hunter-email-pointer\"/>"
-      $("#hunter-email-pointer").css
-        "top": position.top - 63
-        "left": position.left + emailWidth / 2 - 25
-      $("#hunter-email-pointer").fadeIn 300
+    setTimeout (->
+      $(".hunter-email").each (index) ->
+        emailEl = $(this)
+        position = emailEl.offset()
+        emailWidth = emailEl.outerWidth()
+        emailHeight = emailEl.outerHeight()
+        $("body").prepend "<img src=\"" + DOMPurify.sanitize(chrome.runtime.getURL("/img/location_icon.png")) + "\" alt=\"Here is the email found with Hunter!\" id=\"hunter-email-pointer\"/>"
+        $("#hunter-email-pointer").css
+          "top": position.top - 63
+          "left": position.left + emailWidth / 2 - 25
+        $("#hunter-email-pointer").fadeIn 300
+    ), 1500
 
   displayMessage: (message, email, count) ->
     src = chrome.runtime.getURL("/html/source_popup.html") + "?email=" + email + "&count=" + count + "&message=" + message
