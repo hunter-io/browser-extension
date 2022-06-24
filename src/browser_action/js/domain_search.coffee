@@ -20,6 +20,8 @@ DomainSearch = ->
         data: format: "json"
         dataType: "json"
         jsonp: false
+        xhrFields:
+          withCredentials: true
         error: (xhr) ->
           $("#loading-placeholder").hide()
           $("#domain-search").show()

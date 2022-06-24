@@ -53,6 +53,8 @@ EmailFinder = ->
         data: format: "json"
         dataType: "json"
         jsonp: false
+        xhrFields:
+          withCredentials: true
         error: (xhr, statusText, err) ->
           $(".email-finder-loader").hide()
 

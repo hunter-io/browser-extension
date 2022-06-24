@@ -1,7 +1,7 @@
 {
   "name": "Hunter - Email Finder Extension",
   "short_name": "Hunter",
-  "version": "2.0.7",
+  "version": "2.0.9",
   "manifest_version": 2,
   "description": "Find email addresses from anywhere on the web, with just one click.",
   "homepage_url": "https://hunter.io",
@@ -50,7 +50,6 @@
       "js": [
         "js/lib/jquery.min.js",
         "js/lib/purify.min.js",
-        "js/lib/mark.js",
         "js/shared.min.js",
         "js/websites_content_script.min.js"
       ],

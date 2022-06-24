@@ -16,6 +16,8 @@ AuthorFinder = ->
         data: format: "json"
         dataType: "json"
         jsonp: false
+        xhrFields:
+          withCredentials: true
         error: (xhr, statusText, err) ->
           # If any error occurs, we move to the Domain Search logic. If there
           # are issues with the account, it will be managed from there.

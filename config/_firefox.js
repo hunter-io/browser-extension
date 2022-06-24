@@ -80,7 +80,7 @@ module.exports.tasks = {
       overwrite: true,
       replacements: [{
         from: "\"Email-Hunter-Origin\": \"chrome_extension\"",
-        to: "\"Email-Hunter-Origin\": \"firefox_extension\"",
+        to: "\"Email-Hunter-Origin\": \"firefox_addon\"",
       }]
     },
 

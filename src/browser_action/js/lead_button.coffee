@@ -57,6 +57,8 @@ LeadButton = ->
         data: lead
         dataType: "json"
         jsonp: false
+        xhrFields:
+          withCredentials: true
         error: (xhr, statusText, err) ->
           button.find(".fas")
                 .removeClass("fa-spin fa-spinner-third")
@@ -86,6 +88,8 @@ LeadButton = ->
           data: format: "json"
           dataType: "json"
           jsonp: false
+          xhrFields:
+            withCredentials: true
           success: (response) ->
             if response.data.id != null
               lead_button.find(".fas")

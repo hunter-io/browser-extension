@@ -45,6 +45,8 @@ ListSelection =
           type: "GET"
           dataType: "json"
           jsonp: false
+          xhrFields:
+            withCredentials: true
           success: (json) ->
             callback json
       else
