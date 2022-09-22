@@ -9,7 +9,7 @@ Hunter's browser extension is an easy way to find email addresses from anywhere 
 
 ## Generate the builds
 
-The builds for Chrome and Firefox are automatically generated with Grunt. To install it globally, run:
+The builds are automatically generated with Grunt for each browser. To install it globally, run:
 
 ```shell
 npm install -g grunt-cli
