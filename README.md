@@ -2,6 +2,7 @@
 Hunter's browser extension is an easy way to find email addresses from anywhere on the web, with just one click.
 
 * [Chrome Web Store](https://chrome.google.com/webstore/detail/hunter/hgmhmanijnjhaffoampdlllchpolkdnj)
+* [Add-on for Edge](https://microsoftedge.microsoft.com/addons/detail/hunter-email-finder-ext/dmgcgojogkfomifjfeeafajhmgilkofk)
 * [Add-on for Firefox](https://addons.mozilla.org/en-US/firefox/addon/hunterio/)
 
 [Hunter's API](https://hunter.io/api) is used to fetch the data and users' accounts information.
@@ -27,6 +28,12 @@ On Chrome:
 1. Go to the extensions page (chrome://extensions)
 2. Click **Load unpacked extension...**
 3. Select the folder `build-chrome`
+
+On Edge:
+
+1. Go to the extensions page (edge://extensions/)
+2. Click **Load unpacked**
+3. Select the folder `build-edge`
 
 On Firefox:
 

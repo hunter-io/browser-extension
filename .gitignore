@@ -2,6 +2,8 @@
 build-chrome.zip
 /build-firefox
 build-firefox.zip
+/build-edge
+build-edge.zip
 Archive.zip
 /node_modules
 .DS_Store

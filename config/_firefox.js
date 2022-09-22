@@ -1,7 +1,7 @@
 module.exports.tasks = {
   // Copy the build for Chrome before making the adaptations
   copy: {
-    build: {
+    build_firefox: {
       expand: true,
       cwd: "build-chrome/",
       src: ["**"],
@@ -11,7 +11,7 @@ module.exports.tasks = {
 
   // Do all the replacements to adapt from Chrome to Firefox
   replace: {
-    browser_api: {
+    browser_api_firefox: {
       src: ["build-firefox/**/*.js"],
       overwrite: true,
       replacements: [{
@@ -44,7 +44,7 @@ module.exports.tasks = {
       }]
     },
 
-    utm_parameters: {
+    utm_parameters_firefox: {
       src: ["build-firefox/**/*.js", "build-firefox/**/*.html"],
       overwrite: true,
       replacements: [{
@@ -57,7 +57,7 @@ module.exports.tasks = {
       }]
     },
 
-    website_welcome_url: {
+    website_welcome_url_firefox: {
       src: ["build-firefox/**/*.js", "build-firefox/**/*.html"],
       overwrite: true,
       replacements: [{
@@ -66,7 +66,7 @@ module.exports.tasks = {
       }]
     },
 
-    website_uninstall_url: {
+    website_uninstall_url_firefox: {
       src: ["build-firefox/**/*.js", "build-firefox/**/*.html"],
       overwrite: true,
       replacements: [{
@@ -75,16 +75,16 @@ module.exports.tasks = {
       }]
     },
 
-    origin_header: {
+    origin_header_firefox: {
       src: ["build-firefox/**/*.js"],
       overwrite: true,
       replacements: [{
         from: "\"Email-Hunter-Origin\": \"chrome_extension\"",
-        to: "\"Email-Hunter-Origin\": \"firefox_extension\"",
+        to: "\"Email-Hunter-Origin\": \"firefox_addon\"",
       }]
     },
 
-    store_link: {
+    store_link_firefox: {
       src: ["build-firefox/html/browser_popup.html"],
       overwrite: true,
       replacements: [{
