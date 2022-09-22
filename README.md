@@ -28,6 +28,12 @@ On Chrome:
 2. Click **Load unpacked extension...**
 3. Select the folder `build-chrome`
 
+On Edge:
+
+1. Go to the extensions page (edge://extensions/)
+2. Click **Load unpacked**
+3. Select the folder `build-edge`
+
 On Firefox:
 
 1. Go to the debugging page (about:debugging)

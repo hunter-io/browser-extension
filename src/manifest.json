@@ -1,7 +1,7 @@
 {
   "name": "Hunter - Email Finder Extension",
   "short_name": "Hunter",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "manifest_version": 3,
   "description": "Find email addresses from anywhere on the web, with just one click.",
   "homepage_url": "https://hunter.io",
