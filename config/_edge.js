@@ -11,7 +11,7 @@ module.exports.tasks = {
 
   // Do all the replacements to adapt from Chrome to Edge
   replace: {
-    utm_parameters_edge: {
+    tracking_parameters_edge: {
       src: ["build-edge/**/*.js", "build-edge/**/*.html"],
       overwrite: true,
       replacements: [{
@@ -21,6 +21,10 @@ module.exports.tasks = {
       {
         from: "utm_medium=chrome_extension",
         to: "utm_medium=edge_addon"
+      },
+      {
+        from: "from=chrome_extension",
+        to: "from=edge_addon"
       }]
     },
 

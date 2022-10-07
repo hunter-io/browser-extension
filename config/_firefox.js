@@ -44,7 +44,7 @@ module.exports.tasks = {
       }]
     },
 
-    utm_parameters_firefox: {
+    tracking_parameters_firefox: {
       src: ["build-firefox/**/*.js", "build-firefox/**/*.html"],
       overwrite: true,
       replacements: [{
@@ -54,6 +54,10 @@ module.exports.tasks = {
       {
         from: "utm_medium=chrome_extension",
         to: "utm_medium=firefox_addon"
+      },
+      {
+        from: "from=chrome_extension",
+        to: "from=firefox_addon"
       }]
     },
 
