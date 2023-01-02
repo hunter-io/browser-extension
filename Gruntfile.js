@@ -13,12 +13,17 @@ module.exports = function (grunt) {
   grunt.initConfig(configs);
 
   grunt.registerTask("editmanifestforfirefox", function() {
-     var manifest = grunt.file.readJSON("./src/manifest.json");
+    var manifest = grunt.file.readJSON("./src/manifest.json");
 
-     manifest.applications = { "gecko": { "id": "firefox@hunter.io" } };
-     delete manifest.externally_connectable;
-     grunt.file.write("./build-firefox/manifest.json", JSON.stringify(manifest, null, 2));
-     grunt.log.writeln("Manifest updated for Firefox");
+    // On Firefox, with Manifest V3, we use "background" files and not service workers
+    manifest.background.scripts =["js/lib/jquery.min.js", "js/shared.js", "js/background.js"]
+    delete manifest.background.service_worker;
+
+    // On Firefox, with Manifest V3, we have to sign the extension with our unique ID
+    manifest.browser_specific_settings = { "gecko": { "id": "firefox@hunter.io" } };
+
+    grunt.file.write("./build-firefox/manifest.json", JSON.stringify(manifest, null, 2));
+    grunt.log.writeln("Manifest updated for Firefox");
   });
 
   // Default task
