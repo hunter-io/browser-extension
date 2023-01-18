@@ -25,14 +25,6 @@ Api =
     else
       'https://api.hunter.io/trial/v2/email-finder?domain=' + domain + full_name
 
-  # Author Finder
-  authorFinder: (url, timeout, api_key) ->
-    if api_key
-      auth = '&api_key=' + api_key
-      'https://api.hunter.io/v2/author-finder?max_duration=' + timeout + '&url=' + url + auth
-    else
-      'https://api.hunter.io/trial/v2/author-finder?max_duration=5&url=' + url
-
   # Email Verifier
   emailVerifier: (email, api_key) ->
     if api_key

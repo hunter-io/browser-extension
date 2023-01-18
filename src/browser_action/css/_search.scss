@@ -222,11 +222,10 @@
 }
 
 
-// Email Finder / Author Finder result
+// Email Finder result
 //
 
-#email-finder,
-#author-finder {
+#email-finder {
   display: none;
   padding: 14px 0;
 
@@ -296,14 +295,6 @@
     a {
       max-width: 400px;
     }
-  }
-}
-
-#author-finder {
-  padding-top: 0;
-
-  .finder-result-email {
-    border-top: 0;
   }
 }
 
