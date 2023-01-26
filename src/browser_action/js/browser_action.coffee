@@ -43,36 +43,38 @@ chrome.tabs.query {
 
     window.api_key = api_key
     window.url = tabs[0].url
-    window.domain = new URL(tabs[0].url).hostname.replace("www.", "")
 
-    # We clean the subdomain
-    window.domain = Utilities.withoutSubDomain(window.domain)
+    currentDomain = new URL(tabs[0].url).hostname
 
-    # We display a special message on LinkedIn
-    if window.domain == "linkedin.com"
-      $("#linkedin-notification").show()
-      $("#loading-placeholder").hide()
+    # We clean the subdomains when relevant
+    Utilities.findRelevantDomain currentDomain, (domain) ->
+      window.domain = domain
 
-    # We display a soft 404 if there is no domain name
-    else if window.domain == "" or window.domain.indexOf(".") == -1
-      $("#empty-notification").show()
-      $("#loading-placeholder").hide()
+      # We display a special message on LinkedIn
+      if window.domain == "linkedin.com"
+        $("#linkedin-notification").show()
+        $("#loading-placeholder").hide()
 
-    else
-      chrome.tabs.query {
-        active: true
-        currentWindow: true
-      }, (tabs) ->
-        chrome.tabs.sendMessage tabs[0].id, { parsing: "article" }, (response) ->
+      # We display a soft 404 if there is no domain name
+      else if window.domain == "" or window.domain.indexOf(".") == -1
+        $("#empty-notification").show()
+        $("#loading-placeholder").hide()
 
-          if response? && response.is_article
-            # Launch the Author Finder
-            authorFinder = new AuthorFinder
-            authorFinder.launch()
+      else
+        chrome.tabs.query {
+          active: true
+          currentWindow: true
+        }, (tabs) ->
+          chrome.tabs.sendMessage tabs[0].id, { parsing: "article" }, (response) ->
 
-            console.log("Author Finder launched")
+            if response? && response.is_article
+              # Launch the Author Finder
+              authorFinder = new AuthorFinder
+              authorFinder.launch()
 
-          else
-            # Launch the Domain Search
-            domainSearch = new DomainSearch
-            domainSearch.launch()
+              console.log("Author Finder launched")
+
+            else
+              # Launch the Domain Search
+              domainSearch = new DomainSearch
+              domainSearch.launch()

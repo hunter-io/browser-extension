@@ -13,8 +13,9 @@ LaunchColorChange = ->
     if tabArray[0]["url"] != window.currentDomain
       try
         hostname = new URL(tabArray[0]['url'])
-        window.currentDomain = Utilities.withoutSubDomain(hostname.host)
-        updateIconColor()
+        Utilities.findRelevantDomain hostname.host, (domain) ->
+          window.currentDomain = domain
+          updateIconColor()
       catch e
         # The tab is not a valid URL
         setGreyIcon()
@@ -28,20 +29,12 @@ updateIconColor = ->
   if window.currentDomain.indexOf(".") == -1
     setGreyIcon()
   else
-    chrome.storage.sync.get "hunter_blocked", (value) ->
-      if value["hunter_blocked"]
+    Utilities.dataFoundForDomain window.currentDomain, (results) ->
+      if results
         setColoredIcon()
       else
-        fetch("https://extension-api.hunter.io/data-for-domain?domain=" + window.currentDomain).then((response) ->
-          response.json()
-        ).then((response) ->
-          if response == 1
-            setColoredIcon()
-          else
-            setGreyIcon()
-        ).catch (error) ->
-          console.warn error
-          return
+        setGreyIcon()
+
 
 setGreyIcon = ->
   chrome.action.setIcon path:
