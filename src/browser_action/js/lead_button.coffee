@@ -18,10 +18,7 @@ LeadButton = ->
         lead = lead_button.data()
 
         lead_button.prop "disabled", true
-        lead_button.find(".fas")
-                   .removeClass("fa-plus")
-                   .addClass("fa-spin fa-spinner-third")
-        lead_button.tooltip("destroy")
+        lead_button.html("<span class='far fa-spin fa-spinner-third' aria-label='Loading'></span>")
 
         attributes = [
           "first_name"
@@ -58,22 +55,14 @@ LeadButton = ->
         dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
-          button.find(".fas")
-                .removeClass("fa-spin fa-spinner-third")
-                .addClass("fa-times")
-          button.find(".lead-status").text "Failed"
+          button.replaceWith("<span class='tag tag--danger'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-times'></i>Failed</span></span>")
           displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
           if xhr.status == 422
             window.current_leads_list_id = undefined
 
         success: (response) ->
-          button.css({"border": "2px solid #60ad1d"})
-          button.find(".fas")
-                .removeClass("fa-spin fa-spinner-third")
-                .addClass("fa-check")
-                .attr("Saved in your leads")
-          button.find(".lead-status").text "Saved"
+          button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i>Saved</span></span>")
 
     disableSaveLeadButtonIfLeadExists: (selector) ->
       $(selector).each ->
@@ -88,10 +77,5 @@ LeadButton = ->
           jsonp: false
           success: (response) ->
             if response.data.id != null
-              lead_button.find(".fas")
-                         .removeClass("fa-plus")
-                         .addClass("fa-check")
-                         .attr("title", "Saved in your leads")
-              lead_button.find(".lead-status").text "Saved"
-              lead_button.prop "disabled", true
+              lead_button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i>Saved</span></span>")
   }

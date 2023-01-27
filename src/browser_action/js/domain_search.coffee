@@ -55,7 +55,8 @@ DomainSearch = ->
 
           # Not logged in: we hide the Email Finder
           if _this.trial
-            $("#full-name-field").hide()
+            $(".filters__by-name").hide()
+            $(".find-by-name").hide()
 
           - unless _this.trial || _this.department || _this.results_count == 0
             _this.getDepartments()
@@ -99,12 +100,14 @@ DomainSearch = ->
     render: ->
       # Is webmail -> STOP
       if @webmail == true
+        $("#domain-search").addClass("ds-no-results")
         $(".webmail-container .domain").text @domain
         $(".webmail-container").show()
         return
 
       # No results -> STOP
       if @results_count == 0
+        $("#domain-search").addClass("ds-no-results")
         $(".no-result-container .domain").text @domain
         $(".no-result-container").show()
         return
@@ -112,23 +115,30 @@ DomainSearch = ->
       # Display: the current domain
       $("#current-domain").text @domain
 
+      # Remove "no-results" class
+      $("#domain-search").removeClass("ds-no-results")
+
       # Display: complete search link or Sign up CTA
       unless @trial
-        $("#domain-search .header-search-link").attr "href", "https://hunter.io/search/" + @domain + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
-        $("#domain-search .header-search-link").show()
-      else
-        $("#domain-search .header-signup-link").show()
+        $(".header-search-link").attr "href", "https://hunter.io/search/" + @domain + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
+        $(".header-search-link").show()
 
       # Display: the number of results
       if @results_count == 1 then s = "" else s = "s"
-      $("#domain-search .header-subtitle").html DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)) + " result" + s + " for <strong>" + DOMPurify.sanitize(@domain) + "</strong>"
+      $("#domain-search .results-header__count").html DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)) + " result" + s + " for <strong>" + DOMPurify.sanitize(@domain) + "</strong>"
 
       # Display: the email pattern if any, with the Email Finder form
       if @pattern != null
-        $(".people-search-container").show()
-        $(".domain-pattern strong").html(@addPatternTitle(@pattern) + "@" + @domain)
+        $(".filters__by-name").show()
+        $(".results-header__pattern").show()
+        $(".results-header__pattern strong").html(@addPatternTitle(@pattern) + "@" + @domain)
         $("[data-toggle='tooltip']").tooltip()
 
+        # Email Finder
+        $(".ds-finder-form-company__name").text @organization
+        $(".ds-finder-form-company__domain").text @domain
+        $(".ds-finder-form-company__logo").attr "src", "https://logo.clearbit.com/" + @domain
+        @openFindbyName()
         emailFinder = new EmailFinder
         emailFinder.validateForm()
 
@@ -149,7 +159,7 @@ DomainSearch = ->
       # Display: link to see more
       if @results_count > 10
         remaining_results = @results_count - 10
-        $(".search-results").append "<a class='see-more btn-white' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>See all the results (" + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + " more) <i class='far fa-external-link'></i></a>"
+        $(".search-results").append "<a class='see-more h-button h-button--sm' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>See all the results (" + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + " more)</a>"
 
 
     showResults: ->
@@ -174,38 +184,13 @@ DomainSearch = ->
 
         # Save leads button
         unless _this.trial
-          result.lead_button = "<button class='save-lead-button action-lead-button round' data-toggle='tooltip' data-placement='top' title='Save the lead'><i class='fas fa-plus'></i></button>"
+          result.lead_button = "<button class='ds-result__save h-button h-button--sm save-lead-button' type='button'>Save</button>"
         else
           result.lead_button = ""
 
-        # If at least the first and last names are available, we're going to display it on the
-        # page with all the other data
+        # Full name
         if result.first_name != null && result.last_name != null
-          result.additional_data = "<div class='additional-data'>"
-          result.additional_data += "<span class='name'>" + DOMPurify.sanitize(result.first_name) + " " + DOMPurify.sanitize(result.last_name) + "</span>"
-
-          if result.position != null
-            result.additional_data += "<span class='position'>" + DOMPurify.sanitize(result.position) + "</span>"
-
-          if result.linkedin != null
-            result.additional_data += "<a class='fab fa-linkedin-square' href='" + DOMPurify.sanitize(result.linkedin) + "' target='_blank' rel='nofollow'></a>"
-
-          if result.twitter != null
-            result.additional_data += "<a class='fab fa-twitter-square' href='https://twitter.com/" + DOMPurify.sanitize(result.twitter) + "' target='_blank' rel='nofollow'></a>"
-
-          if result.phone_number != null
-            result.additional_data += "<span class='phone'>" + DOMPurify.sanitize(result.phone_number) + "</span>"
-
-          result.additional_data += "</div>"
-
-        else if result.position != null
-          result.additional_data = "<div class='additional-data no-entity'><span class='position'>" + DOMPurify.sanitize(result.position) + "</span></div>"
-
-        else if result.department != null
-          result.additional_data = "<div class='additional-data no-entity'><span class='department'>" + DOMPurify.sanitize(_this.department_names[result.department]) + "</span></div>"
-
-        else
-          result.additional_data = ""
+          result.full_name = DOMPurify.sanitize(result.first_name) + " " + DOMPurify.sanitize(result.last_name)
 
 
         Handlebars.registerHelper "userDate", (options) ->
@@ -243,7 +228,7 @@ DomainSearch = ->
 
       # For people not logged in, the copy and verification functions are not displayed
       if _this.trial
-        $(".verification-link, .verification-result, .copy-status, .email-copied").remove()
+        $(".ds-result__verification").remove()
       else
         @searchVerificationListener()
         Utilities.copyEmailListener()
@@ -260,11 +245,8 @@ DomainSearch = ->
 
         return if !email
 
-        verification_link_tag.remove()
-        verification_result_tag.html("
-          <div class='light-grey'>
-            <i class='fas fa-spin fa-spinner-third'></i> Verifying...
-          </div>").css({ display: "inline-block" })
+        verification_link_tag.html("<i class='far fa-spin fa-spinner-third'></i> Verifying…</div>")
+        verification_link_tag.attr("disabled", "true")
 
         # Launch the API call
         $.ajax
@@ -275,7 +257,7 @@ DomainSearch = ->
           dataType: "json"
           jsonp: false
           error: (xhr, statusText, err) ->
-            verification_result_tag.html("")
+            verification_link_tag.removeAttr("disabled")
             verification_link_tag.show()
 
             if xhr.status == 400
@@ -297,46 +279,51 @@ DomainSearch = ->
 
           success: (result, statusText, xhr) ->
             if xhr.status == 202
-              verification_result_tag.html("
-                <div class='dark-orange'>
-                  <i class='fa fa-exclamation-triangle'></i>
-                  <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to retry the verification'>Retry</a>
-                </div>")
+              verification_link_tag.removeAttr("disabled")
+              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> Retry")
               displayError 'The email verification is taking longer than expected. Please try again later.'
 
             else if xhr.status == 222
-              verification_result_tag.html("")
+              verification_link_tag.removeAttr("disabled")
+              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> Retry")
               displayError DOMPurify.sanitize(result.errors[0].details)
               return
 
             else
+              verification_link_tag.remove()
+
               if result.data.status == "valid"
                 verification_result_tag.html("
-                  <div class='green'>
-                    <i class='fas fa-check'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Valid</a>
-                  </div>")
+                  <span class='tag tag--success' data-toggle='tooltip' data-placement='top' title='Valid'>
+                    <span class='tag__label'>
+                      <i aria-hidden='true' class='tag__icon fas fa-shield-check'></i>
+                      " + result.data.score + "%
+                    </span>
+                  </span>")
               else if result.data.status == "invalid"
                 verification_result_tag.html("
-                  <div class='red'>
-                    <i class='fas fa-times'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Invalid</a>
-                  </div>")
+                  <span class='tag tag--danger' data-toggle='tooltip' data-placement='top' title='Invalid'>
+                    <span class='tag__label'>
+                      <i aria-hidden='true' class='tag__icon fas fa-shield-xmark'></i>
+                      " + result.data.score + "%
+                    </span>
+                  </span>")
               else if result.data.status == "accept_all"
                 verification_result_tag.html("
-                  <div class='dark-orange'>
-                    <i class='fas fa-exclamation-triangle'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Accept all</a>
-                  </div>")
+                  <span class='tag tag--warning' data-toggle='tooltip' data-placement='top' title='Accept All'>
+                    <span class='tag__label'>
+                      <i aria-hidden='true' class='tag__icon fas fa-shield-check'></i>
+                      " + result.data.score + "%
+                    </span>
+                  </span>")
               else
                 verification_result_tag.html("
-                  <div class='light-grey'>
-                    <i class='fas fa-question'></i>
-                    <a href='https://hunter.io/verify/#{DOMPurify.sanitize(email)}' target='_blank' title='Click to see the complete check result'>Unknown/a>
-                  </div>")
-
-            # We remove the copy label since it can make the line too long
-            verification_result_tag.parent().find(".copy-status").remove()
+                  <span class='tag' data-toggle='tooltip' data-placement='top' title='Unknown'>
+                    <span class='tag__label'>
+                      <i aria-hidden='true' class='tag__icon fas fa-shield-slash'></i>
+                      " + result.data.score + "%
+                    </span>
+                  </span>")
 
             # We update the number of requests
             loadAccountInformation()
@@ -344,12 +331,22 @@ DomainSearch = ->
 
     openSources: ->
       $(".sources-link").unbind("click").click (e) ->
-        if $(this).parent().parent().parent().find(".sources-list").is(":visible")
-          $(this).parent().parent().parent().find(".sources-list").slideUp 300
+        if $(this).parents(".ds-result").find(".ds-result__sources").is(":visible")
+          $(this).parents(".ds-result").find(".ds-result__sources").slideUp 300
           $(this).find(".fa-angle-up").removeClass("fa-angle-up").addClass("fa-angle-down")
         else
-          $(this).parent().parent().parent().find(".sources-list").slideDown 300
+          $(this).parents(".ds-result").find(".ds-result__sources").slideDown 300
           $(this).find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up")
+
+    openFindbyName: ->
+      $(".filters__by-name").unbind("click").click (e) ->
+        if $("#find-by-name").is(":visible")
+          $(this).attr "aria-expanded", "false"
+          $("#find-by-name").hide()
+        else
+          $(this).attr "aria-expanded", "true"
+          $("#find-by-name").show()
+          $("#full-name-field").focus()
 
 
     manageDepartmentFilters: ->
@@ -384,17 +381,16 @@ DomainSearch = ->
 
     addPatternTitle: (pattern) ->
       pattern = pattern
-        .replace("{first}", "<span data-toggle='tooltip' data-placement='top' title='First name'>{first}</span>")
-        .replace("{last}", "<span data-toggle='tooltip' data-placement='top' title='Last name'>{last}</span>")
-        .replace("{f}", "<span data-toggle='tooltip' data-placement='top' title='First name initial'>{f}</span>")
-        .replace("{l}", "<span data-toggle='tooltip' data-placement='top' title='Last name initial'>{l}</span>")
+        .replace("{first}", "<abbr data-toggle='tooltip' data-placement='top' title='First name'>{first}</abbr>")
+        .replace("{last}", "<abbr data-toggle='tooltip' data-placement='top' title='Last name'>{last}</abbr>")
+        .replace("{f}", "<abbr data-toggle='tooltip' data-placement='top' title='First name initial'>{f}</abbr>")
+        .replace("{l}", "<abbr data-toggle='tooltip' data-placement='top' title='Last name initial'>{l}</abbr>")
       pattern
 
 
     cleanSearchResults: ->
       $("#loading-placeholder").show()
       $(".search-results").html ""
-      $(".people-search-container, .email-finder-results-container").hide()
       $(".departments").hide()
       $("li.department").css("display", "none")
 

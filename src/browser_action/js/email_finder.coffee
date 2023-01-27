@@ -8,19 +8,6 @@ EmailFinder = ->
 
     validateForm: ->
       _this = @
-      $("#full-name-field").one "keyup", (e) ->
-        setTimeout (->
-          if (
-            $("#full-name-field").val().indexOf(" ") != -1 &&
-            $("#full-name-field").val().length > 4
-          )
-            if (
-              $("#email-finder").is(":hidden") &&
-              $("#flash .alert-danger").length == 0 &&
-              typeof $("#full-name-field").data("bs.tooltip") == "undefined"
-            )
-              $("#full-name-field").tooltip(title: "Press enter to find the email address.").tooltip("show")
-        ), 6000
 
       $("#email-finder-search").unbind().submit ->
         if (
@@ -34,7 +21,7 @@ EmailFinder = ->
         false
 
     submit: ->
-      $(".email-finder-loader").show()
+      $(".ds-finder-form__submit .far").removeClass("fa-search").addClass("fa-spinner-third fa-spin")
       @domain = window.domain
       @full_name = $("#full-name-field").val()
       @fetch()
@@ -54,7 +41,7 @@ EmailFinder = ->
         dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
-          $(".email-finder-loader").hide()
+          $(".ds-finder-form__submit .far").removeClass("fa-spinner-third fa-spin").addClass("fa-search")
 
           if xhr.status == 400
             displayError "Sorry, something went wrong with the query."
@@ -74,8 +61,9 @@ EmailFinder = ->
 
         success: (result) ->
           if result.data.email == null
-            $(".email-finder-loader").hide()
-            displayError "We didn't find the email address of this person."
+            $(".ds-finder-form__submit .far").removeClass("fa-spinner-third fa-spin").addClass("fa-search")
+            $(".no-finder-result .person-name").text(_this.full_name)
+            $(".no-finder-result").slideDown 200
           else
             _this.domain = result.data.domain
             _this.email = result.data.email
@@ -93,14 +81,12 @@ EmailFinder = ->
             _this.render()
 
     render: ->
-      $(".email-finder-loader").hide()
+      $(".ds-finder-form__submit .far").removeClass("fa-spinner-third fa-spin").addClass("fa-search")
 
       # Display: complete search link or Sign up CTA
       unless @trial
         $(".header-search-link").attr "href", "https://hunter.io/search/" + @domain + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
         $(".header-search-link").show()
-      else
-        $(".header-signup-link").show()
 
       # Confidence score color
       if @score < 30
@@ -109,16 +95,6 @@ EmailFinder = ->
         @confidence_score_class = "high-score"
       else
         @confidence_score_class = "average-score"
-
-      # The title of the profile
-      if @position? && @company?
-        @title = "#{@position} at #{@company}"
-      else if @position?
-        @title = "#{@position} at #{@domain}"
-      else if @company?
-        @title = @company
-      else
-        @title = @domain
 
       # Display: the method used
       if @sources.length > 0
@@ -145,7 +121,7 @@ EmailFinder = ->
 
       # Display: the sources if any
       if @sources.length > 0
-        $(".finder-result-sources").show()
+        $(".ds-result__sources").show()
 
       # Display: the tooltips
       $("[data-toggle='tooltip']").tooltip()
@@ -153,11 +129,8 @@ EmailFinder = ->
       # Event: the copy action
       Utilities.copyEmailListener()
 
-      $(".finder-result-pic img").on "load", ->
-        $(this).css "opacity", "1"
-
       # Display: the button to save the lead
-      lead_button = $(".finder-result-email .save-lead-button")
+      lead_button = $(".ds-result--single .save-lead-button")
       lead_button.data
         first_name: @first_name
         last_name: @last_name
@@ -170,5 +143,6 @@ EmailFinder = ->
 
     cleanFinderResults: ->
        $("#email-finder").html ""
-       $("#email-finder").hide()
+       $("#email-finder").slideUp 200
+       $(".no-finder-result").slideUp 200
   }

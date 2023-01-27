@@ -3,7 +3,7 @@ ListSelection =
     _this = this
     _this.getLeadsLists (json) ->
       if json != "none"
-        $(".list-select-container").html "<select class='list-select'></select>"
+        $(".list-select-container").append "<select id='leads-list' class='leads-manager__list h-select h-select--sm'></select>"
 
         # We determine the selected list
         if window.current_leads_list_id
@@ -17,23 +17,23 @@ ListSelection =
             selected = "selected='selected'"
           else
             selected = ""
-          $(".list-select").append "<option "+selected+" value='"+val.id+"'>"+val.name+"</option>"
+          $(".leads-manager__list").append "<option "+selected+" value='"+val.id+"'>"+val.name+"</option>"
 
         # We add a link to the current list
-        $(".view-list-link").attr "href", "https://hunter.io/leads?leads_list_id="+selected_list_id+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
+        $(".leads-manager__link").attr "href", "https://hunter.io/leads?leads_list_id="+selected_list_id+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
 
-        $(".list-select").append "<option value='new_list'>Create a new list...</option>"
+        $(".leads-manager__list").append "<option value='new_list'>Create a new list...</option>"
 
         _this.updateCurrent()
 
   updateCurrent: ->
-    $(".list-select").on "change", ->
+    $(".leads-manager__list").on "change", ->
       if $(this).val() == "new_list"
         Utilities.openInNewTab "https://hunter.io/leads-lists/new?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension"
       else
         chrome.storage.sync.set "current_leads_list_id": $(this).val()
         window.current_leads_list_id = $(this).val()
-        $(".view_list_link").attr "href", "https://hunter.io/leads?leads_list_id="+$(this).val()+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
+        $(".leads-manager__link").attr "href", "https://hunter.io/leads?leads_list_id="+$(this).val()+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
 
 
   getLeadsLists: (callback) ->

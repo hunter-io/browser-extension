@@ -123,4 +123,30 @@
   --colors-brand-outlook--rgb:      0, 120, 212;
   --colors-brand-gmail:           #4286f5;
   --colors-brand-gmail--rgb:        66, 134, 245;
+
+  /**
+  * SPACING
+  */
+  --spacing-base:     4px;
+  --spacing-005:      calc(var(--spacing-base) / 2);    // 2px
+  --spacing-01:       calc(var(--spacing-base));        // 4px
+  --spacing-02:       calc(var(--spacing-base) * 2);    // 8px
+  --spacing-03:       calc(var(--spacing-base) * 3);    // 12px
+  --spacing-04:       calc(var(--spacing-base) * 4);    // 16px
+  --spacing-05:       calc(var(--spacing-base) * 5);    // 20px
+  --spacing-06:       calc(var(--spacing-base) * 6);    // 24px
+  --spacing-08:       calc(var(--spacing-base) * 8);    // 32px
+  --spacing-10:       calc(var(--spacing-base) * 10);   // 40px
+  --spacing-12:       calc(var(--spacing-base) * 12);   // 48px
+  --spacing-14:       calc(var(--spacing-base) * 14);   // 56px
+  --spacing-16:       calc(var(--spacing-base) * 16);   // 64px
+  --spacing-20:       calc(var(--spacing-base) * 20);   // 80px
+  --spacing-24:       calc(var(--spacing-base) * 24);   // 96px
+  --spacing-30:       calc(var(--spacing-base) * 30);   // 120px
+
+  /**
+  * TYPOGRAPHY
+  */
+  --fonts-family-body: "Inter UI", "Inter", -apple-system,system-ui, "Segoe UI", Roboto, Noto, Oxygen-Sans, Ubuntu, Cantrell, "Helvetica Neue", sans-serif;
+  --fonts-family-feature-settings: "cv01", "cv02", "cv03", "cv04", "cv11";
 }

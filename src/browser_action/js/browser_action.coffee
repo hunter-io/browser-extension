@@ -8,6 +8,8 @@ loadAccountInformation = ->
 
       $(".account-calls-used").text Utilities.numberWithCommas(json.data.requests.searches.used)
       $(".account-calls-available").text Utilities.numberWithCommas(json.data.requests.searches.available)
+      $(".account-avatar").attr "src", "https://ui-avatars.com/api/?name=" + json.data.first_name + "+" + json.data.last_name + "&background=0F8DF4&color=fff&rounded=true"
+      $(".account-avatar").attr "alt", json.data.first_name + " " + json.data.last_name
 
       if json.data.plan_level == 0
         $(".account-upgrade-cta").show()
