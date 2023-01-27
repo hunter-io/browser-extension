@@ -53,6 +53,10 @@ Api =
   leadsExist: (email, api_key) ->
     'https://api.hunter.io/v2/leads/exist?email=' + encodeURIComponent(email) + '&api_key=' + api_key
 
-  #Lead lists
+  # Leads lists
   leadsList: (api_key) ->
     'https://api.hunter.io/v2/leads_lists?limit=100&api_key=' + api_key
+
+  # Check if there is any email for a domain name
+  dataForDomain: (domain) ->
+    'https://extension-api.hunter.io/data-for-domain?domain=' + domain
