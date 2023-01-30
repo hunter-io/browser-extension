@@ -332,14 +332,114 @@
         </header>
 
         <section class="filters">
-          <button class="h-button h-button--sm" type="button">
-            Type
-            <span class="far fa-angle-down" aria-hidden="true"></span>
-          </button>
-
-          <button class="h-button h-button--sm" type="button">
-            Department
-            <span class="far fa-angle-down" aria-hidden="true"></span>
+          <div class="dropdown">
+            <button class="h-button h-button--sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Type
+              <span class="far fa-angle-down" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown-menu filters-dropdown" id="type-filters">
+              <ul class="filters-choice">
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-type-personal" name="filter-type" type="radio" value="personal">
+                    <label for="filter-type-personal">Personal</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-type-generic" name="filter-type" type="radio" value="generic">
+                    <label for="filter-type-generic">Generic</label>
+                  </div>
+                </li>
+              </ul>
+              <button class="filters-dropdown__submit apply-filters" type="button">Apply filters</button>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="h-button h-button--sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Department
+              <span class="far fa-angle-down" aria-hidden="true"></span>
+            </button>
+            <div class="dropdown-menu filters-dropdown" id="departments-filters">
+              <ul class="filters-choice">
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-executive" name="filter-department-executive" type="checkbox" value="executive">
+                    <label for="filter-department-executive">Executive</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-it" name="filter-department-it" type="checkbox" value="it">
+                    <label for="filter-department-it">IT / Engineering</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-finance" name="filter-department-finance" type="checkbox" value="finance">
+                    <label for="filter-department-finance">Finance</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-management" name="filter-department-management" type="checkbox" value="management">
+                    <label for="filter-department-management">Management</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-sales" name="filter-department-sales" type="checkbox" value="sales">
+                    <label for="filter-department-sales">Sales</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-legal" name="filter-department-legal" type="checkbox" value="legal">
+                    <label for="filter-department-legal">Legal</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-support" name="filter-department-support" type="checkbox" value="support">
+                    <label for="filter-department-support">Support</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-hr" name="filter-department-hr" type="checkbox" value="hr">
+                    <label for="filter-department-hr">Human Resources</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-marketing" name="filter-department-marketing" type="checkbox" value="marketing">
+                    <label for="filter-department-marketing">Marketing</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-communication" name="filter-department-communication" type="checkbox" value="communication">
+                    <label for="filter-department-communication">Communication</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-education" name="filter-department-education" type="checkbox" value="education">
+                    <label for="filter-department-education">Education</label>
+                  </div>
+                </li>
+                <li class="filters-choice__item">
+                  <div class="filters-choice__checkbox">
+                    <input id="filter-department-design" name="filter-department-design" type="checkbox" value="design">
+                    <label for="filter-department-design">Arts &amp; Design</label>
+                  </div>
+                </li>
+              </ul>
+              <button class="filters-dropdown__submit apply-filters" type="button">Apply filters</button>
+            </div>
+          </div>
+          <button class="h-button h-button--sm h-button--ghost filters__clear clear-filters" type="button">
+            Clear filters
           </button>
 
           <button class="h-button h-button--sm filters__by-name" aria-expanded="false" aria-controls="find-by-name" type="button">
@@ -371,6 +471,99 @@
               </button>
             </div>
           </form>
+        </section>
+
+        <!-- No results with filters -->
+        <section class="no-result-with-filters-container">
+          <div class="empty-state empty-state--horizontal">
+            <svg class="empty-state__img" width="180" height="134" viewBox="0 0 180 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#a)">
+                <mask id="b" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="134">
+                  <path d="M0 0h180v133.735H0V0Z" fill="#fff"/>
+                </mask>
+                <g mask="url(#b)">
+                  <path d="M154.561 105.015a29.6 29.6 0 0 0-.368-5.986 4 4 0 0 1-3.427-1.229c1.33.116 2.682-.34 3.738-1.164 1.055-.817 1.821-1.973 2.27-3.231.281-.788.44-1.605.578-2.429.137-.824.238-1.576.224-2.371-.036-1.496-.521-2.95-.998-4.366-.036-.116-.079-.232-.18-.297-.116-.08-.268-.05-.405-.021-2.097.433-4.2.867-6.297 1.293a154.142 154.142 0 0 1 7.085-3.354c.173-.08.383-.151.556-.065.138.073.203.239.253.383a40.2 40.2 0 0 0 2.097 4.83c.087.173.188.354.368.433.167.072.355.043.528.058.687.08 1.034.954.824 1.612-.209.658-.773 1.128-1.308 1.561-.34.275-.687.571-.832.976-.231.65.123 1.388-.028 2.068-.253 1.099-1.663 1.503-2.191 2.494-.246.455-.274.997-.238 1.51.072.998.39 1.967.918 2.813.13.209.282.441.238.686-.029.167-.152.297-.26.427a105.118 105.118 0 0 1-3.275 3.434" fill="#C8E6FF"/>
+                  <path d="M150.159 97.785a7.025 7.025 0 0 1-2.386 3.16c-.889-.586-1.771-1.179-2.66-1.764-.549-.362-1.127-.752-1.424-1.345-.311-.607-.282-1.33-.246-2.01.058-1.019.116-2.045.167-3.064.202-3.644.412-7.352 1.641-10.793 1.879.643 3.947.527 5.862 0 1.916-.528 3.687-1.46 5.407-2.45.109-.059.217-.124.34-.117.123.008.224.087.318.167.673.57 1.157 1.337 1.836 1.9.702.586 1.591.933 2.494 1.07.131.022.261.037.369.116.116.087.174.224.231.362a144.562 144.562 0 0 1 2.278 5.971c.13.376.267.766.202 1.164-.043.282-.188.535-.325.788-1.511 2.696-3.022 5.4-4.533 8.096-.296.528-.744 1.135-1.337 1.027-.477-.087-.73-.593-.918-1.041-.174-.412-.34-.824-.514-1.237-.101-.238-.202-.491-.173-.744.022-.246.166-.463.304-.665a9.03 9.03 0 0 1 1.727-1.836c.181-.145.383-.297.463-.52.101-.261.014-.55.029-.825.036-.723.716-1.214 1.236-1.72a5.544 5.544 0 0 0 1.366-2.14c.195-.564.167-1.374-.405-1.533-.31-.086-.665.073-.954-.072-.173-.087-.282-.267-.376-.44a48.081 48.081 0 0 1-2.494-5.307 56.76 56.76 0 0 1-11.407 4.511c-.152.043-.311.087-.434.18-.347.268-.31.796-.231 1.222.275 1.57.571 3.138.889 4.7.152.751.318 1.51.701 2.168.738 1.272 2.155 1.973 3.174 3.043" fill="#9BD2FF"/>
+                  <path d="M158.379 101.378c.282-.361.571-.715.839-1.077a29.65 29.65 0 0 1-1.887-.34c.296.499.658.969 1.048 1.425v-.008ZM150.68 108.817c-1.106-.484-1.851-1.598-2.133-2.769-.282-1.178-.159-2.407.072-3.592.044-.225.087-.47-.036-.658-.072-.109-.181-.174-.289-.246-1.359-.86-2.465-2.06-3.549-3.246-.326-.354-.658-.723-.853-1.164-.188-.433-.239-.91-.282-1.373a38.651 38.651 0 0 1-.13-3.571c-21.16-21.535-17.386-76.96-46.605-78.846a52.67 52.67 0 0 1-4.966-.55c-10.114 4.114-18.723 11.046-24.954 19.772 0 0-1.96 2.161-3.615 5.74-5.118 9.303-7.75 20.146-7.026 31.56.094 1.512.253 3 .455 4.476 0 0 1.25 9 3.405 13.402.072.036.137.065.21.094 7.792 19.344 25.64 33.231 46.633 35.537 0-.506 5.776.607 14.436-.397 8.66-1.005 9.716-2.386 13.323-3.499 4.157-1.75 10.785-5.885 16.59-10.923l-.694.253h.008Z" fill="#C8E6FF"/>
+                  <path d="M130.837 30.867h-9.419c-2.95 0-4.591-1.727-4.664-2.428-.072-.709-.874 2.385.868 3.86 1.743 1.474 3.261 1.547 4.157 1.634.34.036 4.872.043 10.366.043a5.28 5.28 0 0 1-1.316-3.108h.008ZM169.706 64.988h-31.417c-4.156 0-4.446-1.128-4.395-1.995l-.311 1.135c-.029.245.029.513.586 1.59.556 1.077 2.067 1.417 2.067 1.417s32.718.065 33.311 0c.079-.007.166-.015.26-.03-.021-.606-.065-1.394-.101-2.117Z" fill="#9BD2FF"/>
+                  <path d="M94.352 120.882h17.646a2.743 2.743 0 0 0 2.739-2.74 2.743 2.743 0 0 0-2.739-2.74H83.082" fill="#fff"/>
+                  <path d="M114.557 117.173c-.051.492-1.128 1.707-3.073 1.707H89.335c1.778.831 3.86 1.59 5.624 2.175 8.053.008 15.998 0 16.287-.021.585-.065 1.59-.109 2.74-1.15 1.149-1.033.621-3.202.571-2.703v-.008Z" fill="#9BD2FF"/>
+                  <path d="M69.499 44.69c-2.154-2.386-2.002-4.1-.672-5.083 1.315-.983 3.267-.824 5.349 1.648 2.075 2.473 2.638 5.234 1.395 6.138-1.25.91-3.91-.325-6.072-2.704ZM85.677 36.506c-5.682 4.54-9.094 4.056-10.554 1.056-1.468-2.957-.362-7.237 5.458-11.596 5.834-4.351 11.638-5.364 12.983-2.551 1.337 2.819-2.205 8.551-7.887 13.091Z" fill="#fff"/>
+                  <path d="M162.889 60.86c2.06-.563 4.569-2.79 1.28-13.93-3.015-11.465-15.673-24.983-19.461-23.089-2.819 1.402 6.015 20.508 9.282 27.412 3.174 6.709 6.781 10.02 8.899 9.615v-.008ZM164.53 61.28c.933-1.005 1.663-1.049 2.118-.622.456.426.456 1.164-.477 2.169-.932 1.004-2.06 1.474-2.508 1.048-.456-.427-.065-1.59.874-2.595h-.007Z" fill="#C8E6FF"/>
+                  <path d="M65.147 132.412s6.485-1.843 11.386-2.928c4.9-1.084 8.934-2.248 13.17-2.233 4.23.014-21.794 5.544-1.207 5.523-19.966.014-23.537.021-23.537.021" fill="#C7CDD4"/>
+                  <path d="M8.4 132.658s6.275-4.591 16.12-4.627c9.846-.036-27.787 4.779 9.933 4.75-21.831.021-26.053-.123-26.053-.123Z" fill="#9BD2FF"/>
+                  <path d="M50.516 106.359c.318-.376.933-.145 1.33.137 1.135.803 2.111 1.844 3.369 2.437.405.195.867.332 1.301.238.434-.094.831-.513.766-.961-.029-.224-.166-.412-.296-.593-.962-1.28-2.169-2.35-3.188-3.578-2.313-2.784-3.203-7.497-3.18-11.118 0-.203.404-.333.917-.579.673 1.742 1.793 3.275 2.798 4.844 2.92 4.554 5.053 9.751 9.094 13.351-.55.991-1.627 1.547-2.653 2.024-.882.412-1.793.81-2.762.904-1.88.188-3.723-.817-4.98-2.226-1.258-1.41-2.017-3.181-2.682-4.952" fill="#C8E6FF"/>
+                  <path d="M43.568 110.653s6.608-1.034 6.463-4.663c.723 1.171 2.017 3.557 2.017 3.557l-6.65 4.301-1.83-3.195Z" fill="#9BD2FF"/>
+                  <path d="M11.11 123.586c1.143-1.36 4.107 12.122 32.748-12.81.672 1.294 2.573 4.402 2.573 4.402L25.36 128.335s-7.67-.137-13.518 3.434c-.39-.326-3.875-4.453-.73-8.183ZM111.022 127.316c-34.815.029-63.058-28.164-63.087-62.979 0-6.419.954-12.614 2.732-18.448a66.055 66.055 0 0 0-3.585 21.586c.022 27.274 16.547 50.674 40.113 60.78.969-.122 1.88-.195 2.726-.195 6.665 0 14.638 3.832 20.747 4.829a67.11 67.11 0 0 0 5.291.21c.701 0 1.403-.015 2.104-.036.455-1.092 1.576-1.938 2.776-1.858.209.014.426.05.614-.036.152-.073.26-.217.362-.355a20.297 20.297 0 0 1 6.397-5.674c-4.663 1.106-12.181 2.183-17.183 2.19l-.007-.014ZM132.723 132.557s14.161-6.275 9.202 0h-9.202ZM113.19 1.243c-.339 0-.679.008-1.026.015C146.4 1.894 173.971 29.827 174 64.222c.022 28.648-19.07 52.843-45.231 60.535.397.195.708.549.94.932.534.904.679 2.039.375 3.044 1.461-.246 2.784-1.005 4.07-1.735 2.032-1.15 4.099-2.277 6.326-2.993 2.226-.716 4.633-1.012 6.903-.477.21.05.419.108.629.18 18.853-11.674 31.41-32.551 31.388-56.356-.029-36.542-29.682-66.145-66.224-66.109h.014Z" fill="#C7CDD4"/>
+                  <path d="M174.745 43.431c10.792 28.822.231 62.155-26.74 79.128" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M97.735 2.118c26.935-6.282 56.024 4.887 71.335 29.733a66.854 66.854 0 0 1 4.981 9.795" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M54.528 97.988c-16.561-30.629-6.506-69.231 23.508-87.73a66.28 66.28 0 0 1 17.725-7.641" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M84.636 126.47c-11.27-5.277-21.18-13.793-28.2-25.178a77.463 77.463 0 0 1-1.301-2.198" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m26.783 126.593 19.294-11.899-6.267-10.171-27.673 17.06a5.975 5.975 0 0 0-1.604 8.725M155.089 104.848a56.84 56.84 0 0 1-12.397 10.294c-26.827 16.54-61.981 8.198-78.521-18.629-8.545-13.865-10.446-29.95-6.586-44.544" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M169.735 69.737c-.701 12.449-5.465 24.52-13.793 34.157" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M99.933 10.952c23.197-5.35 48.209 4.287 61.395 25.677 6.159 9.99 8.87 21.137 8.458 32.046" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M57.99 50.53C61.814 37.46 70.301 25.706 82.807 18a57.108 57.108 0 0 1 15.788-6.723" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m52.027 108.961-6.875 4.237M40.727 106.019l6.875-4.236M61.75 110.913l-1.72 1.056a5.233 5.233 0 0 1-7.2-1.706l-6.037-9.788a5.233 5.233 0 0 1 1.706-7.2l2.884-1.779M156.549 132.745H5.842M18.333 128.682c-5.48 1.316-8.024 4.063-12.492 4.063" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M35.689 131.227c-3.738 0-5.277-3.232-11.154-3.232-1.902 0-3.535.159-4.974.427" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M109.959 132.745c-7.185 0-12.998-5.523-20.537-5.523-7.54 0-20.718 5.523-28.85 5.523-8.133 0-6.97-3.037-14.292-3.037-2.566 0-5.827 1.143-9.087 1.446M61.843 45.304h1.67c.615 0 1.106.498 1.106 1.106v48.354" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M100.496 114.918H84.737" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M96.904 120.398h14.429a2.743 2.743 0 0 0 2.739-2.74 2.743 2.743 0 0 0-2.739-2.74h-9.817" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M111.868 106.692a2.743 2.743 0 0 0 2.739-2.74 2.743 2.743 0 0 0-2.739-2.74H77.884a2.743 2.743 0 0 0-2.74 2.74 2.743 2.743 0 0 0 2.74 2.74h33.984Z" fill="#fff"/>
+                  <path d="M75.463 102.759c-.05.868.238 1.995 4.395 1.995h31.489c1.945 0 3.022-1.207 3.072-1.706.051-.491.571 1.67-.571 2.704-1.149 1.034-2.147 1.084-2.739 1.149-.593.065-33.311 0-33.311 0s-1.511-.34-2.068-1.417c-.556-1.077-.614-1.344-.585-1.59" fill="#9BD2FF"/>
+                  <path d="M111.333 106.214a2.742 2.742 0 0 0 2.739-2.739 2.743 2.743 0 0 0-2.739-2.74H97.366" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M96.217 100.742H77.35a2.743 2.743 0 0 0-2.74 2.74 2.743 2.743 0 0 0 2.74 2.74h32.609M122.14 79.504v41.869" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M111.318 45.303h9.607c.673 0 1.215.543 1.215 1.215v31.93" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M67.554 99.26V46.482c0-.65.528-1.178 1.179-1.178h41.515" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M75.615 51.217h4.865" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M75.615 53.798h8.862" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M133.489 51.217h4.865" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M133.489 53.798h8.863M125.227 120.802V46.576c0-.701.571-1.273 1.272-1.273h38.978" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M133.489 118.229V73.417c0-.658.535-1.193 1.193-1.193h33.614M148.005 61.872h-12.087a2.425 2.425 0 0 0-2.429 2.43 2.425 2.425 0 0 0 2.429 2.428h32.639" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M168.427 61.872h-19.374" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m152.899 90.39-.369 2.256s.542.101.803-.087" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M146.024 88.186c.101 1.698.398 5.783.976 6.484.716.882 4.251 4.814 6.26 4.352 2.01-.463 5.653-4.555 5.653-4.555M159.831 87.405s1.612-.586 1.713 1.077c.101 1.663-2.031 3.383-2.031 3.383" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M159.831 87.405s-2.27-4.056-2.465-5.668c0 0-12.831 4.453-12.997 6.383-.159 1.938.78 3.362.78 3.362" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M159.246 79.554s-.644-4.677-6.376-3.593c-5.733 1.078-9.521 7.96-9.477 16.23v4.611s2.494 3.506 4.467 4.331c0 0 1.836-1.743 2.263-3.39M150.007 108.238c-.773-.939-1.691-2.363-1.72-3.874M156.411 96.961s.543 1.865 1.128 3.037M163.908 89.588c-.065-.246-.13-.484-.195-.723l-.347-1.236c-1.2-4.171-1.555-8.646-4.121-8.068" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M148.633 101.798s-.491 3.513-1.106 8.472" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M148.634 101.798s-5.906 1.872-6.622 2.703c-.361.419-3.079 6.369-5.552 12.759" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M141.375 109.771s-1.106 2.053-1.171 5.436" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M130.28 33.18h-9.875a3.906 3.906 0 0 1-3.904-3.903 3.906 3.906 0 0 1 3.904-3.904h11.407" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M137.516 36.05a6.101 6.101 0 1 0 0-12.202 6.101 6.101 0 0 0 0 12.203Z" fill="#0F8DF4"/>
+                  <path d="M141.904 32.783a6.053 6.053 0 0 0 1.106-3.506 6.103 6.103 0 0 0-12.08-1.229" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M141.116 33.701a6.103 6.103 0 0 1-10.302-4.424" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M96.794 66.108c.738-1.698 1.62-3.036 2.993-3.036 3.803 0 3.803 10.171 7.605 10.171 3.412 0 3.766-8.197 6.549-9.874M75.615 72.73c.397.325.845.513 1.359.513 3.802 0 3.802-10.17 7.604-10.17 3.803 0 3.803 10.17 7.605 10.17 1.294 0 2.147-1.178 2.863-2.732" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M95.905 69.376a1.005 1.005 0 1 0 0-2.01 1.005 1.005 0 0 0 0 2.01Z" fill="#0F8DF4" stroke="#0F8DF4" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M95.906 72.217v4.51h3.73" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M105.571 76.576h4.677" stroke="#262626" stroke-width=".93" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M105.571 78.448h2.501M103.684 77.422l-1.069-1.381-1.07 1.38M146.479 123.593c4.078.961 2.979 4.294 2.56 6.087-.42 1.792.484 2.089 2.11 1.481 1.627-.614 5.364-1.308 3.376 1.584" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M134.545 127.41c2.573-1.294 7.12-4.54 10.98-3.969" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M118.28 132.716s.788-1.714 3.578-1.627c.679-1.38 3.152-4.98 6.585-6.274 3.434-1.294 4.28 2.002 2.87 3.686 0 0 .181.13.991-.13a10.062 10.062 0 0 0 1.012-.383" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M112.193 92.56a2.743 2.743 0 0 0 2.74-2.74c0-1.511-1.229-2.74-2.74-2.74h-21a2.743 2.743 0 0 0-2.74 2.74c0 1.51 1.229 2.74 2.74 2.74h21Z" fill="#fff"/>
+                  <path d="M88.764 88.547c-.05.868.238 1.995 4.395 1.995h18.521c1.944 0 3.021-1.207 3.072-1.706.05-.499.571 1.67-.571 2.704-1.15 1.033-2.147 1.084-2.74 1.15-.593.064-20.335 0-20.335 0s-1.51-.34-2.067-1.418c-.557-1.077-.615-1.344-.586-1.59" fill="#9BD2FF"/>
+                  <path d="M95.906 86.56h-5.574a2.743 2.743 0 0 0-2.74 2.739c0 .817.355 1.547.919 2.046" stroke="#262626" stroke-width=".55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M89.306 91.836c.318.13.665.203 1.034.203h21a2.743 2.743 0 0 0 2.74-2.74c0-1.511-1.229-2.74-2.74-2.74H96.795" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m82.46 85.88-6.845 6.845M75.615 85.88l6.845 6.845" stroke="#0F8DF4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M88.345 31.402h.108M93.788 31.084c-.39.282-.867.448-1.373.448a2.202 2.202 0 0 1-2.227-2.255c.029-1.243 1.084-2.255 2.35-2.255a2.231 2.231 0 0 1 1.185.332M100.33 29.277a2.295 2.295 0 0 1-.968 1.807c-.39.282-.868.448-1.374.448a2.202 2.202 0 0 1-2.227-2.255c.03-1.243 1.085-2.255 2.35-2.255.325 0 .636.065.91.188a2.189 2.189 0 0 1 1.316 2.067h-.007ZM106.684 31.532l.073-2.551a1.893 1.893 0 0 0-1.143-1.793 1.896 1.896 0 0 0-.787-.166c-1.099 0-2.01.874-2.039 1.959" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m110.653 31.532.072-2.551a1.89 1.89 0 0 0-1.142-1.793 1.897 1.897 0 0 0-.788-.166c-1.099 0-2.009.874-2.038 1.959M102.839 27.022l-.116 4.51M69.362 31.648c.477.05 1.004-.05 1.54-.246 1.785-.643 3.65-2.255 4.004-2.277.535-.036 2.443 3.571 5.017 2.126 2.573-1.446 4.012-2.798 5.53-.507" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.957 132.745h1.438M1.091 132.745h.398" stroke="#262626" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M70.287 15.91c-.203-.932.347-1.495 2.465-1.467 4.294.066 7.626-.621 5.935-3.159-1.692-2.537-2.639-3.159.831-3.397 3.47-.239 5.104-.65 6.34-4.041" stroke="#0F8DF4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M163.663 132.745h-5.718M168.52 132.745h-2.327M172.757 132.745h-.521" stroke="#262626" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </g>
+              <defs>
+                <clipPath id="a">
+                  <path fill="#fff" d="M0 0h180v133.735H0z"/>
+                </clipPath>
+              </defs>
+            </svg>
+            <div class="empty-state__content">
+              <h1 class="empty-state__title">No results found</h1>
+              <p>We couldn't find any results matching your criterias.<br>Update or clear your filters.</p>
+              <div class="empty-state__actions">
+                <button class="h-button h-button--sm clear-filters" type="button">Clear filters</button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Email Finder Result -->

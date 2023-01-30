@@ -1,7 +1,5 @@
 DomainSearch = ->
   {
-    department_names: { executive: "Executive", it: "IT / Engineering", finance: "Finance", management: "Management", sales: "Sales", legal: "Legal", support: "Support", hr: "Human Resources", marketing: "Marketing", communication: "Communication" }
-
     launch: ->
       @domain = window.domain
       @trial = (typeof window.api_key == "undefined" || window.api_key == "")
@@ -12,9 +10,15 @@ DomainSearch = ->
       _this.cleanSearchResults()
 
       _this.department = _this.departmentFilter()
+      _this.type = _this.typeFilter()
+
+      if _this.department or _this.type
+        $('.filters__clear').show()
+      else
+        $('.filters__clear').hide()
 
       $.ajax
-        url: Api.domainSearch(_this.domain, _this.department, window.api_key)
+        url: Api.domainSearch(_this.domain, _this.department, _this.type, window.api_key)
         headers: "Email-Hunter-Origin": "chrome_extension"
         type: "GET"
         data: format: "json"
@@ -23,6 +27,7 @@ DomainSearch = ->
         error: (xhr) ->
           $("#loading-placeholder").hide()
           $("#domain-search").show()
+          $(".filters").css("visibility", "hidden")
 
           if xhr.status == 400
             displayError "Sorry, something went wrong with the query."
@@ -52,50 +57,16 @@ DomainSearch = ->
 
           $("#loading-placeholder").hide()
           $("#domain-search").show()
+          $(".filters").removeAttr("style")
 
           # Not logged in: we hide the Email Finder
           if _this.trial
             $(".filters__by-name").hide()
             $(".find-by-name").hide()
 
-          - unless _this.trial || _this.department || _this.results_count == 0
-            _this.getDepartments()
-
+          _this.manageFilters()
+          _this.clearFilters()
           _this.render()
-
-    getDepartments: ->
-      _this = @
-      $.ajax
-        url: Api.emailCount(_this.domain)
-        headers: "Email-Hunter-Origin": "chrome_extension"
-        type: "GET"
-        data: format: "json"
-        dataType: "json"
-        success: (result) ->
-          # After sorting it will be an array of this form
-          # [["executive", 5], ["hr", 3], ["it”, 1], ...]
-          _this.departments = Utilities.sortObject(result.data.department)
-
-          Handlebars.registerHelper "ifGreaterThanZero", (count, options) ->
-            if count > 0
-              return options.fn(this)
-            options.inverse this
-
-          Handlebars.registerHelper "departmentName", (options) ->
-            new Handlebars.SafeString(_this.department_names[options.fn(this)])
-
-          template = JST["src/browser_action/templates/departments.hbs"]
-          departments_content = $(template(_this))
-          $(".departments-container").html(departments_content)
-          $(".departments-container").show()
-
-          $(".more-departments-button").on "click", ->
-            $(".departments-container div").css
-              display: "inline-block"
-            $(this).hide()
-
-          _this.manageDepartmentFilters()
-
 
     render: ->
       # Is webmail -> STOP
@@ -107,9 +78,13 @@ DomainSearch = ->
 
       # No results -> STOP
       if @results_count == 0
-        $("#domain-search").addClass("ds-no-results")
-        $(".no-result-container .domain").text @domain
-        $(".no-result-container").show()
+        if @type or @department
+          $(".no-result-with-filters-container").show()
+        else
+          $("#domain-search").addClass("ds-no-results")
+          $(".no-result-container .domain").text @domain
+          $(".no-result-container").show()
+
         return
 
       # Display: the current domain
@@ -117,6 +92,9 @@ DomainSearch = ->
 
       # Remove "no-results" class
       $("#domain-search").removeClass("ds-no-results")
+
+      # Activate dropdown
+      $("[data-toggle='dropdown']").dropdown()
 
       # Display: complete search link or Sign up CTA
       unless @trial
@@ -349,34 +327,39 @@ DomainSearch = ->
           $("#full-name-field").focus()
 
 
-    manageDepartmentFilters: ->
+    manageFilters: ->
       _this = @
-      $(".department-filter").unbind().on "click", ->
-        $(".department-label[data-department='" + $(this).data('department') + "']").css
-          "display": "inline-block"
-        $(".departments-container").hide()
-        $("#departments-filters input[type='checkbox']").prop("checked", false)
-        $("#departments-filters input[type='checkbox'][name='" + $(this).data("department") + "']").prop("checked", true)
-        _this.fetch()
+      $('.apply-filters').unbind().on "click", ->
+        checked = $(this).parent().find('[type="checkbox"]:checked, [type="radio"]:checked')
+        checkedCount = checked.length
 
-      $(".close-department").unbind().on "click", ->
-        $(".department-label").hide()
-        $("#departments-filters input[type='checkbox']").prop("checked", false)
-        $(".departments-container").show()
+        if checkedCount > 0
+          $(this).parents(".dropdown").find('.h-button[data-toggle]').attr("data-selected-filters", checkedCount)
+        else
+          $(this).parents(".dropdown").find('.h-button[data-toggle]').removeAttr("data-selected-filters")
+
         _this.fetch()
 
     typeFilter: ->
-      value = $("#type-filter input[type='radio']:checked").val()
-      if value == "all" then null else value
+      value = $("#type-filters [type='radio']:checked").val()
 
     departmentFilter: ->
       department = null
-      $("#departments-filters input[type='checkbox']").each ->
+      $("#departments-filters [type='checkbox']").each ->
         if $(this).is(":checked")
-          department = $(this).attr("name")
+          department = $(this).val()
           return false
 
       department
+
+    clearFilters: ->
+      _this = @
+      $(".clear-filters").unbind().on "click", ->
+        $('.filters').find('[type="checkbox"]:checked, [type="radio"]:checked').each ->
+          $(this).prop("checked", false)
+
+        $('.filters [data-selected-filters]').removeAttr("data-selected-filters")
+        _this.fetch()
 
 
     addPatternTitle: (pattern) ->
@@ -391,8 +374,7 @@ DomainSearch = ->
     cleanSearchResults: ->
       $("#loading-placeholder").show()
       $(".search-results").html ""
-      $(".departments").hide()
-      $("li.department").css("display", "none")
+      $(".no-result-with-filters-container").hide()
 
 
     feedbackNotification: ->

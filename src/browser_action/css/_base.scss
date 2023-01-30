@@ -193,6 +193,25 @@ strong {
   border-bottom-color: var(--colors-primary-700);
 }
 
+.h-button--ghost {
+  // Default
+  --h-button-border-color: transparent;
+  --h-button-box-shadow: none;
+  --h-button-background: transparent;
+
+  // Hover
+  --h-button-background-hover: var(--colors-grey-100);
+  --h-button-border-color-hover: transparent;
+  --h-button-box-shadow-hover: none;
+
+  // Focus-visible
+  --h-button-box-shadow-focus: 0px 0px 0px 1px var(--colors-grey-100), 0px 0px 0px 3px var(--colors-grey-300);
+
+  // Active
+  --h-button-background-active:  var(--colors-grey-100);
+  --h-button-box-shadow-active: none;
+}
+
 // Sizes modifier
 //
 .h-button--sm {
