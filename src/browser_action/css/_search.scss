@@ -42,6 +42,7 @@
     content: "•";
     color: var(--colors-grey-400);
     font-weight: 500;
+    text-decoration: none;
   }
 }
 
@@ -77,7 +78,7 @@
 }
 
 #loading-placeholder {
-  padding: 0 25px 25px;
+  padding: 0 24px 24px;
 
   .background-masker {
     animation-duration: 2s;
@@ -92,19 +93,19 @@
   }
 
   .people-search-block {
-    margin-top: 35px;
-    height: 64px;
+    margin-top: 32px;
+    height: 56px;
   }
 
   .result-name-block {
-    margin-top: 30px;
-    height: 20px;
+    margin-top: 24px;
+    height: 16px;
     width: 200px;
   }
 
   .result-email-block {
     margin-top: 8px;
-    height: 20px;
+    height: 16px;
     width: 300px;
   }
 }
@@ -136,6 +137,7 @@
   background: #FFFFFF;
   border-top: 1px solid var(--colors-grey-300);
   box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.04);
+  z-index: 90;
 }
 
 .list-select-container {
@@ -160,11 +162,13 @@
   text-align: right;
   text-decoration-line: underline;
   color: var(--colors-grey-700);
+  text-decoration-color: var(--colors-grey-400);
+  transition: text-decoration-color 100ms ease-in;
 
   &:hover,
   &:focus {
     color: var(--colors-grey-800);
-    text-decoration: none;
+    text-decoration-color: transparent;
   }
 }
 
@@ -365,6 +369,7 @@
     &:hover,
     &:focus {
       border: 0 !important;
+      outline: 0;
     }
   }
 }
@@ -398,8 +403,8 @@
 
 .ds-finder-form-company__name {
   flex: 1;
-  font-size: 1.4rem;
-  line-height: calc(20/14);
+  font-size: 1.3rem;
+  line-height: calc(20/13);
   white-space: nowrap;
   max-width: 50%;
   overflow: hidden;

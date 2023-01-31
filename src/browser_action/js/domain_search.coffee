@@ -130,8 +130,8 @@ DomainSearch = ->
       # Display: the results
       @showResults()
 
-      # Render: set again an auto body height after forcing it
-      $("body").css
+      # Render: set again an auto height on html
+      $("html").css
         height: "auto"
 
       # Display: link to see more
@@ -396,5 +396,4 @@ DomainSearch = ->
 
       $(".feedback-link").click ->
         chrome.storage.sync.set "has_given_feedback": true
-
   }

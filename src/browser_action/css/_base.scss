@@ -1,13 +1,18 @@
 // Popup
 //
+::selection {
+  background: var(--colors-grey-800);
+  color: #fff;
+}
 
 html {
   width: 620px;
+  min-height: 480px;
+  position: relative;
 }
 
 body {
   width: 620px;
-  min-height: 480px;
   font-display: swap;
   font-family: var(--fonts-family-body) !important;
   font-feature-settings: var(--fonts-family-feature-settings);
@@ -37,27 +42,6 @@ strong {
   -webkit-animation-duration: 400ms !important;
   animation-duration: 400ms !important;
 }
-
-
-// Links
-//
-
-.blue-link {
-  color: var(--colors-secondary-700);
-  text-decoration: none;
-  border-bottom: 1px solid var(--colors-secondary-400);
-  transition: all 250ms ease;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--colors-secondary-700);
-    text-decoration: none;
-    border-bottom: 1px solid var(--colors-secondary-500);
-    cursor: pointer;
-  }
-}
-
 
 // Confidence score
 //
