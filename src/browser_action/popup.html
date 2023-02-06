@@ -18,21 +18,6 @@
 
   <body>
     <div id="copy-area"></div>
-
-    <div id="loading-placeholder">
-      <div class="background-masker people-search-block"></div>
-      <div class="background-masker result-name-block"></div>
-      <div class="background-masker result-email-block"></div>
-      <div class="background-masker result-name-block"></div>
-      <div class="background-masker result-email-block"></div>
-      <div class="background-masker result-name-block"></div>
-      <div class="background-masker result-email-block"></div>
-      <div class="background-masker result-name-block"></div>
-      <div class="background-masker result-email-block"></div>
-      <div class="background-masker result-name-block"></div>
-      <div class="background-masker result-email-block"></div>
-    </div>
-
     <header class="header">
       <a href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">
         <svg class="header__logo" height="12" space="preserve" version="1.1" viewBox="0 0 653.08002 116.24" width="68" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +37,7 @@
       </a>
       <div class="header__metas">
         <a class="header__all-results header-search-link" target="_blank" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
-          See results on hunter.io
+          <span>See results on hunter.io</span>
         </a>
 
         <!-- Account informations -->
@@ -67,7 +52,9 @@
               Upgrade
             </a>
           </span>
-          <img src="" alt="" class="account-avatar">
+          <a href="https://hunter.io/users/edit?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank" class="account-avatar">
+            <img src="" alt="" class="account-avatar__img">
+          </a>
         </div>
 
         <div class="account-not-logged">
@@ -80,6 +67,20 @@
         </div>
       </div>
     </header>
+
+    <div id="loading-placeholder">
+      <div class="background-masker people-search-block"></div>
+      <div class="background-masker result-name-block"></div>
+      <div class="background-masker result-email-block"></div>
+      <div class="background-masker result-name-block"></div>
+      <div class="background-masker result-email-block"></div>
+      <div class="background-masker result-name-block"></div>
+      <div class="background-masker result-email-block"></div>
+      <div class="background-masker result-name-block"></div>
+      <div class="background-masker result-email-block"></div>
+      <div class="background-masker result-name-block"></div>
+      <div class="background-masker result-email-block"></div>
+    </div>
 
     <div id="domain-search">
       <div class="body">

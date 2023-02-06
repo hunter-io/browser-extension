@@ -1,5 +1,21 @@
 DomainSearch = ->
   {
+    # Used to display full department names
+    department_names: {
+      executive: "Executive",
+      it: "IT / Engineering",
+      finance: "Finance",
+      management: "Management",
+      sales: "Sales",
+      legal: "Legal",
+      support: "Support",
+      hr: "Human Resources",
+      marketing: "Marketing",
+      communication: "Communication",
+      education: "Education",
+      design: "Arts & Design"
+    }
+
     launch: ->
       @domain = window.domain
       @trial = (typeof window.api_key == "undefined" || window.api_key == "")
@@ -170,6 +186,9 @@ DomainSearch = ->
         if result.first_name != null && result.last_name != null
           result.full_name = DOMPurify.sanitize(result.first_name) + " " + DOMPurify.sanitize(result.last_name)
 
+        if result.department
+          result.department = DOMPurify.sanitize(_this.department_names[result.department])
+
 
         Handlebars.registerHelper "userDate", (options) ->
           new Handlebars.SafeString(Utilities.dateInWords(options.fn(this)))
@@ -329,14 +348,21 @@ DomainSearch = ->
 
     manageFilters: ->
       _this = @
+      $(document).on 'click', '.dropdown .dropdown-menu', (e) ->
+        e.stopPropagation()
+
       $('.apply-filters').unbind().on "click", ->
         checked = $(this).parent().find('[type="checkbox"]:checked, [type="radio"]:checked')
         checkedCount = checked.length
+        dropdownContainer = $(this).parents(".dropdown")
+
+        dropdownContainer.removeClass("open")
+        dropdownContainer.find('.h-button[data-toggle]').attr("aria-expanded", "false")
 
         if checkedCount > 0
-          $(this).parents(".dropdown").find('.h-button[data-toggle]').attr("data-selected-filters", checkedCount)
+          dropdownContainer.find('.h-button[data-toggle]').attr("data-selected-filters", checkedCount)
         else
-          $(this).parents(".dropdown").find('.h-button[data-toggle]').removeAttr("data-selected-filters")
+          dropdownContainer.find('.h-button[data-toggle]').removeAttr("data-selected-filters")
 
         _this.fetch()
 

@@ -1,8 +1,10 @@
 // Popup header
 //
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   padding: var(--spacing-02) var(--spacing-06);
@@ -20,7 +22,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: var(--spacing-01);
+  gap: var(--spacing-02);
   font-size: 1.2rem;
   font-weight: 500;
   line-height: calc(16/12);
@@ -28,19 +30,28 @@
 
 .header__all-results {
   display: none;
-  color: #fff;
-  text-decoration: underline;
   transition: color 200ms ease-in;
+
+  span {
+    text-decoration: underline;
+    color: #fff;
+  }
 
   &:hover,
   &:focus {
     text-decoration: none;
-    color: var(--colors-grey-200);
+
+    span {
+      text-decoration: none;
+      color: var(--colors-grey-200);
+    }
   }
 
   &::after {
     content: "•";
+    display: inline-block;
     color: var(--colors-grey-400);
+    margin-left: calc(var(--spacing-02) - .25em);
     font-weight: 500;
     text-decoration: none;
   }
@@ -54,15 +65,24 @@
 }
 
 .account-avatar {
+  margin-left: var(--spacing-01);
+  text-decoration: none;
+}
+
+.account-avatar__img {
   width: 2rem;
   height: 2rem;
-  margin-left: var(--spacing-01);
 }
 
 .account-not-logged {
   .h-button:not(:first-child) {
     margin-left: var(--spacing-01);
   }
+}
+
+.account-upgrade-cta {
+  display: inline;
+  margin: 0 var(--spacing-01) 0 var(--spacing-02);
 }
 
 

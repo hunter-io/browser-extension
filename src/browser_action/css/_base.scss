@@ -20,6 +20,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.3rem;
   color: var(--colors-grey-800);
+  margin-top: 5.2rem; // header height
 
   &::-webkit-scrollbar {
     display: none;
@@ -41,6 +42,10 @@ strong {
 .fa-spin {
   -webkit-animation-duration: 400ms !important;
   animation-duration: 400ms !important;
+}
+
+abbr {
+  text-decoration: none;
 }
 
 // Confidence score
