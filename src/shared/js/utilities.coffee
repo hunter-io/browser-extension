@@ -1,20 +1,64 @@
 Utilities =
-  # Remove all the subdomains
-  withoutSubDomain: (domain) ->
+  # Return a decomposition of all successive subdomains in an array
+  # In some rare case, this function might remove the main domain name and let only the
+  # TLD. To mitigate these cases, we check if we can find emails by adding back one level
+  # in the function "findRelevantDomain".
+  #
+  decomposeSubDomains: (domain) ->
+    domains = [domain]
+
     loop
-      newdomain = domain.substring(domain.indexOf('.') + 1)
-      subdomainsCount = (newdomain.match(/\./g) or []).length
+      newDomain = domain.substring(domain.indexOf('.') + 1)
+      subdomainsCount = (newDomain.match(/\./g) or []).length
 
-      if (subdomainsCount == 0 || newdomain.length <= 7) then break
-      domain = newdomain
+      if (subdomainsCount == 0 || newDomain.length <= 7) then break
+      domain = newDomain
+      domains.push newDomain
 
-    return domain
+    return domains
+
+  # This function decides if it's relevant to remove the highest found subdomain or not.
+  # If we find data by keeping the subdomain, this is the domain we will use.
+  #
+  findRelevantDomain: (domain, fn) ->
+    # In any case, we won't try emails on domain starting with "www."
+    domain = domain.replace(/^www\./i, "")
+
+    domains = @decomposeSubDomains(domain)
+
+    return fn(domain) if domains.length == 1
+
+    withSubdomain = domains[domains.length - 2]
+    withoutSubdomain = domains.pop()
+
+    @dataFoundForDomain withSubdomain, (results) ->
+      if results
+        return fn(withSubdomain)
+      else
+        return fn(withoutSubdomain)
+
+  # Check if we have data for the given domain name, by using a dedicated API endpoint.
+  #
+  dataFoundForDomain: (domain, fn) ->
+    fetch(Api.dataForDomain(domain)).then((response) ->
+      response.json()
+    ).then((response) ->
+      if response == 1
+        fn(true)
+      else
+        fn(false)
+    ).catch (error) ->
+      console.warn error
+      fn(false)
+
 
   # Add commas separating thousands
+  #
   numberWithCommas: (x) ->
     x.toString().replace /\B(?=(\d{3})+(?!\d))/g, ','
 
   # Display dates easy to read
+  #
   dateInWords: (input) ->
     date = undefined
     monthNames = undefined
@@ -57,6 +101,7 @@ Utilities =
     return string.charAt(0).toUpperCase() + string.slice(1)
 
   # Open in a new tab
+  #
   openInNewTab: (url) ->
     win = window.open(url, '_blank')
     win.focus()
@@ -117,7 +162,8 @@ Utilities =
 
     return sortable
 
-
+  # Converts to MD5
+  #
   MD5: (s) ->
     C = Array()
     P = undefined
@@ -335,8 +381,8 @@ Utilities =
     i = B(Y) + B(X) + B(W) + B(V)
     i.toLowerCase()
 
-
 # Generate a hash from a string
+#
 String::hashCode = ->
   hash = 0
   i = undefined
