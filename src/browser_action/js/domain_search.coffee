@@ -13,7 +13,9 @@ DomainSearch = ->
       marketing: "Marketing",
       communication: "Communication",
       education: "Education",
-      design: "Arts & Design"
+      design: "Arts & Design",
+      health: "Medical & Health",
+      operations: "Operations & Logistics"
     }
 
     launch: ->
