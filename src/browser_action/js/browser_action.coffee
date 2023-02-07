@@ -62,20 +62,6 @@ chrome.tabs.query {
         $("#loading-placeholder").hide()
 
       else
-        chrome.tabs.query {
-          active: true
-          currentWindow: true
-        }, (tabs) ->
-          chrome.tabs.sendMessage tabs[0].id, { parsing: "article" }, (response) ->
-
-            if response? && response.is_article
-              # Launch the Author Finder
-              authorFinder = new AuthorFinder
-              authorFinder.launch()
-
-              console.log("Author Finder launched")
-
-            else
-              # Launch the Domain Search
-              domainSearch = new DomainSearch
-              domainSearch.launch()
+        # Launch the Domain Search
+        domainSearch = new DomainSearch
+        domainSearch.launch()
