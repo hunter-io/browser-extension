@@ -6,8 +6,6 @@
     "type": "git",
     "url": "git+https://github.com/hunter-io/browser-extension.git"
   },
-  "author": "François Grante",
-  "email": "contact@hunter.io",
   "bugs": {
     "url": "https://github.com/hunter-io/browser-extension/issues"
   },
