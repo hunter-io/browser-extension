@@ -1,14 +1,19 @@
 Api =
   # Domain Search
-  domainSearch: (domain, department, api_key) ->
+  domainSearch: (domain, department, type, api_key) ->
     if department != null && typeof department != 'undefined'
       department = '&department=' + department
     else
       department = ''
 
+    if type != null && typeof type != 'undefined'
+      type = '&type=' + type
+    else
+      type = ''
+
     if api_key
       auth = '&api_key=' + api_key
-      'https://api.hunter.io/v2/domain-search?limit=10&offset=0&domain=' + domain + department + auth
+      'https://api.hunter.io/v2/domain-search?limit=10&offset=0&domain=' + domain + department + type + auth
     else
       'https://api.hunter.io/trial/v2/domain-search?domain=' + domain
 
@@ -24,14 +29,6 @@ Api =
       'https://api.hunter.io/v2/email-finder?domain=' + domain + full_name + auth
     else
       'https://api.hunter.io/trial/v2/email-finder?domain=' + domain + full_name
-
-  # Author Finder
-  authorFinder: (url, timeout, api_key) ->
-    if api_key
-      auth = '&api_key=' + api_key
-      'https://api.hunter.io/v2/author-finder?max_duration=' + timeout + '&url=' + url + auth
-    else
-      'https://api.hunter.io/trial/v2/author-finder?max_duration=5&url=' + url
 
   # Email Verifier
   emailVerifier: (email, api_key) ->

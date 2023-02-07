@@ -143,29 +143,10 @@ Utilities =
   # Copy the email in an .email tag
   #
   copyEmailListener: ->
-    $(".email").mouseover ->
-      $(this).parent().find(".copy-status").fadeIn 200
-    $(".email").mouseout ->
-      $(this).parent().find(".copy-status").fadeOut 200
-    $(".email").on "click", ->
-      email = $(this).text()
+    $(".copy-email").on "click", ->
+      email = $(this).data("email")
       Utilities.executeCopy(email)
-      email_copied = $(this).parent().find(".email-copied")
-      email_copied.text(email)
-      email_copied.css
-        opacity: 0.5
-      email_copied.animate
-        opacity: 0
-        top: "-18px"
-      , 300
-      , ->
-        email_copied.removeAttr "style"
-        email_copied.text ""
-
-      copy_status = $(this).parent().find(".copy-status")
-      copy_status.show().text("Copied!")
-      copy_status.delay(400).fadeOut 200, ->
-        copy_status.text("Copy")
+      $(this).next().find(".tooltip-inner").text("Copied!")
 
   # Sort an object by values
   #

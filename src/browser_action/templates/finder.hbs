@@ -1,41 +1,99 @@
-<div class="finder-result-email">
-  <div class="email-container">
-    <div class="email-copied"></div>
-    <div class="email">{{email}}</div>
-    {{#ifIsVerified verification.status}}
-    <div class="verified-icon fas fa-shield-check" data-toggle="tooltip" data-placement="top" title="Verified"></div>
-    {{else}}
-    <div class="score {{confidence_score_class}}" data-toggle="tooltip" data-placement="top" title="Confidence score: {{score}}%"></div>
-    {{/ifIsVerified}}
-    <span class="copy-status">Copy</span>
+<div class="ds-result ds-result--single">
+  <div class="ds-result__data">
+    <div class="ds-result__avatar">
+      <figure class="h-avatar h-avatar--auto">
+        <img alt="" onload="this.style='opacity: 1;'" src="https://www.gravatar.com/avatar/{{#md5}}{{email}}{{/md5}}?s=128&d=https%3A%2F%2Fui-avatars.com/api/{{first_name}}%2B{{last_name}}/128/E6F4FF/0578D6">
+      </figure>
+    </div>
+    <div class="ds-result__primary">
+      <div class="ds-result__fullname">{{first_name}} {{last_name}}</div>
+      <div class="ds-result__email copy-email" data-email="{{email}}" data-toggle="tooltip" data-placement="top" title="Click to copy">{{email}}</div>
+      <div class="ds-result__verification">
+        {{#ifIsVerified verification.status}}
+          <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Valid">
+            <span class="tag__label">
+              <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
+              {{score}}%
+            </span>
+          </span>
+        {{else}}
+          {{#ifIsAcceptAll}}
+            <span class="tag tag--warning" data-toggle="tooltip" data-placement="top" title="Accept All">
+              <span class="tag__label">
+                <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
+                {{score}}%
+              </span>
+            </span>
+          {{else}}
+            <div class="verification-result">
+              <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Confidence score: {{score}}%">
+                <span class="score mr-1 {{confidence_score_class}}"></span>
+                <span class="tag__label">
+                  {{score}}%
+                </span>
+              </span>
+            </div>
+          {{/ifIsAcceptAll}}
+        {{/ifIsVerified}}
+      </div>
+    </div>
+    <div class="ds-result__secondary">
+      {{#if phone_number}}
+      <div class="ds-result__attribute">
+        <span class="far fa-phone"></span>
+        {{phone_number}}
+      </div>
+      {{/if}}
+      {{#if position}}
+      <div class="ds-result__attribute">
+        <span class="far fa-briefcase"></span>
+        {{position}}
+      </div>
+      {{else if department}}
+      <div class="ds-result__attribute">
+        <span class="tag tag--sm ds-result__department">
+          <span class="tag__label">{{department}}</span>
+        </span>
+      </div>
+      {{/if}}
+      <div class="ds-result__attribute">
+        {{#if linkedin}}
+        <a class="ds-result__social" href="{{linkedin}}" rel="noopener noreferrer nofollow" target="_blank" aria-label="LinkedIn Profile">
+          <span class="fab fa-linkedin" aria-hidden="true"></span>
+        </a>
+        {{/if}}
+        {{#if twitter}}
+        <a class="ds-result__social" href="https://www.twitter.com/{{twitter}}" rel="noopener noreferrer nofollow" target="_blank" aria-label="Twitter Profile">
+          <span class="fab fa-twitter" aria-hidden="true"></span>
+        </a>
+        {{/if}}
+      </div>
+    </div>
+    <div class="ds-result__save">
+      <button class="h-button h-button--sm save-lead-button" type="button" data-email="{{email}}">Save as lead</button>
+    </div>
   </div>
-  <button class="save-lead-button action-lead-button pull-right" data-email="{{email}}">
-    <i class="fas fa-plus"></i>
-    <span class="lead-status">Save</span>
-  </button>
-</div>
-<div class="finder-result-profile">
-  <div class="finder-result-pic">
-    <img src="https://www.gravatar.com/avatar/{{#md5}}{{email}}{{/md5}}?s=128&d=https%3A%2F%2Flogo.clearbit.com%2F{{domain}}" />
+
+  {{#if sources}}
+  <div class="ds-result__sources">
+    <div class="ds-sources__count">{{{method}}}</div>
+    <ul class="ds-sources-list">
+      {{#each sources}}
+      <li class="ds-sources-list__item {{#unless this.still_on_page}}ds-sources-list__item--outdated{{/unless}}">
+        {{#unless this.still_on_page}}
+        <span class="tag tag--sm">
+          <span class="tag__label">
+          Removed
+          </span>
+        </span>
+        {{/unless}}
+        <a class="ds-sources-list__link" href="{{this.uri}}#hunter-email:{{../value}}" rel="noopener noreferrer nofollow" target="_blank">
+          {{this.uri}}
+        </a>
+        <time class="ds-sources-list__date">{{#userDate}}{{this.extracted_on}}{{/userDate}}</time>
+      </li>
+      {{/each}}
+    </ul>
   </div>
-  <h3>{{first_name}} {{last_name}}</h3>
-  <div class="finder-result-title">{{title}}</div>
-</div>
-<div class="finder-accept-all">{{#if accept_all}}This email address can't be verified.{{/if}}</div>
-<div class="finder-result-method">{{{method}}}</div>
-<div class="finder-result-sources sources-list">
-  {{#each sources}}
-  <div class="{{#unless this.still_on_page}}not-on-page{{/unless}}">
-    <a href="{{this.uri}}#hunter-email:{{../email}}" target="_blank" rel="nofollow">
-      {{this.uri}}
-    </a>
-    <span class="source-date">
-      {{#userDate}}{{this.extracted_on}}{{/userDate}}
-    </span>
-    {{#unless this.still_on_page}}
-    <span class="not-on-page-label" data-toggle="tooltip" data-placement="top" title="The email address is no longer on the page">Removed</span>
-    {{/unless}}
-    <br />
-  </div>
-  {{/each}}
+  {{/if}}
 </div>

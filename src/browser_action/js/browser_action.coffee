@@ -8,6 +8,8 @@ loadAccountInformation = ->
 
       $(".account-calls-used").text Utilities.numberWithCommas(json.data.requests.searches.used)
       $(".account-calls-available").text Utilities.numberWithCommas(json.data.requests.searches.available)
+      $(".account-avatar__img").attr "src", "https://ui-avatars.com/api/?name=" + json.data.first_name + "+" + json.data.last_name + "&background=0F8DF4&color=fff&rounded=true"
+      $(".account-avatar__img").attr "alt", json.data.first_name + " " + json.data.last_name
 
       if json.data.plan_level == 0
         $(".account-upgrade-cta").show()
@@ -22,7 +24,6 @@ displayError = (html) ->
 # Prepare what will be diplayed depending on the current page and domain
 # - If it's not on a domain name, a default page explain how it works
 # - If on LinkedIn, a page explains the feature is no longer available
-# - If an article author can be detected on the page, the Author Finder is launched
 # - Otherwise, the Domain Search is launched
 #
 chrome.tabs.query {
@@ -61,20 +62,6 @@ chrome.tabs.query {
         $("#loading-placeholder").hide()
 
       else
-        chrome.tabs.query {
-          active: true
-          currentWindow: true
-        }, (tabs) ->
-          chrome.tabs.sendMessage tabs[0].id, { parsing: "article" }, (response) ->
-
-            if response? && response.is_article
-              # Launch the Author Finder
-              authorFinder = new AuthorFinder
-              authorFinder.launch()
-
-              console.log("Author Finder launched")
-
-            else
-              # Launch the Domain Search
-              domainSearch = new DomainSearch
-              domainSearch.launch()
+        # Launch the Domain Search
+        domainSearch = new DomainSearch
+        domainSearch.launch()

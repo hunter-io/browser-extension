@@ -9,3 +9,4 @@ Archive.zip
 .DS_Store
 .sass-cache
 yarn.lock
+.ruby-version
