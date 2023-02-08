@@ -11,7 +11,7 @@
   background-color: var(--colors-grey-900);
   color: #fff;
   min-height: 5.2rem;
-  z-index: 100;
+  z-index: 1001;
 }
 
 .header__logo {
@@ -81,7 +81,6 @@
 }
 
 .account-upgrade-cta {
-  display: inline;
   margin: 0 var(--spacing-01) 0 var(--spacing-02);
 }
 
@@ -266,6 +265,7 @@
   border: 1px solid var(--colors-grey-300);
   border-radius: 4px;
   overflow: hidden;
+  min-width: 19rem;
 
   &:lang(fr) {
     min-width: 21rem;
