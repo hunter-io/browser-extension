@@ -4,5 +4,20 @@
   },
   "extension_description": {
     "message": "Find email addresses from anywhere on the web, with just one click."
+  },
+  "context_menu_dashboard": {
+    "message": "Dashboard"
+  },
+  "context_menu_leads": {
+    "message": "Leads"
+  },
+  "context_menu_subscription": {
+    "message": "Subscription"
+  },
+  "context_menu_faqs": {
+    "message": "Tutorial"
+  },
+  "see_results": {
+    "message": "See results on hunter.io"
   }
 }
