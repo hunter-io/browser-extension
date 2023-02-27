@@ -1,10 +1,12 @@
 {
+  /* manifest.json */
   "extension_name": {
     "message": "Hunter - Email Finder Extension"
   },
   "extension_description": {
     "message": "Find email addresses from anywhere on the web, with just one click."
   },
+  /* /js/background.js */
   "context_menu_dashboard": {
     "message": "Dashboard"
   },
@@ -17,7 +19,179 @@
   "context_menu_faqs": {
     "message": "Tutorial"
   },
+  /* /html/browser_popup.html */
   "see_results": {
     "message": "See results on hunter.io"
-  }
+  },
+  "searches": {
+    "message": "searches"
+  },
+  "upgrade": {
+    "message": "Upgrade"
+  },
+  "sign_in": {
+    "message": "Sign in"
+  },
+  "create_free_account": {
+    "message": "Create a free account"
+  },
+  "are_you_statisfied": {
+    "message": "Are you satisfied with Hunter extension?"
+  },
+  "yes": {
+    "message": "Yes"
+  },
+  "no": {
+    "message": "No"
+  },
+  "hunter_extension_is_free": {
+    "message": "Hunter extension is free."
+  },
+  "please_let_review": {
+    "message": "Please help us spread the word by letting a review!"
+  },
+  "we_are_sorry": {
+    "message": "We are sorry to hear this."
+  },
+  "please_contact_us_for_feedback": {
+    "message": "Please contact us at contact@hunter.io if you want to give us feedback or ask any question. We would be happy to help."
+  },
+  "you_reached_daily_limit": {
+    "message": "You've reached your daily limit!"
+  },
+  "please_connect_account": {
+    "message": "Please connect your Hunter account to use the extension. It's free."
+  },
+  "you_are_not_authenticated": {
+    "message": "You are no longer authenticated"
+  },
+  "please_sign_in_to_continue": {
+    "message": "Please sign in to continue"
+  },
+  "not_enough_data": {
+    "message": "Not enough data"
+  },
+  "not_enough_data_for": {
+    "message": "There is not enough data available online for"
+  },
+  "find_out_more": {
+    "message": "Find out more information"
+  },
+  "webmail_domain": {
+    "message": "Webmail domain"
+  },
+  "domain_used_for_personal_emails": {
+    "message": "This domain is used to create personal email addresses. These email addresses are not returned in Hunter which is designed for professional use only."
+  },
+  "email_pattern": {
+    "message": "Email pattern"
+  },
+  "type": {
+    "message": "Type"
+  },
+  "personal": {
+    "message": "Personal"
+  },
+  "generic": {
+    "message": "Generic"
+  },
+  "apply_filters": {
+    "message": "Apply filters"
+  },
+  "departments": {
+    "message": "Departments"
+  },
+  "department_executive": {
+    "message": "Executive"
+  },
+  "department_it": {
+    "message": "IT / Engineering"
+  },
+  "department_finance": {
+    "message": "Finance"
+  },
+  "department_management": {
+    "message": "Management"
+  },
+  "department_sales": {
+    "message": "Sales"
+  },
+  "department_legal": {
+    "message": "legal"
+  },
+  "department_support": {
+    "message": "Support"
+  },
+  "department_hr": {
+    "message": "HR"
+  },
+  "department_marketing": {
+    "message": "Marketing"
+  },
+  "department_communication": {
+    "message": "Communication"
+  },
+  "department_education": {
+    "message": "Education"
+  },
+  "department_design": {
+    "message": "Design"
+  },
+  "department_health": {
+    "message": "Medical & Health"
+  },
+  "department_operations": {
+    "message": "Operations & Logistics"
+  },
+  "clear_filters": {
+    "message": "Clear filters"
+  },
+  "find_by_name": {
+    "message": "Find by name"
+  },
+  "no_results_found": {
+    "message": "No results found"
+  },
+  "we_could_not_find_with_filters": {
+    "message": "We couldn't find any results matching your criterias. Update or clear your filters."
+  },
+  "no_results_for": {
+    "message": "No results for"
+  },
+  "could_not_find_email_for_person": {
+    "message": "We couldn't find the email address for this person."
+  },
+  "save_leads_in": {
+    "message": "Save leads in"
+  },
+  "go_to_my_leads": {
+    "message": "Go to my leads"
+  },
+  "not_available_on_linkedin": {
+    "message": "Hunter is no longer available on LinkedIn"
+  },
+  "find_emails_with_email_finder": {
+    "message": "To find the email address of people you have identified, please use the Email Finder."
+  },
+  "email_finder": {
+    "message": "Email Finder"
+  },
+  "find_emails_from_websites": {
+    "message": "Find email addresses from websites"
+  },
+  "open_hunter_on_websites": {
+    "message": "Open Hunter when you visit websites to find email addresses."
+  },
+  "dashboard": {
+    "message": "Dashboard"
+  },
+  "connection_refused": {
+    "message": "The connection to Hunter has been refused"
+  },
+  "visit_website_for_information": {
+    "message": "Please visit the website for more information."
+  },
+  "go_to_hunter": {
+    "message": "Go to hunter.io"
+  },
 }

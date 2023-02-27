@@ -46,9 +46,9 @@
         </div>
 
         <div class="account-logged">
-          <span class="account-calls-used"></span>/<span class="account-calls-available"></span> searches
+          <span class="account-calls-used"></span>/<span class="account-calls-available"></span> <span data-locale="searches">searches</span>
           <span class="account-upgrade-cta">
-            <a class="h-button h-button--xs" target="_blank" href="https://hunter.io/welcome/upgrade?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
+            <a data-locale="upgrade" class="h-button h-button--xs" target="_blank" href="https://hunter.io/welcome/upgrade?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
               Upgrade
             </a>
           </span>
@@ -58,10 +58,10 @@
         </div>
 
         <div class="account-not-logged">
-          <a class="h-button h-button--sm" target="_blank" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
+          <a data-locale="sign_in" class="h-button h-button--sm" target="_blank" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
             Sign in
           </a>
-          <a class="h-button h-button--primary h-button--sm" target="_blank" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
+          <a data-locale="create_free_account" class="h-button h-button--primary h-button--sm" target="_blank" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">
             Create a free account
           </a>
         </div>
@@ -87,10 +87,10 @@
         <!-- Feedback -->
         <section class="feedback-notification">
           <div class="feedback-block">
-            <p class="feedback-block__title">Are you satisfied with Hunter extension?</p>
+            <p data-locale="are_you_statisfied" class="feedback-block__title">Are you satisfied with Hunter extension?</p>
             <div class="feedback-block__actions">
-              <button type="button" class="feedback-link h-button h-button--sm" id="open-rate-notification"><span class="far fa-thumbs-up" aria-hidden="true"></span> Yes</button>
-              <button type="button" class="feedback-link h-button h-button--sm" id="open-contact-notification"><span class="far fa-thumbs-down" aria-hidden="true"></span> No</button>
+              <button data-locale="yes" type="button" class="feedback-link h-button h-button--sm" id="open-rate-notification"><span class="far fa-thumbs-up" aria-hidden="true"></span> Yes</button>
+              <button data-locale="no" type="button" class="feedback-link h-button h-button--sm" id="open-contact-notification"><span class="far fa-thumbs-down" aria-hidden="true"></span> No</button>
             </div>
           </div>
         </section>
@@ -105,8 +105,8 @@
               <path d="M22.669 8.44c-2.124-1.218-4.85-.354-6.126 1.738 0 0-.403.666-.757 1.226a.943.943 0 0 1-1.284.313l-1.219-.74c-2.091-1.269-4.907-.767-6.232 1.292a4.45 4.45 0 0 0 1.44 6.216l8.802 5.326c.568.346 1.3.165 1.646-.403l5.327-8.801a4.454 4.454 0 0 0-1.606-6.175l.009.008Z" stroke="#3A444F" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p>
-              <strong class="feedback-block__title">Hunter extension is free.</strong><br>
-              Please help us spread the word by letting a review!
+              <strong data-locale="hunter_extension_is_free" class="feedback-block__title">Hunter extension is free.</strong><br>
+              <span data-locale="please_let_review">Please help us spread the word by letting a review!</span>
             </p>
             <a class="h-button h-button--sm feedback-block__actions" href="https://chrome.google.com/webstore/detail/email-hunter/hgmhmanijnjhaffoampdlllchpolkdnj/reviews" target="_blank">Add a review</a>
           </div>
@@ -115,8 +115,8 @@
         <section class="contact-notification">
           <div class="feedback-block">
             <p>
-              <strong class="feedback-block__title">We are sorry to hear this.</strong><br>
-              Please contact us at <strong>contact@hunter.io</strong> if you want to give us feedback or ask any question. We would be happy to help.
+              <strong data-locale="we_are_sorry" class="feedback-block__title">We are sorry to hear this.</strong><br>
+              <span data-locale="please_contact_us_for_feedback">Please contact us at <strong>contact@hunter.io</strong> if you want to give us feedback or ask any question. We would be happy to help.</span>
             </p>
           </div>
         </section>
@@ -137,11 +137,11 @@
           <div class="empty-state">
             <span class="empty-state__icon far fa-user-lock" aria-hidden="true"></span>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">You've reached your daily limit!</h1>
-              <p>Please connect your Hunter account to use the extension. It's free.</p>
+              <h1 class="empty-state__title" data-locale="you_reached_daily_limit">You've reached your daily limit!</h1>
+              <p data-locale="please_connect_account">Please connect your Hunter account to use the extension. It's free.</p>
               <div class="empty-state__actions">
-                <a class="h-button h-button--sm h-button--primary" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Create a free account</a>
-                <a class="h-button h-button--sm" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Sign in</a>
+                <a data-locale="sign_in" class="h-button h-button--sm h-button--primary" href="https://hunter.io/users/sign_up?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Create a free account</a>
+                <a data-locale="create_free_account" class="h-button h-button--sm" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Sign in</a>
               </div>
             </div>
           </div>
@@ -151,10 +151,10 @@
           <div class="empty-state">
             <span class="empty-state__icon far fa-user-lock" aria-hidden="true"></span>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">You are no longer authenticated</h1>
-              <p>Please sign in to continue.</p>
+              <h1 data-locale="you_are_not_authenticated" class="empty-state__title">You are no longer authenticated</h1>
+              <p data-locale="please_sign_in_to_continue">Please sign in to continue.</p>
               <div class="empty-state__actions">
-                <a class="h-button h-button--sm h-button--primary" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Sign in</a>
+                <a data-locale="sign_in" class="h-button h-button--sm h-button--primary" href="https://hunter.io/chrome/welcome?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Sign in</a>
               </div>
             </div>
           </div>
@@ -216,10 +216,13 @@
               <path d="M71.526 45.078c.37 1.629 2.164 8.146 6.758 7.957 5.725-.104 6.587-9.087 2.699-10.026-3.63-.776-.931 10.353 5.026 10.129 6.19-.12 5.267-8.078 2.69-8.664-2.432-.517-.708 6.914 3.482 7.018 4.276.137 4.13-3.871 5.638-1.785 1.5 2.112 2.862 1.086 3.914-.31 1.051-1.397 1.983 3.241 6.974 1.508" stroke="#0F8DF4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">Not enough data was found</h1>
-              <p>There is not enough data available online for <strong class="domain"></strong>.</p>
+              <h1 data-locale="not_enough_data" class="empty-state__title">Not enough data</h1>
+              <p>
+                <span data-locale="not_enough_data_for">There is not enough data available online for</span>
+                <strong class="domain"></strong>.
+              </p>
               <div class="empty-state__actions">
-                <a href="https://help.hunter.io/en/articles/2452480-why-doesn-t-the-domain-search-return-any-results?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Find out more information</a>
+                <a data-locale="find_out_more" href="https://help.hunter.io/en/articles/2452480-why-doesn-t-the-domain-search-return-any-results?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Find out more information</a>
               </div>
             </div>
           </div>
@@ -315,8 +318,8 @@
               </defs>
             </svg>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">Webmail domain</h1>
-              <p>The domain <strong class="domain"></strong> is used to create personal email addresses. These email addresses are not returned in Hunter which is designed for professional use only.</p>
+              <h1 data-locale="webmail_domain" class="empty-state__title">Webmail domain</h1>
+              <p data-locale="domain_used_for_personal_emails">This domain is used to create personal email addresses. These email addresses are not returned in Hunter which is designed for professional use only.</p>
             </div>
           </div>
         </section>
@@ -325,14 +328,14 @@
         <header class="results-header">
           <h1 class="results-header__count"></h1>
           <div class="results-header__pattern">
-            Email pattern: <strong></strong>
+            <span data-locale="email_pattern">Email pattern</span>: <strong></strong>
           </div>
         </header>
 
         <section class="filters">
           <div class="dropdown">
             <button class="h-button h-button--sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Type
+              <span data-locale="type">Type</span>
               <span class="far fa-angle-down" aria-hidden="true"></span>
             </button>
             <div class="dropdown-menu filters-dropdown" id="type-filters">
@@ -340,21 +343,21 @@
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-type-personal" name="filter-type" type="radio" value="personal">
-                    <label for="filter-type-personal">Personal</label>
+                    <label data-locale="personal" for="filter-type-personal">Personal</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-type-generic" name="filter-type" type="radio" value="generic">
-                    <label for="filter-type-generic">Generic</label>
+                    <label data-locale="generic" for="filter-type-generic">Generic</label>
                   </div>
                 </li>
               </ul>
-              <button class="filters-dropdown__submit apply-filters" type="button">Apply filters</button>
+              <button data-locale="apply_filters" class="filters-dropdown__submit apply-filters" type="button">Apply filters</button>
             </div>
           </div>
           <div class="dropdown">
-            <button class="h-button h-button--sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button data-locale="departments" class="h-button h-button--sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Department
               <span class="far fa-angle-down" aria-hidden="true"></span>
             </button>
@@ -363,98 +366,98 @@
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-executive" name="filter-department-executive" type="checkbox" value="executive">
-                    <label for="filter-department-executive">Executive</label>
+                    <label data-locale="department_executive" for="filter-department-executive">Executive</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-it" name="filter-department-it" type="checkbox" value="it">
-                    <label for="filter-department-it">IT / Engineering</label>
+                    <label data-locale="department_it" for="filter-department-it">IT / Engineering</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-finance" name="filter-department-finance" type="checkbox" value="finance">
-                    <label for="filter-department-finance">Finance</label>
+                    <label data-locale="department_finance" for="filter-department-finance">Finance</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-management" name="filter-department-management" type="checkbox" value="management">
-                    <label for="filter-department-management">Management</label>
+                    <label data-locale="department_management" for="filter-department-management">Management</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-sales" name="filter-department-sales" type="checkbox" value="sales">
-                    <label for="filter-department-sales">Sales</label>
+                    <label data-locale="department_sales" for="filter-department-sales">Sales</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-legal" name="filter-department-legal" type="checkbox" value="legal">
-                    <label for="filter-department-legal">Legal</label>
+                    <label data-locale="department_legal" for="filter-department-legal">Legal</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-support" name="filter-department-support" type="checkbox" value="support">
-                    <label for="filter-department-support">Support</label>
+                    <label data-locale="department_support" for="filter-department-support">Support</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-hr" name="filter-department-hr" type="checkbox" value="hr">
-                    <label for="filter-department-hr">Human Resources</label>
+                    <label data-locale="department_hr" for="filter-department-hr">Human Resources</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-marketing" name="filter-department-marketing" type="checkbox" value="marketing">
-                    <label for="filter-department-marketing">Marketing</label>
+                    <label data-locale="department_marketing" for="filter-department-marketing">Marketing</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-communication" name="filter-department-communication" type="checkbox" value="communication">
-                    <label for="filter-department-communication">Communication</label>
+                    <label data-locale="department_communication" for="filter-department-communication">Communication</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-education" name="filter-department-education" type="checkbox" value="education">
-                    <label for="filter-department-education">Education</label>
+                    <label data-locale="department_education" for="filter-department-education">Education</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-design" name="filter-department-design" type="checkbox" value="design">
-                    <label for="filter-department-design">Arts &amp; Design</label>
+                    <label data-locale="department_design" for="filter-department-design">Arts &amp; Design</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-health" name="filter-department-health" type="checkbox" value="health">
-                    <label for="filter-department-health">Medical &amp; Health</label>
+                    <label data-locale="department_health" for="filter-department-health">Medical &amp; Health</label>
                   </div>
                 </li>
                 <li class="filters-choice__item">
                   <div class="filters-choice__checkbox">
                     <input id="filter-department-operations" name="filter-department-operations" type="checkbox" value="operations">
-                    <label for="filter-department-operations">Operations &amp; Logistics</label>
+                    <label data-locale="department_operations" for="filter-department-operations">Operations &amp; Logistics</label>
                   </div>
                 </li>
               </ul>
               <button class="filters-dropdown__submit apply-filters" type="button">Apply filters</button>
             </div>
           </div>
-          <button class="h-button h-button--sm h-button--ghost filters__clear clear-filters" type="button">
+          <button data-locale="clear_filters" class="h-button h-button--sm h-button--ghost filters__clear clear-filters" type="button">
             Clear filters
           </button>
 
           <button class="h-button h-button--sm filters__by-name" aria-expanded="false" aria-controls="find-by-name" type="button">
             <span class="far fa-circle-user" aria-hidden="true"></span>
-            Find by name
+            <span data-locale="find_by_name">Find by name</span>
             <span class="far fa-angle-down" aria-hidden="true"></span>
           </button>
         </section>
@@ -567,10 +570,10 @@
               </defs>
             </svg>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">No results found</h1>
-              <p>We couldn't find any results matching your criterias.<br>Update or clear your filters.</p>
+              <h1 data-locale="no_results_found" class="empty-state__title">No results found</h1>
+              <p data-locale="we_could_not_find_with_filters">We couldn't find any results matching your criterias. Update or clear your filters.</p>
               <div class="empty-state__actions">
-                <button class="h-button h-button--sm clear-filters" type="button">Clear filters</button>
+                <button data-locale="clear_filters" class="h-button h-button--sm clear-filters" type="button">Clear filters</button>
               </div>
             </div>
           </div>
@@ -660,10 +663,10 @@
               </defs>
             </svg>
             <div class="empty-state__content">
-              <h1 class="empty-state__title">No result for <span class="person-name"></span></h1>
-              <p>We couldn't find the email address for this person.</p>
+              <h1 data-locale="no_results_for" class="empty-state__title">No result for <span class="person-name"></span></h1>
+              <p data-locale="could_not_find_email_for_person">We couldn't find the email address for this person.</p>
               <div class="empty-state__actions">
-                <a href="https://help.hunter.io/en/articles/4123615-why-doesn-t-the-email-finder-return-any-result?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Find out more information</a>
+                <a data-locale="find_out_more" href="https://help.hunter.io/en/articles/4123615-why-doesn-t-the-email-finder-return-any-result?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Find out more information</a>
               </div>
             </div>
           </div>
@@ -677,9 +680,9 @@
 
       <footer class="leads-manager account-logged">
         <div class="list-select-container">
-          <label for="leads-list">Save leads in</label>
+          <label data-locale="save_leads_in" for="leads-list">Save leads in</label>
         </div>
-        <a class="leads-manager__link" target="blank" href="https://hunter.io/leads?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">Go to my leads</a>
+        <a data-locale="go_to_my_leads" class="leads-manager__link" target="blank" href="https://hunter.io/leads?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup">Go to my leads</a>
       </footer>
     </div>
 
@@ -688,10 +691,10 @@
       <div class="empty-state">
         <span class="empty-state__icon fab fa-linkedin" aria-hidden="true"></span>
         <div class="empty-state__content">
-          <h1 class="empty-state__title">Hunter is no longer available on LinkedIn</h1>
-          <p>To find the email address of people you have identified, please use the Email Finder.</p>
+          <h1 data-locale="not_available_on_linkedin" class="empty-state__title">Hunter is no longer available on LinkedIn</h1>
+          <p data-locale="find_emails_with_email_finder">To find the email address of people you have identified, please use the Email Finder.</p>
           <div class="empty-state__actions">
-            <a class="h-button h-button--sm" href="https://hunter.io/find?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Email Finder</a>
+            <a data-locale="email_finder" class="h-button h-button--sm" href="https://hunter.io/find?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Email Finder</a>
           </div>
         </div>
       </div>
@@ -762,10 +765,10 @@
           </defs>
         </svg>
         <div class="empty-state__content">
-          <h1 class="empty-state__title">Find email addresses from websites</h1>
-          <p>Open Hunter when you visit websites to find email addresses.</p>
+          <h1 data-locale="find_emails_from_websites" class="empty-state__title">Find email addresses from websites</h1>
+          <p data-locale="open_hunter_on_websites">Open Hunter when you visit websites to find email addresses.</p>
           <div class="empty-state__actions">
-            <a class="h-button h-button--sm" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Dashboard</a>
+            <a data-locale="dashboard" class="h-button h-button--sm" href="https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Dashboard</a>
           </div>
         </div>
       </div>
@@ -859,10 +862,10 @@
           <path d="M78.487 90.551a7.423 7.423 0 0 1-2.13-.308c-1.832-.536-3.352-1.594-4.807-2.661-.042.149-.084.307-.126.466-.06.238-.12.485-.205.727-.284.811-.773 1.296-1.426 1.408-.47.084-.998-.103-1.394-.438a.371.371 0 0 1-.7.172c-.302-.573-.195-1.245.243-1.524a.39.39 0 0 1 .345-.033.364.364 0 0 1 .22.266c.107.503.75.895 1.16.825.466-.08.723-.545.853-.923.075-.21.126-.429.187-.662.088-.345.177-.704.33-1.035a.372.372 0 0 1 .555-.14l.038.028c1.51 1.114 3.076 2.266 4.936 2.811 1.916.578 4.093.238 4.853-.755.35-.452.4-1.007.457-1.594.032-.35.07-.713.168-1.068.032-.12.135-.49.536-.638.49-.187 1.049.05 1.487.275 1.631.839 3.626 1.752 6.078 2.13.294.047.592.084.895.112a.37.37 0 0 1-.065.736 12.42 12.42 0 0 1-.942-.116c-2.568-.396-4.717-1.385-6.302-2.205-.531-.27-.774-.28-.886-.238-.023.01-.05.019-.088.15-.084.288-.112.605-.145.936-.06.634-.13 1.352-.606 1.972-.699.914-2.093 1.32-3.52 1.32v.004ZM136.859 62.05a.383.383 0 0 1-.303-.154.373.373 0 0 1 .089-.517c1.976-1.403 1.818-2.834 1.706-3.883-.056-.518-.103-.928.154-1.221.144-.164.354-.252.624-.261.9-.02 1.478-.201 1.716-.546.205-.294.2-.76-.019-1.384-.112-.336-.214-.76-.009-1.096.219-.354.634-.41 1.114-.475.774-.103 1.837-.247 2.755-1.632.233-.34.368-.736.415-1.165a4.659 4.659 0 0 1-1.222-.5c-1.668-.945-2.68-2.712-2.205-3.854.173-.401.485-.63.877-.648.941-.042 1.986 1.067 2.582 2.13.425.75.662 1.515.714 2.233.862.056 1.901-.242 2.829-1.492.713-.927.811-2 .671-2.955-.974-.01-1.957-.303-2.801-.774-1.883-1.053-2.797-2.802-2.214-4.247.233-.54.648-.839 1.17-.857h.042c1.156 0 2.759 1.44 3.747 3.38.294.577.518 1.15.658 1.71a3.392 3.392 0 0 0 2.284-1.38c2.13-2.74-1.324-6.904-2.037-7.71a.37.37 0 1 1 .555-.49c1.1 1.24 4.498 5.534 2.074 8.648-.741.997-1.711 1.51-2.732 1.664.177 1.315-.098 2.513-.825 3.454-.927 1.25-2.149 1.85-3.435 1.795a3.248 3.248 0 0 1-.532 1.468c-1.105 1.66-2.461 1.842-3.272 1.954-.21.028-.532.07-.583.13 0 0-.042.093.079.462.299.857.271 1.552-.079 2.05-.387.555-1.142.84-2.307.863-.07 0-.098.014-.098.014-.028.065.009.4.032.643.122 1.091.317 2.914-2.013 4.569a.37.37 0 0 1-.215.07l.014.004Zm5.757-16.595h-.019c-.051 0-.149.01-.233.2-.326.779.574 2.177 1.888 2.923.205.117.499.257.844.364a4.743 4.743 0 0 0-.601-1.73c-.616-1.09-1.445-1.752-1.879-1.752v-.005Zm2.937-5.957h-.023c-.145 0-.359.05-.509.4-.508 1.264.625 2.606 1.893 3.315.69.387 1.487.639 2.28.671a7.45 7.45 0 0 0-.555-1.408c-.918-1.794-2.326-2.978-3.086-2.978Z" fill="#0F8DF4"/>
         </svg>
         <div class="empty-state__content">
-          <h1 class="empty-state__title">The connection to Hunter has been refused</h1>
-          <p>Please visit the website for more information.</p>
+          <h1 data-locale="connection_refused" class="empty-state__title">The connection to Hunter has been refused</h1>
+          <p data-locale="visit_website_for_information">Please visit the website for more information.</p>
           <div class="empty-state__actions">
-            <a class="h-button h-button--sm" href="https://hunter.io?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Go to hunter.io</a>
+            <a data-locale="go_to_hunter" class="h-button h-button--sm" href="https://hunter.io?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup" target="_blank">Go to hunter.io</a>
           </div>
         </div>
       </div>
