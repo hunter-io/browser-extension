@@ -127,7 +127,7 @@ module.exports.tasks = {
       src: ["**"],
       dest: "build-chrome/css/lib"
     },
-    css_libs: {
+    locale_files: {
       expand: true,
       cwd: "src/_locales",
       src: ["**"],
