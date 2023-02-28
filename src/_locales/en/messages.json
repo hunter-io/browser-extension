@@ -1,12 +1,10 @@
 {
-  /* manifest.json */
   "extension_name": {
     "message": "Hunter - Email Finder Extension"
   },
   "extension_description": {
     "message": "Find email addresses from anywhere on the web, with just one click."
   },
-  /* /js/background.js */
   "context_menu_dashboard": {
     "message": "Dashboard"
   },
@@ -19,7 +17,6 @@
   "context_menu_faqs": {
     "message": "Tutorial"
   },
-  /* /html/browser_popup.html */
   "see_results": {
     "message": "See results on hunter.io"
   },
@@ -123,19 +120,19 @@
     "message": "Support"
   },
   "department_hr": {
-    "message": "HR"
+    "message": "Human Resources"
   },
   "department_marketing": {
     "message": "Marketing"
   },
   "department_communication": {
-    "message": "Communication"
+    "message": "Writing & Communication"
   },
   "department_education": {
     "message": "Education"
   },
   "department_design": {
-    "message": "Design"
+    "message": "Arts & Design"
   },
   "department_health": {
     "message": "Medical & Health"
@@ -194,4 +191,86 @@
   "go_to_hunter": {
     "message": "Go to hunter.io"
   },
+  "something_went_wrong_with_the_query": {
+    "message": "Sorry, something went wrong with the query."
+  },
+  "result": {
+    "message": "result"
+  },
+  "see_all_the_results": {
+    "message": "See all the results ($COUNT$ more)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1,120"
+      }
+    }
+  },
+  "save": {
+    "message": "Save"
+  },
+  "sign_up_to_uncover_more_emails": {
+    "message": "Please sign up to uncover the email addresses"
+  },
+  "verifying": {
+    "message": "Verifying"
+  },
+  "retry": {
+    "message": "Retry"
+  },
+  "email_verification_takes_longer": {
+    "message": "The email verification is taking longer than expected. Please try again later."
+  },
+  "valid": {
+    "message": "Valid"
+  },
+  "invalid": {
+    "message": "Invalid"
+  },
+  "accept_all": {
+    "message": "Accept all"
+  },
+  "unknown": {
+    "message": "Unknown"
+  },
+  "first_name": {
+    "message": "First name"
+  },
+  "last_name": {
+    "message": "Last name"
+  },
+  "first_name_initial": {
+    "message": "First name initial"
+  },
+  "last_name_initial": {
+    "message": "Last name initial"
+  },
+  "enter_full_name_to_find_email": {
+    "message": "Please enter the full name of the person to find the email address."
+  },
+  "we_found_this_email_on_the_web": {
+    "message": "We found this email address $COUNT$ time$S$ on the web.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "12"
+      },
+      "s": {
+        "content": "$2",
+        "example": "s"
+      }
+    }
+  },
+  "loading": {
+    "message": "Loading"
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "failed": {
+    "message": "Failed"
+  },
+  "create_a_new_list": {
+    "message": "Create a new list"
+  }
 }

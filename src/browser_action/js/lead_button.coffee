@@ -18,7 +18,7 @@ LeadButton = ->
         lead = lead_button.data()
 
         lead_button.prop "disabled", true
-        lead_button.html("<span class='far fa-spin fa-spinner-third' aria-label='Loading'></span>")
+        lead_button.html("<span class='far fa-spin fa-spinner-third' aria-label='" + chrome.i18n.getMessage("loading") + "'></span>")
 
         attributes = [
           "first_name"
@@ -55,14 +55,14 @@ LeadButton = ->
         dataType: "json"
         jsonp: false
         error: (xhr, statusText, err) ->
-          button.replaceWith("<span class='tag tag--danger'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-times'></i>Failed</span></span>")
+          button.replaceWith("<span class='tag tag--danger'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-times'></i> " + chrome.i18n.getMessage("failed") + "</span></span>")
           displayError DOMPurify.sanitize(xhr.responseJSON["errors"][0]["details"])
 
           if xhr.status == 422
             window.current_leads_list_id = undefined
 
         success: (response) ->
-          button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i>Saved</span></span>")
+          button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i> " + chrome.i18n.getMessage("saved") + "</span></span>")
 
     disableSaveLeadButtonIfLeadExists: (selector) ->
       $(selector).each ->
@@ -77,5 +77,5 @@ LeadButton = ->
           jsonp: false
           success: (response) ->
             if response.data.id != null
-              lead_button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i>Saved</span></span>")
+              lead_button.replaceWith("<span class='tag tag--success'><span class='tag__label'><i aria-hidden='true' class='tag__icon far fa-check'></i> " + chrome.i18n.getMessage("saved") + "</span></span>")
   }

@@ -20,9 +20,8 @@ ListSelection =
           $(".leads-manager__list").append "<option "+selected+" value='"+val.id+"'>"+val.name+"</option>"
 
         # We add a link to the current list
-        $(".leads-manager__link").attr "href", "https://hunter.io/leads?leads_list_id="+selected_list_id+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
-
-        $(".leads-manager__list").append "<option value='new_list'>Create a new list...</option>"
+        $(".leads-manager__link").attr "href", "https://hunter.io/leads?leads_list_id=" + selected_list_id + "&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
+        $(".leads-manager__list").append "<option value='new_list'>" + chrome.i18n.getMessage("create_a_new_list") + "...</option>"
 
         _this.updateCurrent()
 
@@ -34,7 +33,6 @@ ListSelection =
         chrome.storage.sync.set "current_leads_list_id": $(this).val()
         window.current_leads_list_id = $(this).val()
         $(".leads-manager__link").attr "href", "https://hunter.io/leads?leads_list_id="+$(this).val()+"&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup"
-
 
   getLeadsLists: (callback) ->
     Account.getApiKey (api_key) ->
