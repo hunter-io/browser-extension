@@ -121,7 +121,7 @@ DomainSearch = ->
 
       # Display: the number of results
       if @results_count == 1 then s = "" else s = "s"
-      $("#domain-search .results-header__count").html DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)) + " " + chrome.i18n.getMessage("result") + s + " for <strong>" + DOMPurify.sanitize(@domain) + "</strong>"
+      $("#domain-search .results-header__count").html chrome.i18n.getMessage("results_for_domain", [DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)), s, DOMPurify.sanitize(@domain)])
 
       # Display: the email pattern if any, with the Email Finder form
       if @pattern != null

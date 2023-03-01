@@ -194,8 +194,22 @@
   "something_went_wrong_with_the_query": {
     "message": "Sorry, something went wrong with the query."
   },
-  "result": {
-    "message": "result"
+  "results_for_domain": {
+    "message": "$COUNT$ result$S$ for <strong>$DOMAIN$</strong>",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1,120"
+      },
+      "s": {
+        "content": "$2",
+        "example": "s"
+      },
+      "domain": {
+        "content": "$3",
+        "example": "hunter.io"
+      }
+    }
   },
   "see_all_the_results": {
     "message": "See all the results ($COUNT$ more)",
@@ -290,9 +304,6 @@
   },
   "april": {
     "message": "April"
-  },
-  "may": {
-    "message": "May"
   },
   "june": {
     "message": "June"
