@@ -272,5 +272,89 @@
   },
   "create_a_new_list": {
     "message": "Create a new list"
+  },
+  "click_to_copy": {
+    "message": "Click to copy"
+  },
+  "save_as_lead": {
+    "message": "Save as lead"
+  },
+  "january": {
+    "message": "January"
+  },
+  "february": {
+    "message": "February"
+  },
+  "march": {
+    "message": "March"
+  },
+  "april": {
+    "message": "April"
+  },
+  "may": {
+    "message": "May"
+  },
+  "june": {
+    "message": "June"
+  },
+  "july": {
+    "message": "July"
+  },
+  "august": {
+    "message": "August"
+  },
+  "september": {
+    "message": "September"
+  },
+  "october": {
+    "message": "October"
+  },
+  "november": {
+    "message": "November"
+  },
+  "december": {
+    "message": "December"
+  },
+  "jan": {
+    "message": "Jan"
+  },
+  "feb": {
+    "message": "Feb"
+  },
+  "mar": {
+    "message": "Mar"
+  },
+  "apr": {
+    "message": "Apr"
+  },
+  "may": {
+    "message": "May"
+  },
+  "jun": {
+    "message": "Jun"
+  },
+  "jul": {
+    "message": "Jul"
+  },
+  "aug": {
+    "message": "Aug"
+  },
+  "sep": {
+    "message": "Sep"
+  },
+  "oct": {
+    "message": "Oct"
+  },
+  "nov": {
+    "message": "Nov"
+  },
+  "dec": {
+    "message": "Dec"
+  },
+  "verify_email": {
+    "message": "Verify email"
+  },
+  "removed": {
+    "message": "Removed"
   }
 }

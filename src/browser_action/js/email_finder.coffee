@@ -113,7 +113,7 @@ EmailFinder = ->
         new Handlebars.SafeString(Utilities.MD5(options.fn(this)))
 
       template = JST["src/browser_action/templates/finder.hbs"]
-      finder_html = $(template(@))
+      finder_html = $(Utilities.localizeHTML(template(@)))
 
       # Generate the DOM with the template and display it
       $("#email-finder").html finder_html

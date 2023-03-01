@@ -51,6 +51,18 @@ Utilities =
       console.warn error
       fn(false)
 
+  # Localize a given HTML string.
+  #
+  localizeHTML: (html) ->
+    html = $("<div>#{html}</div>")
+
+    html.find("[data-locale]").each () ->
+      $(this).text(chrome.i18n.getMessage($(this).data("locale")))
+
+    html.find("[data-locale-title]").each () ->
+      $(this).prop("title", chrome.i18n.getMessage($(this).data("localeTitle")))
+
+    return html.html()
 
   # Add commas separating thousands
   #
@@ -67,33 +79,33 @@ Utilities =
     date = new Date(splitted_date[0], splitted_date[1] - 1, splitted_date[2])
     if $(window).width() > 768
       monthNames = [
-        'January'
-        'February'
-        'March'
-        'April'
-        'May'
-        'June'
-        'July'
-        'August'
-        'September'
-        'October'
-        'November'
-        'December'
+        chrome.i18n.getMessage("january")
+        chrome.i18n.getMessage("february")
+        chrome.i18n.getMessage("march")
+        chrome.i18n.getMessage("april")
+        chrome.i18n.getMessage("may")
+        chrome.i18n.getMessage("june")
+        chrome.i18n.getMessage("july")
+        chrome.i18n.getMessage("august")
+        chrome.i18n.getMessage("september")
+        chrome.i18n.getMessage("october")
+        chrome.i18n.getMessage("november")
+        chrome.i18n.getMessage("december")
       ]
     else
       monthNames = [
-        'Jan'
-        'Feb'
-        'Mar'
-        'Apr'
-        'May'
-        'Jun'
-        'Jul'
-        'Aug'
-        'Sep'
-        'Oct'
-        'Nov'
-        'Dec'
+        chrome.i18n.getMessage("jan")
+        chrome.i18n.getMessage("feb")
+        chrome.i18n.getMessage("mar")
+        chrome.i18n.getMessage("apr")
+        chrome.i18n.getMessage("may")
+        chrome.i18n.getMessage("jun")
+        chrome.i18n.getMessage("jul")
+        chrome.i18n.getMessage("aug")
+        chrome.i18n.getMessage("sep")
+        chrome.i18n.getMessage("oct")
+        chrome.i18n.getMessage("nov")
+        chrome.i18n.getMessage("dec")
       ]
     monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
 

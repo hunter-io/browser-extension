@@ -207,7 +207,7 @@ DomainSearch = ->
 
         # Integrate the result
         template = JST["src/browser_action/templates/search_results.hbs"]
-        result_tag = $(template(result))
+        result_tag = $(Utilities.localizeHTML(template(result)))
         $(".search-results").append(result_tag)
 
         # Add the lead's data
