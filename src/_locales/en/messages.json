@@ -249,7 +249,7 @@
     "message": "Please enter the full name of the person to find the email address."
   },
   "we_found_this_email_on_the_web": {
-    "message": "We found this email address $COUNT$ time$S$ on the web.",
+    "message": "We found this email address <strong>$COUNT$ time$S$</strong> on the web.",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -356,5 +356,26 @@
   },
   "removed": {
     "message": "Removed"
+  },
+  "something_went_wrong_on_our_side": {
+    "message": "Something went wrong on our side. Please try again later."
+  },
+  "please_complete_your_registration": {
+    "message": "Please complete your registration on the <a target='_blank' href='https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>website</a> to use the extension."
+  },
+  "your_account_has_been_restricted": {
+    "message": "Your account has been restricted. Please <a target='_blank' href='https://hunter.io/search?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>log in</a> for more information."
+  },
+  "you_have_reached_your_daily_quota": {
+    "message": "You have reached your free monthly quota. Please <a target='_blank' href='https://hunter.io/welcome/upgrade?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>upgrade</a> to a premium plan to do more searches."
+  },
+  "you_have_reached_your_temporary_quota": {
+    "message": "You have reached your temporary quota. You will get your full access as soon as we validate your account."
+  },
+  "your_have_reached_your_monthly_quota": {
+    "message": "You have reached your monthly quota. Please <a target='_blank' href='https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>upgrade</a> to do more searches."
+  },
+  "your_have_reached_your_monthly_enterprise_quota": {
+    "message": "You have reached your monthly quota. Please contact your account manager to update your plan."
   }
 }
