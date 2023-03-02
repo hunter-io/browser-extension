@@ -47,6 +47,9 @@
   "please_let_review": {
     "message": "Aidez-nous à faire connaître notre produit en laissant un commentaire !"
   },
+  "add_a_review": {
+    "message": "Laisser un avis"
+  },
   "we_are_sorry": {
     "message": "Nous sommes désolés d'apprendre cela."
   },
@@ -93,7 +96,7 @@
     "message": "Générique"
   },
   "apply_filters": {
-    "message": "Appliquer des filtres"
+    "message": "Filtrer"
   },
   "departments": {
     "message": "Départements"
@@ -102,7 +105,7 @@
     "message": "Direction"
   },
   "department_it": {
-    "message": "TI / Ingénierie"
+    "message": "IT / Ingénierie"
   },
   "department_finance": {
     "message": "Finance"
@@ -144,7 +147,7 @@
     "message": "Effacer les filtres"
   },
   "find_by_name": {
-    "message": "Trouver par nom"
+    "message": "Chercher par nom"
   },
   "no_results_found": {
     "message": "Aucun résultat trouvé"
@@ -159,10 +162,10 @@
     "message": "Nous n'avons pas pu trouver l'adresse email pour cette personne."
   },
   "save_leads_in": {
-    "message": "Enregistrer les pistes dans"
+    "message": "Enregistrer les prospects dans"
   },
   "go_to_my_leads": {
-    "message": "Aller à mes pistes"
+    "message": "Ouvrir la liste"
   },
   "not_available_on_linkedin": {
     "message": "Hunter n'est plus disponible sur LinkedIn"
@@ -291,7 +294,7 @@
     "message": "Cliquez pour copier"
   },
   "save_as_lead": {
-    "message": "Enregistrer en tant que prospect"
+    "message": "Enregistrer"
   },
   "january": {
     "message": "Janvier"

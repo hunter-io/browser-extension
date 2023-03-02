@@ -296,6 +296,8 @@
   list-style-type: none;
   padding: var(--spacing-04);
   margin: 0;
+  max-height: 29rem;
+  overflow: auto;
 }
 
 .filters-choice__item {
@@ -320,6 +322,7 @@
     line-height: calc(16/12);
     font-weight: 500;
     color: var(--colors-grey-800);
+    width: max-content;
   }
 }
 
@@ -734,6 +737,7 @@
   .h-button {
     min-width: 8rem;
     justify-content: center;
+    white-space: nowrap;
   }
 
   p {
