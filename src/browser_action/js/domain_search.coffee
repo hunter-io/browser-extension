@@ -407,7 +407,7 @@ DomainSearch = ->
 
     feedbackNotification: ->
       chrome.storage.sync.get "calls_count", (value) ->
-        if value["calls_count"] >= 20
+        if value["calls_count"] >= 10
           chrome.storage.sync.get "has_given_feedback", (value) ->
             if typeof value["has_given_feedback"] == "undefined"
               $(".feedback-notification").slideDown 300
