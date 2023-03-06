@@ -127,6 +127,12 @@ module.exports.tasks = {
       src: ["**"],
       dest: "build-chrome/css/lib"
     },
+    locale_files: {
+      expand: true,
+      cwd: "src/_locales",
+      src: ["**"],
+      dest: "build-chrome/_locales"
+    },
     manifest: {
       src: "src/manifest.json",
       dest: "build-chrome/manifest.json"

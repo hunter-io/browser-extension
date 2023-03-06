@@ -7,10 +7,10 @@
     </div>
     <div class="ds-result__primary">
       <div class="ds-result__fullname">{{first_name}} {{last_name}}</div>
-      <div class="ds-result__email copy-email" data-email="{{email}}" data-toggle="tooltip" data-placement="top" title="Click to copy">{{email}}</div>
+      <div class="ds-result__email copy-email" data-email="{{email}}" data-toggle="tooltip" data-placement="top" title="Click to copy" data-locale-title="click_to_copy">{{email}}</div>
       <div class="ds-result__verification">
         {{#ifIsVerified verification.status}}
-          <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Valid">
+          <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Valid" data-locale-title="valid">
             <span class="tag__label">
               <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
               {{score}}%
@@ -18,7 +18,7 @@
           </span>
         {{else}}
           {{#ifIsAcceptAll}}
-            <span class="tag tag--warning" data-toggle="tooltip" data-placement="top" title="Accept All">
+            <span class="tag tag--warning" data-toggle="tooltip" data-placement="top" title="Accept All" data-locale-title="accept_all">
               <span class="tag__label">
                 <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
                 {{score}}%
@@ -26,7 +26,7 @@
             </span>
           {{else}}
             <div class="verification-result">
-              <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Confidence score: {{score}}%">
+              <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="{{score}}%">
                 <span class="score mr-1 {{confidence_score_class}}"></span>
                 <span class="tag__label">
                   {{score}}%
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="ds-result__save">
-      <button class="h-button h-button--sm save-lead-button" type="button" data-email="{{email}}">Save as lead</button>
+      <button class="h-button h-button--sm save-lead-button" type="button" data-email="{{email}}" data-locale="save_as_lead">Save as lead</button>
     </div>
   </div>
 

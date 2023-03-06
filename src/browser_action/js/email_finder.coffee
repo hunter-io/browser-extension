@@ -14,7 +14,7 @@ EmailFinder = ->
           $("#full-name-field").val().indexOf(" ") == -1 ||
           $("#full-name-field").val().length <= 4
         )
-          $("#full-name-field").tooltip(title: "Please enter the full name of the person to find the email address.").tooltip("show")
+          $("#full-name-field").tooltip(title: chrome.i18n.getMessage("enter_full_name_to_find_email")).tooltip("show")
         else
           _this.submit()
 
@@ -44,7 +44,7 @@ EmailFinder = ->
           $(".ds-finder-form__submit .far").removeClass("fa-spinner-third fa-spin").addClass("fa-search")
 
           if xhr.status == 400
-            displayError "Sorry, something went wrong with the query."
+            displayError chrome.i18n.getMessage("something_went_wrong_with_the_query")
           else if xhr.status == 401
             $(".connect-again-container").show()
           else if xhr.status == 403
@@ -99,7 +99,7 @@ EmailFinder = ->
       # Display: the method used
       if @sources.length > 0
         s = if @sources.length == 1 then "" else "s"
-        @method = "We found this email address <strong>" + @sources.length + "</strong> time"+s+" on the web."
+        @method = chrome.i18n.getMessage("we_found_this_email_on_the_web", [@sources.length, s])
       else
         @method = "This email address is our best guess for this person. We haven't found it on the web."
 
@@ -113,7 +113,7 @@ EmailFinder = ->
         new Handlebars.SafeString(Utilities.MD5(options.fn(this)))
 
       template = JST["src/browser_action/templates/finder.hbs"]
-      finder_html = $(template(@))
+      finder_html = $(Utilities.localizeHTML(template(@)))
 
       # Generate the DOM with the template and display it
       $("#email-finder").html finder_html

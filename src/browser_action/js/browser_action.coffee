@@ -34,6 +34,13 @@ chrome.tabs.query {
   # We track the event
   Analytics.trackEvent "Open browser popup"
 
+  # We do the localization for the text in the HTML
+  $("[data-locale]").each () ->
+    $(this).text(chrome.i18n.getMessage($(this).data("locale")))
+
+  $("[data-locale-title]").each () ->
+    $(this).prop("title", chrome.i18n.getMessage($(this).data("localeTitle")))
+
   Account.getApiKey (api_key) ->
     # Get account information
     loadAccountInformation()

@@ -4,10 +4,10 @@
       {{#if full_name}}
       <div class="ds-result__fullname">{{full_name}}</div>
       {{/if}}
-      <div class="ds-result__email copy-email" data-email="{{value}}" data-toggle="tooltip" data-placement="top" title="Click to copy">{{value}}</div>
+      <div class="ds-result__email copy-email" data-email="{{value}}" data-toggle="tooltip" data-placement="top" title="Click to copy" data-locale-title="click_to_copy">{{value}}</div>
       <div class="ds-result__verification">
         {{#ifIsVerified verification.status}}
-          <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Valid">
+          <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Valid" data-locale-title="valid">
             <span class="tag__label">
               <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
               {{confidence}}%
@@ -15,7 +15,7 @@
           </span>
         {{else}}
           {{#ifIsAcceptAll}}
-            <span class="tag tag--warning" data-toggle="tooltip" data-placement="top" title="Accept All">
+            <span class="tag tag--warning" data-toggle="tooltip" data-placement="top" title="Accept All" data-locale-title="accept_all">
               <span class="tag__label">
                 <i aria-hidden="true" class="tag__icon fas fa-shield-check"></i>
                 {{confidence}}%
@@ -23,14 +23,14 @@
             </span>
           {{else}}
             <div class="verification-result">
-              <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="Confidence score: {{confidence}}%">
+              <span class="tag tag--success" data-toggle="tooltip" data-placement="top" title="{{confidence}}%">
                 <span class="score mr-1 {{confidence_score_class}}"></span>
                 <span class="tag__label">
                   {{confidence}}%
                 </span>
               </span>
             </div>
-            <button type="button" class="h-button h-button--xs verification-link" data-email="{{value}}">
+            <button type="button" class="h-button h-button--xs verification-link" data-email="{{value}}" data-locale="verify_email">
               Verify email
             </button>
           {{/ifIsAcceptAll}}
@@ -85,7 +85,7 @@
       <li class="ds-sources-list__item {{#unless this.still_on_page}}ds-sources-list__item--outdated{{/unless}}">
         {{#unless this.still_on_page}}
         <span class="tag tag--sm">
-          <span class="tag__label">
+          <span class="tag__label" data-locale="removed">
           Removed
           </span>
         </span>

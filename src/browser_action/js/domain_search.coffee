@@ -2,20 +2,20 @@ DomainSearch = ->
   {
     # Used to display full department names
     department_names: {
-      executive: "Executive",
-      it: "IT / Engineering",
-      finance: "Finance",
-      management: "Management",
-      sales: "Sales",
-      legal: "Legal",
-      support: "Support",
-      hr: "Human Resources",
-      marketing: "Marketing",
-      communication: "Communication",
-      education: "Education",
-      design: "Arts & Design",
-      health: "Medical & Health",
-      operations: "Operations & Logistics"
+      executive: chrome.i18n.getMessage("department_executive"),
+      it: chrome.i18n.getMessage("department_it"),
+      finance: chrome.i18n.getMessage("department_finance"),
+      management: chrome.i18n.getMessage("department_finance"),
+      sales: chrome.i18n.getMessage("department_sales"),
+      legal: chrome.i18n.getMessage("department_legal"),
+      support: chrome.i18n.getMessage("department_support"),
+      hr: chrome.i18n.getMessage("department_hr"),
+      marketing: chrome.i18n.getMessage("department_marketing"),
+      communication: chrome.i18n.getMessage("department_communication"),
+      education: chrome.i18n.getMessage("department_education"),
+      design:chrome.i18n.getMessage("department_design"),
+      health: chrome.i18n.getMessage("department_health"),
+      operations: chrome.i18n.getMessage("department_operations")
     }
 
     launch: ->
@@ -48,7 +48,7 @@ DomainSearch = ->
           $(".filters").css("visibility", "hidden")
 
           if xhr.status == 400
-            displayError "Sorry, something went wrong with the query."
+            displayError chrome.i18n.getMessage("something_went_wrong_with_the_query")
           else if xhr.status == 401
             $(".connect-again-container").show()
           else if xhr.status == 403
@@ -121,7 +121,7 @@ DomainSearch = ->
 
       # Display: the number of results
       if @results_count == 1 then s = "" else s = "s"
-      $("#domain-search .results-header__count").html DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)) + " result" + s + " for <strong>" + DOMPurify.sanitize(@domain) + "</strong>"
+      $("#domain-search .results-header__count").html chrome.i18n.getMessage("results_for_domain", [DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)), s, DOMPurify.sanitize(@domain)])
 
       # Display: the email pattern if any, with the Email Finder form
       if @pattern != null
@@ -155,7 +155,7 @@ DomainSearch = ->
       # Display: link to see more
       if @results_count > 10
         remaining_results = @results_count - 10
-        $(".search-results").append "<a class='see-more h-button h-button--sm' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>See all the results (" + DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results)) + " more)</a>"
+        $(".search-results").append "<a class='see-more h-button h-button--sm' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>" + chrome.i18n.getMessage("see_all_the_results", DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results))) + "</a>"
 
 
     showResults: ->
@@ -180,7 +180,7 @@ DomainSearch = ->
 
         # Save leads button
         unless _this.trial
-          result.lead_button = "<button class='ds-result__save h-button h-button--sm save-lead-button' type='button'>Save</button>"
+          result.lead_button = "<button class='ds-result__save h-button h-button--sm save-lead-button' type='button'>" + chrome.i18n.getMessage("save") + "</button>"
         else
           result.lead_button = ""
 
@@ -207,7 +207,7 @@ DomainSearch = ->
 
         # Integrate the result
         template = JST["src/browser_action/templates/search_results.hbs"]
-        result_tag = $(template(result))
+        result_tag = $(Utilities.localizeHTML(template(result)))
         $(".search-results").append(result_tag)
 
         # Add the lead's data
@@ -219,7 +219,7 @@ DomainSearch = ->
         lead.disableSaveLeadButtonIfLeadExists(save_lead_button)
 
         # Hide beautifully if the user is not logged
-        result_tag.find(".email").html result_tag.find(".email").text().replace("**", "<span data-toggle='tooltip' data-placement='top' title='Please sign up to uncover the email addresses'>aa</span>")
+        result_tag.find(".email").html result_tag.find(".email").text().replace("**", "<span data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("sign_up_to_uncover") + "'>aa</span>")
 
       @openSources()
       $(".search-results").show()
@@ -244,7 +244,7 @@ DomainSearch = ->
 
         return if !email
 
-        verification_link_tag.html("<i class='far fa-spin fa-spinner-third'></i> Verifying…</div>")
+        verification_link_tag.html("<i class='far fa-spin fa-spinner-third'></i> " + chrome.i18n.getMessage("verifying") + "…</div>")
         verification_link_tag.attr("disabled", "true")
 
         # Launch the API call
@@ -260,7 +260,7 @@ DomainSearch = ->
             verification_link_tag.show()
 
             if xhr.status == 400
-              displayError "Sorry, something went wrong with the query."
+              displayError chrome.i18n.getMessage("something_went_wrong_with_the_query")
             else if xhr.status == 401
               $(".connect-again-container").show()
             else if xhr.status == 403
@@ -279,12 +279,12 @@ DomainSearch = ->
           success: (result, statusText, xhr) ->
             if xhr.status == 202
               verification_link_tag.removeAttr("disabled")
-              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> Retry")
-              displayError 'The email verification is taking longer than expected. Please try again later.'
+              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> " + chrome.i18n.getMessage("retry"))
+              displayError chrome.i18n.getMessage("email_verification_takes_longer")
 
             else if xhr.status == 222
               verification_link_tag.removeAttr("disabled")
-              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> Retry")
+              verification_link_tag.html("<span class='fa fa-exclamation-triangle'></span> " + chrome.i18n.getMessage("retry"))
               displayError DOMPurify.sanitize(result.errors[0].details)
               return
 
@@ -293,7 +293,7 @@ DomainSearch = ->
 
               if result.data.status == "valid"
                 verification_result_tag.html("
-                  <span class='tag tag--success' data-toggle='tooltip' data-placement='top' title='Valid'>
+                  <span class='tag tag--success' data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("valid") + "'>
                     <span class='tag__label'>
                       <i aria-hidden='true' class='tag__icon fas fa-shield-check'></i>
                       " + result.data.score + "%
@@ -301,7 +301,7 @@ DomainSearch = ->
                   </span>")
               else if result.data.status == "invalid"
                 verification_result_tag.html("
-                  <span class='tag tag--danger' data-toggle='tooltip' data-placement='top' title='Invalid'>
+                  <span class='tag tag--danger' data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("invalid") + "'>
                     <span class='tag__label'>
                       <i aria-hidden='true' class='tag__icon fas fa-shield-xmark'></i>
                       " + result.data.score + "%
@@ -309,7 +309,7 @@ DomainSearch = ->
                   </span>")
               else if result.data.status == "accept_all"
                 verification_result_tag.html("
-                  <span class='tag tag--warning' data-toggle='tooltip' data-placement='top' title='Accept All'>
+                  <span class='tag tag--warning' data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("accept_all") + "'>
                     <span class='tag__label'>
                       <i aria-hidden='true' class='tag__icon fas fa-shield-check'></i>
                       " + result.data.score + "%
@@ -317,7 +317,7 @@ DomainSearch = ->
                   </span>")
               else
                 verification_result_tag.html("
-                  <span class='tag' data-toggle='tooltip' data-placement='top' title='Unknown'>
+                  <span class='tag' data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("unknown") + "'>
                     <span class='tag__label'>
                       <i aria-hidden='true' class='tag__icon fas fa-shield-slash'></i>
                       " + result.data.score + "%
@@ -392,10 +392,10 @@ DomainSearch = ->
 
     addPatternTitle: (pattern) ->
       pattern = pattern
-        .replace("{first}", "<abbr data-toggle='tooltip' data-placement='top' title='First name'>{first}</abbr>")
-        .replace("{last}", "<abbr data-toggle='tooltip' data-placement='top' title='Last name'>{last}</abbr>")
-        .replace("{f}", "<abbr data-toggle='tooltip' data-placement='top' title='First name initial'>{f}</abbr>")
-        .replace("{l}", "<abbr data-toggle='tooltip' data-placement='top' title='Last name initial'>{l}</abbr>")
+        .replace("{first}", "<abbr data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("firts_name") + "'>{first}</abbr>")
+        .replace("{last}", "<abbr data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("last_name") + "'>{last}</abbr>")
+        .replace("{f}", "<abbr data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("first_name_initial") + "'>{f}</abbr>")
+        .replace("{l}", "<abbr data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("last_name_initial") + "'>{l}</abbr>")
       pattern
 
 

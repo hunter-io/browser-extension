@@ -53,26 +53,26 @@ setColoredIcon = ->
 addBrowserMenuLinks = ->
   chrome.contextMenus.create
     "id": "dashboard"
-    "title": "Dashboard"
+    "title": chrome.i18n.getMessage("context_menu_dashboard")
     "contexts": [ "browser_action" ]
   chrome.contextMenus.create
     "id": "leads"
-    "title": "Leads"
+    "title": chrome.i18n.getMessage("context_menu_leads")
     "contexts": [ "browser_action" ]
   chrome.contextMenus.create
     "id": "subscription"
-    "title": "Subscription"
+    "title": chrome.i18n.getMessage("context_menu_subscription")
     "contexts": [ "browser_action" ]
   chrome.contextMenus.create
     "id": "faqs"
-    "title": "Tutorial"
+    "title": chrome.i18n.getMessage("context_menu_faqs")
     "contexts": [ "browser_action" ]
 
 # When an URL change
 chrome.tabs.onUpdated.addListener (tabid, changeinfo, tab) ->
-  url = tab.url
-  if url != undefined and changeinfo.status == "complete"
-    LaunchColorChange()
+  if tab != undefined
+    if tab.url != undefined and changeinfo.status == "complete"
+      LaunchColorChange()
 
 # When the active tab changes
 chrome.tabs.onActivated.addListener ->
