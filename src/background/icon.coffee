@@ -48,26 +48,6 @@ setColoredIcon = ->
     "38": chrome.runtime.getURL("../img/icon38.png")
   return
 
-# Add context links on right click on the icon
-#
-addBrowserMenuLinks = ->
-  chrome.contextMenus.create
-    "id": "dashboard"
-    "title": chrome.i18n.getMessage("context_menu_dashboard")
-    "contexts": [ "browser_action" ]
-  chrome.contextMenus.create
-    "id": "leads"
-    "title": chrome.i18n.getMessage("context_menu_leads")
-    "contexts": [ "browser_action" ]
-  chrome.contextMenus.create
-    "id": "subscription"
-    "title": chrome.i18n.getMessage("context_menu_subscription")
-    "contexts": [ "browser_action" ]
-  chrome.contextMenus.create
-    "id": "faqs"
-    "title": chrome.i18n.getMessage("context_menu_faqs")
-    "contexts": [ "browser_action" ]
-
 # When an URL change
 chrome.tabs.onUpdated.addListener (tabid, changeinfo, tab) ->
   if tab != undefined
@@ -77,17 +57,3 @@ chrome.tabs.onUpdated.addListener (tabid, changeinfo, tab) ->
 # When the active tab changes
 chrome.tabs.onActivated.addListener ->
   LaunchColorChange()
-
-addBrowserMenuLinks()
-
-chrome.contextMenus.onClicked.addListener (info, tab) ->
-  switch info.menuItemId
-    when "dashboard"
-      chrome.tabs.create url: "https://hunter.io/dashboard?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
-    when "leads"
-      chrome.tabs.create url: "https://hunter.io/leads?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
-    when "subscription"
-      chrome.tabs.create url: "https://hunter.io/subscriptions?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
-    when "faqs"
-      chrome.tabs.create url: "https://hunter.io/help/articles/2-hunter-s-chrome-extension?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=context_menu_browser_action"
-  return

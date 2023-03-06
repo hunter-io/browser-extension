@@ -5,18 +5,6 @@
   "extension_description": {
     "message": "Trouvez des adresses email n'importe où sur le web, en un seul clic."
   },
-  "context_menu_dashboard": {
-    "message": "Tableau de bord"
-  },
-  "context_menu_leads": {
-    "message": "Prospects"
-  },
-  "context_menu_subscription": {
-    "message": "Abonnement"
-  },
-  "context_menu_faqs": {
-    "message": "Tutoriel"
-  },
   "see_results": {
     "message": "Voir les résultats sur hunter.io"
   },
