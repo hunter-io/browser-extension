@@ -296,7 +296,7 @@
   list-style-type: none;
   padding: var(--spacing-04);
   margin: 0;
-  max-height: 29rem;
+  max-height: 24rem;
   overflow: auto;
 }
 
@@ -327,6 +327,7 @@
 }
 
 .filters__by-name {
+  display: none;
   margin-left: auto;
 
   &[aria-expanded="true"] {
