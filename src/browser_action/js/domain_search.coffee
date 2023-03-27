@@ -219,10 +219,10 @@ DomainSearch = ->
         lead.disableSaveLeadButtonIfLeadExists(save_lead_button)
 
         # Hide beautifully if the user is not logged
-        unless _this.trial
+        if _this.trial
           result_tag.find(".ds-result__email").removeClass("copy-email")
           result_tag.find(".ds-result__email").attr("title", chrome.i18n.getMessage("sign_up_to_uncover_more_emails"))
-          result_tag.find(".ds-result__email").html result_tag.find(".ds-result__email").text().replace("info", "<span>aaa</span>")
+          result_tag.find(".ds-result__email").html result_tag.find(".ds-result__email").text().replace("**", "<span>aaa</span>")
 
       @openSources()
       $(".search-results").show()
