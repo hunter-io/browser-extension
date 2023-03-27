@@ -545,8 +545,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  user-select: all;
-  cursor: pointer;
+  user-select: none;
+
+  &.copy-email {
+    user-select: all;
+    cursor: pointer;
+  }
+
+  span {
+    filter: blur(4px);
+  }
 }
 
 .ds-result__verification {
