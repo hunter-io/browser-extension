@@ -327,7 +327,6 @@
 }
 
 .filters__by-name {
-  display: none;
   margin-left: auto;
 
   &[aria-expanded="true"] {
@@ -433,15 +432,6 @@
   max-width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.ds-finder-form-company__domain {
-  margin-left: auto;
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: calc(20/12);
-  color: var(--colors-grey-600);
 }
 
 .ds-finder-form__submit {
