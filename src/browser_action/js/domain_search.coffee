@@ -123,20 +123,18 @@ DomainSearch = ->
       if @results_count == 1 then s = "" else s = "s"
       $("#domain-search .results-header__count").html chrome.i18n.getMessage("results_for_domain", [DOMPurify.sanitize(Utilities.numberWithCommas(@results_count)), s, DOMPurify.sanitize(@domain)])
 
-      # Display: the email pattern if any, with the Email Finder form
+      # Display: the email pattern if any
       if @pattern != null
-        $(".filters__by-name").show()
         $(".results-header__pattern").show()
         $(".results-header__pattern strong").html(@addPatternTitle(@pattern) + "@" + @domain)
         $("[data-toggle='tooltip']").tooltip()
 
-        # Email Finder
-        $(".ds-finder-form-company__name").text @organization
-        $(".ds-finder-form-company__domain").text @domain
-        $(".ds-finder-form-company__logo").attr "src", "https://logo.clearbit.com/" + @domain
-        @openFindbyName()
-        emailFinder = new EmailFinder
-        emailFinder.validateForm()
+      # Email Finder
+      $(".ds-finder-form-company__name").text @organization
+      $(".ds-finder-form-company__logo").attr "src", "https://logo.clearbit.com/" + @domain
+      emailFinder = new EmailFinder
+      emailFinder.validateForm()
+      @openFindbyName()
 
       # Display: the updated number of requests
       loadAccountInformation()
@@ -219,7 +217,10 @@ DomainSearch = ->
         lead.disableSaveLeadButtonIfLeadExists(save_lead_button)
 
         # Hide beautifully if the user is not logged
-        result_tag.find(".email").html result_tag.find(".email").text().replace("**", "<span data-toggle='tooltip' data-placement='top' title='" + chrome.i18n.getMessage("sign_up_to_uncover") + "'>aa</span>")
+        if _this.trial
+          result_tag.find(".ds-result__email").removeClass("copy-email")
+          result_tag.find(".ds-result__email").attr("title", chrome.i18n.getMessage("sign_up_to_uncover_more_emails"))
+          result_tag.find(".ds-result__email").html result_tag.find(".ds-result__email").text().replace("**", "<span>aaa</span>")
 
       @openSources()
       $(".search-results").show()

@@ -296,7 +296,7 @@
   list-style-type: none;
   padding: var(--spacing-04);
   margin: 0;
-  max-height: 29rem;
+  max-height: 24rem;
   overflow: auto;
 }
 
@@ -434,15 +434,6 @@
   text-overflow: ellipsis;
 }
 
-.ds-finder-form-company__domain {
-  margin-left: auto;
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: calc(20/12);
-  color: var(--colors-grey-600);
-}
-
 .ds-finder-form__submit {
   padding: var(--spacing-02) var(--spacing-04);
   border-width: 0 0 0 1px;
@@ -544,8 +535,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  user-select: all;
-  cursor: pointer;
+  user-select: none;
+
+  &.copy-email {
+    user-select: all;
+    cursor: pointer;
+  }
+
+  span {
+    filter: blur(4px);
+  }
 }
 
 .ds-result__verification {
