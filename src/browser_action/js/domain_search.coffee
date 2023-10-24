@@ -153,7 +153,7 @@ DomainSearch = ->
       # Display: link to see more
       if @results_count > 10
         remaining_results = @results_count - 10
-        $(".search-results").append "<a class='see-more h-button h-button--sm' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>" + chrome.i18n.getMessage("see_all_the_results", DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results))) + "</a>"
+        $(".search-results").append "<a class='see-more h-button h-button--sm' target='_blank' href='https://hunter.io/search/" + DOMPurify.sanitize(@domain) + "?type=" + DOMPurify.sanitize(@type) + "&department=" + DOMPurify.sanitize(@department) + "&utm_source=chrome_extension&utm_medium=chrome_extension&utm_campaign=extension&utm_content=browser_popup'>" + chrome.i18n.getMessage("see_all_the_results", DOMPurify.sanitize(Utilities.numberWithCommas(remaining_results))) + "</a>"
 
 
     showResults: ->
@@ -373,7 +373,7 @@ DomainSearch = ->
       value = $("#type-filters [type='radio']:checked").val()
 
     departmentFilter: ->
-      department = null
+      department = ''
       $("#departments-filters [type='checkbox']").each ->
         if $(this).is(":checked")
           department = $(this).val()
